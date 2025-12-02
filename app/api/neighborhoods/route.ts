@@ -5,6 +5,8 @@ import { type ZipScores, scoreZipWithPrefs } from "@/lib/scoring"
 import { computeLifestyleSubscores, computeLifestyleConvenienceCultureScore } from "@/lib/scoring/lifestyle"
 import type { ZipRawData } from "@/types/zip"
 
+const DEBUG = process.env.NODE_ENV === "development"
+
 interface Preferences {
   budget: string
   homeType: string
@@ -166,11 +168,13 @@ export async function POST(request: NextRequest) {
   try {
     const body = await request.json()
 
-    console.log("[v0] API - Raw request body received:", JSON.stringify(body, null, 2))
-    console.log("[v0] API - Type check:", {
-      schoolQuality: `value="${body.schoolQuality}" type=${typeof body.schoolQuality}`,
-      affordability: `value="${body.affordability}" type=${typeof body.affordability}`,
-    })
+    if (DEBUG) {
+      console.log("[v0] API - Raw request body received:", JSON.stringify(body, null, 2))
+      console.log("[v0] API - Type check:", {
+        schoolQuality: `value="${body.schoolQuality}" type=${typeof body.schoolQuality}`,
+        affordability: `value="${body.affordability}" type=${typeof body.affordability}`,
+      })
+    }
 
     const parseWeight = (value: any, defaultValue = 3): number => {
       const parsed = Number.parseInt(value)
@@ -187,12 +191,14 @@ export async function POST(request: NextRequest) {
       tollRoadConvenience: parseWeight(body.tollRoadConvenience),
     }
 
-    console.log("[v0] API - Parsed weights:", weights)
-    console.log("[v0] API - Parse test:", {
-      schoolQualityRaw: body.schoolQuality,
-      schoolQualityParsed: Number.parseInt(body.schoolQuality),
-      schoolQualityFinal: weights.schoolQuality,
-    })
+    if (DEBUG) {
+      console.log("[v0] API - Parsed weights:", weights)
+      console.log("[v0] API - Parse test:", {
+        schoolQualityRaw: body.schoolQuality,
+        schoolQualityParsed: Number.parseInt(body.schoolQuality),
+        schoolQualityFinal: weights.schoolQuality,
+      })
+    }
 
     const lifestyleTagsRaw = body.lifestyleTags || ""
     const lifestyleTags = (
@@ -206,8 +212,10 @@ export async function POST(request: NextRequest) {
         body.preferEstablishedNeighborhoods === "true" || body.preferEstablishedNeighborhoods === true,
     }
 
-    console.log("[v0] Lifestyle tags:", lifestyleTags)
-    console.log("[v0] Special prefs:", specialPrefs)
+    if (DEBUG) {
+      console.log("[v0] Lifestyle tags:", lifestyleTags)
+      console.log("[v0] Special prefs:", specialPrefs)
+    }
 
     const userAllPrefs: UserAllPrefs = {
       weights,
@@ -216,7 +224,7 @@ export async function POST(request: NextRequest) {
     }
 
     const budget = Number.parseInt((body.budget || "500000").replace(/\D/g, ""))
-    console.log("[v0] Budget:", budget)
+    if (DEBUG) console.log("[v0] Budget:", budget)
 
     const budgetThreshold = budget * 1.1
     const relaxedBudgetThreshold = budget * 1.2
@@ -227,25 +235,29 @@ export async function POST(request: NextRequest) {
       typeof excludedCitiesRaw === "string" ? excludedCitiesRaw.split(",").filter(Boolean) : excludedCitiesRaw
     ) as string[]
 
-    console.log("[v0] Excluded cities:", excludedCities)
+    if (DEBUG) console.log("[v0] Excluded cities:", excludedCities)
 
     let workingData = [...(dfwData as unknown as ZipRawData[])]
 
     const zip75007Initial = workingData.find((n) => n.zip === "75007")
-    console.log(
-      "[v0] 75007 in initial data:",
-      zip75007Initial
-        ? `Yes - ${zip75007Initial.city}, price: ${zip75007Initial.medianHomePrice || zip75007Initial.medianSalePrice}`
-        : "NO",
-    )
+    if (DEBUG) {
+      console.log(
+        "[v0] 75007 in initial data:",
+        zip75007Initial
+          ? `Yes - ${zip75007Initial.city}, price: ${zip75007Initial.medianHomePrice || zip75007Initial.medianSalePrice}`
+          : "NO",
+      )
+    }
 
     if (excludedCities.length > 0) {
       workingData = workingData.filter((neighborhood) => !excludedCities.includes(neighborhood.city))
-      console.log(
-        `[v0] Filtered out ${dfwData.length - workingData.length} ZIPs from excluded cities. ${workingData.length} ZIPs remaining.`,
-      )
-      const zip75007AfterCityFilter = workingData.find((n) => n.zip === "75007")
-      console.log("[v0] 75007 after city exclusion filter:", zip75007AfterCityFilter ? "Still present" : "FILTERED OUT")
+      if (DEBUG) {
+        console.log(
+          `[v0] Filtered out ${dfwData.length - workingData.length} ZIPs from excluded cities. ${workingData.length} ZIPs remaining.`,
+        )
+        const zip75007AfterCityFilter = workingData.find((n) => n.zip === "75007")
+        console.log("[v0] 75007 after city exclusion filter:", zip75007AfterCityFilter ? "Still present" : "FILTERED OUT")
+      }
     }
 
     if (overrideData) {
@@ -354,9 +366,11 @@ export async function POST(request: NextRequest) {
 
       const scored = scoreZipWithPrefs(zipScores, userAllPrefs)
 
-      console.log(
-        `[v0] ${neighborhood.zip} (${neighborhood.city}): baseline=${scored.baselineScore.toFixed(1)}, priority=${scored.priorityWeightedScore.toFixed(1)}, sofee=${scored.sofeeFitScore.toFixed(1)}, adjusted=${scored.adjustedScore.toFixed(1)}`,
-      )
+      if (DEBUG) {
+        console.log(
+          `[v0] ${neighborhood.zip} (${neighborhood.city}): baseline=${scored.baselineScore.toFixed(1)}, priority=${scored.priorityWeightedScore.toFixed(1)}, sofee=${scored.sofeeFitScore.toFixed(1)}, adjusted=${scored.adjustedScore.toFixed(1)}`,
+        )
+      }
 
       const reason = getDFWDescription(neighborhood.zip, neighborhood.city, weights, zipScores)
 
@@ -472,13 +486,15 @@ export async function POST(request: NextRequest) {
 
     results.sort((a, b) => b.score - a.score)
 
-    const zip75007Result = results.find((r) => r.zipCode === "75007")
-    const zip75007Index = results.findIndex((r) => r.zipCode === "75007")
-    if (zip75007Result) {
-      console.log(`[v0] 75007 position in sorted results: ${zip75007Index + 1} of ${results.length}`)
-      console.log(`[v0] 75007 score: ${zip75007Result.score.toFixed(1)}, price: ${zip75007Result.medianHomePrice}`)
-    } else {
-      console.log("[v0] 75007 NOT FOUND in results array")
+    if (DEBUG) {
+      const zip75007Result = results.find((r) => r.zipCode === "75007")
+      const zip75007Index = results.findIndex((r) => r.zipCode === "75007")
+      if (zip75007Result) {
+        console.log(`[v0] 75007 position in sorted results: ${zip75007Index + 1} of ${results.length}`)
+        console.log(`[v0] 75007 score: ${zip75007Result.score.toFixed(1)}, price: ${zip75007Result.medianHomePrice}`)
+      } else {
+        console.log("[v0] 75007 NOT FOUND in results array")
+      }
     }
 
     const totalZips = results.length
@@ -516,18 +532,22 @@ export async function POST(request: NextRequest) {
       totalZipsCompared: totalZips,
     }))
 
-    console.log(
-      "[v0] Top 5 after sorting by score:",
-      resultsWithRankings.slice(0, 5).map((r) => `${r.city} (${r.zipCode}): ${r.score.toFixed(1)}`),
-    )
+    if (DEBUG) {
+      console.log(
+        "[v0] Top 5 after sorting by score:",
+        resultsWithRankings.slice(0, 5).map((r) => `${r.city} (${r.zipCode}): ${r.score.toFixed(1)}`),
+      )
+    }
 
     const withinBudget = resultsWithRankings.filter((r) => r.medianHomePrice <= budgetThreshold)
 
-    const zip75007InBudget = withinBudget.find((r) => r.zipCode === "75007")
-    console.log(`[v0] Budget threshold: ${budgetThreshold}, 75007 in withinBudget: ${zip75007InBudget ? "Yes" : "No"}`)
-    if (zip75007InBudget) {
-      const posInBudget = withinBudget.findIndex((r) => r.zipCode === "75007")
-      console.log(`[v0] 75007 position in withinBudget: ${posInBudget + 1} of ${withinBudget.length}`)
+    if (DEBUG) {
+      const zip75007InBudget = withinBudget.find((r) => r.zipCode === "75007")
+      console.log(`[v0] Budget threshold: ${budgetThreshold}, 75007 in withinBudget: ${zip75007InBudget ? "Yes" : "No"}`)
+      if (zip75007InBudget) {
+        const posInBudget = withinBudget.findIndex((r) => r.zipCode === "75007")
+        console.log(`[v0] 75007 position in withinBudget: ${posInBudget + 1} of ${withinBudget.length}`)
+      }
     }
 
     let finalResults: any[]
@@ -552,13 +572,14 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    console.log(
-      "[v0] Final results:",
-      finalResults.map((r) => `${r.city} (${r.zipCode}): ${r.score.toFixed(1)}`),
-    )
-
-    const zip75007Final = finalResults.find((r: any) => r.zipCode === "75007")
-    console.log(`[v0] 75007 in final results: ${zip75007Final ? "Yes" : "No"}`)
+    if (DEBUG) {
+      console.log(
+        "[v0] Final results:",
+        finalResults.map((r) => `${r.city} (${r.zipCode}): ${r.score.toFixed(1)}`),
+      )
+      const zip75007Final = finalResults.find((r: any) => r.zipCode === "75007")
+      console.log(`[v0] 75007 in final results: ${zip75007Final ? "Yes" : "No"}`)
+    }
 
     return NextResponse.json({ results: finalResults })
   } catch (error) {
