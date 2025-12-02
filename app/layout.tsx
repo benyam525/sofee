@@ -17,15 +17,38 @@ const jetbrainsMono = JetBrains_Mono({
 
 export const metadata: Metadata = {
   title: "Sofee - Your Honest Guide to the Dallas Suburbs",
-  description: "Find your perfect Dallas suburb with Sofee, your honest guide to North Dallas neighborhoods.",
+  description: "Find your perfect Dallas suburb with Sofee, your honest guide to North Dallas neighborhoods. Data-driven recommendations for families relocating to DFW.",
   generator: "v0.app",
+  metadataBase: new URL("https://sofee-home.vercel.app"),
   robots: {
-    index: false,
-    follow: false,
+    index: true,
+    follow: true,
     googleBot: {
-      index: false,
-      follow: false,
+      index: true,
+      follow: true,
     },
+  },
+  openGraph: {
+    title: "Sofee - Your Honest Guide to the Dallas Suburbs",
+    description: "Find your perfect Dallas suburb with data-driven recommendations for families relocating to DFW.",
+    url: "https://sofee-home.vercel.app",
+    siteName: "Sofee",
+    images: [
+      {
+        url: "/sofee-logo.png",
+        width: 800,
+        height: 800,
+        alt: "Sofee - Dallas Suburbs Guide",
+      },
+    ],
+    locale: "en_US",
+    type: "website",
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Sofee - Your Honest Guide to the Dallas Suburbs",
+    description: "Find your perfect Dallas suburb with data-driven recommendations for families relocating to DFW.",
+    images: ["/sofee-logo.png"],
   },
   icons: {
     icon: [

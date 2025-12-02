@@ -1,6 +1,6 @@
-# Family Fit Finder - Technical Documentation
+# Sofee - Technical Documentation
 
-> Last Updated: November 2024
+> Last Updated: December 2024
 
 ---
 
@@ -19,7 +19,7 @@
 
 ## Overview
 
-**Family Fit Finder** (powered by "Junie") is a neighborhood recommendation tool that helps families find the best ZIP codes in the Dallas-Fort Worth area based on their priorities.
+**Sofee** is a neighborhood recommendation tool that helps families find the best ZIP codes in the Dallas-Fort Worth area based on their priorities.
 
 ### What It Does
 - Covers **27 ZIP codes** in North Dallas suburbs
@@ -30,7 +30,7 @@
 ### Core User Flow
 1. User enters budget range (min/max)
 2. User optionally enters workplace ZIP and max commute time
-3. User sets priority weights (0-5) for each criterion
+3. User sets priority weights (0-4) for each criterion
 4. System calculates weighted scores and returns ranked results
 5. User can explore individual ZIPs and compare up to 2 side-by-side
 
@@ -209,7 +209,7 @@ childDevelopmentScore = (schoolScore + parksScore) / 2
 
 ### Step 2: Weighted Scoring
 
-User sets weights 0-5 for each criterion:
+User sets weights 0-4 for each criterion:
 
 \`\`\`javascript
 // For each criterion:
@@ -220,11 +220,11 @@ normalizedScore = sumOfContributions / sumOfWeights
 \`\`\`
 
 **Example:**
-- Schools: weight=5, score=90 → contribution = 450
-- Safety: weight=4, score=80 → contribution = 320
-- Commute: weight=3, score=70 → contribution = 210
-- Total weights: 5+4+3 = 12
-- Normalized: (450+320+210) / 12 = **81.7**
+- Schools: weight=4, score=90 → contribution = 360
+- Safety: weight=3, score=80 → contribution = 240
+- Commute: weight=2, score=70 → contribution = 140
+- Total weights: 4+3+2 = 9
+- Normalized: (360+240+140) / 9 = **82.2**
 
 ### Step 3: Modifiers (Bonuses/Penalties)
 
@@ -254,25 +254,24 @@ ZIPs are sorted by finalScore descending:
 
 ## User Preferences & Weights
 
-### The 7 Criteria (User Can Weight 0-5)
+### The 7 Criteria (User Can Weight 0-4)
 
 | Criterion | Label | What It Measures | Default Weight |
 |-----------|-------|------------------|----------------|
-| `schoolQuality` | School Quality | Public school performance | 4 |
+| `schoolQuality` | School Quality | Public school performance | 3 |
 | `commuteBurden` | Commute Burden | Time to get to work | 3 |
-| `safetyStability` | Safety & Stability | Crime rates, neighborhood stability | 4 |
+| `safetyStability` | Safety & Stability | Crime rates, neighborhood stability | 3 |
 | `lifestyleConvenienceCulture` | Lifestyle & Culture | Restaurants, entertainment, convenience | 3 |
 | `childDevelopmentOpportunity` | Child Development | Parks, libraries, youth activities | 3 |
-| `taxBurden` | Tax Burden | Property taxes + MUD rates | 2 |
-| `tollRoadConvenience` | Toll Road Access | Highway/tollway accessibility | 2 |
+| `taxBurden` | Tax Burden | Property taxes + MUD rates | 3 |
+| `tollRoadConvenience` | Toll Road Access | Highway/tollway accessibility | 3 |
 
 ### Weight Meanings
 - **0** = "I don't care about this at all"
 - **1** = "Nice to have"
 - **2** = "Somewhat important"
-- **3** = "Important"
-- **4** = "Very important"
-- **5** = "Critical / top priority"
+- **3** = "Important" (default)
+- **4** = "Critical / top priority"
 
 ### Budget Preferences
 - **Min Budget**: Filters out ZIPs cheaper than this (assumes user wants a certain quality)
@@ -372,7 +371,7 @@ Returns detailed data for a single ZIP code.
 
 ### Home Page (`app/page.tsx`)
 
-- Hero section with Junie mascot
+- Hero section with Sofee mascot
 - Embedded `<PreferencesForm />` component
 - Collects all user inputs and navigates to results
 
@@ -381,12 +380,12 @@ Returns detailed data for a single ZIP code.
 Sections:
 1. **Budget** - Dual-handle slider ($250K - $1.5M)
 2. **Location** - Workplace ZIP + Max Commute
-3. **Priority Sliders** - 7 criteria, each 0-5
+3. **Priority Sliders** - 7 criteria, each 0-4
 
 ### Results Page (`app/results/page.tsx` + `components/results-content.tsx`)
 
 Displays:
-1. **Loading State** - Junie "thinking" animation
+1. **Loading State** - Sofee "thinking" animation
 2. **Top 5 Matches** - Detailed cards with scores
 3. **Honorable Mentions** - Condensed cards
 4. **ZIP Explorer** - Search any ZIP, compare 2 side-by-side
@@ -425,8 +424,8 @@ family-fit-finder/
 │   ├── data/
 │   │   ├── zip_school_summaries.json # School details
 │   │   └── dfwNeighborhoods.json     # Public neighborhood data
-│   ├── junie-logo.png                # Mascot
-│   └── junie-thinking.png            # Loading mascot
+│   ├── sofee-logo.png                # Mascot
+│   └── sofee-thinking.png            # Loading mascot
 └── types/
     ├── zip.ts                        # ZIP type definitions
     └── schools.ts                    # School type definitions
