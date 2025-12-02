@@ -1,0 +1,30 @@
+{
+  "Dallas": {
+    "dem": 599477,
+    "rep": 307076,
+    "other": 18263,
+    "dem_share": 0.649,
+    "rep_share": 0.332
+  },
+  "Denton": {
+    "dem": 211243,
+    "rep": 250427,
+    "other": 9857,
+    "dem_share": 0.448,
+    "rep_share": 0.531
+  },
+  "Collin": {
+    "dem": 250977,
+    "rep": 282692,
+    "other": 10876,
+    "dem_share": 0.461,
+    "rep_share": 0.519
+  },
+  "Tarrant": {
+    "dem": 420297,
+    "rep": 391884,
+    "other": 15328,
+    "dem_share": 0.508,
+    "rep_share": 0.474
+  }
+}

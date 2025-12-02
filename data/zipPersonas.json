@@ -1,0 +1,102 @@
+{
+  "75035": {
+    "bestFor": "Achievement-oriented families with high budgets who want top schools, new construction, and youth sports culture",
+    "honestTake": "High-income families chasing elite schools and new builds. Not diverse, not affordable, but executes on the suburban family dream flawlessly."
+  },
+  "75034": {
+    "bestFor": "Affluent professionals who want luxury amenities (The Star, Legacy West) + strong schools",
+    "honestTake": "Frisco's prestige ZIP. Big money, big homes, walkable upscale retail. If you can afford it and want polish, this is the tier."
+  },
+  "75013": {
+    "bestFor": "Established families who want calm, mature neighborhoods with excellent schools",
+    "honestTake": "Quiet confidence. Not flashy, just consistently good. Great for families who want stability over excitement."
+  },
+  "75070": {
+    "bestFor": "Families who value outdoor lifestyle, scenic neighborhoods, and breathing room",
+    "honestTake": "Pretty and peaceful but commute-heavy. Works if your job is north or remote."
+  },
+  "75072": {
+    "bestFor": "Upper-middle families who want scenic, resort-like suburbia (Stonebridge Ranch)",
+    "honestTake": "Beautiful but isolated. European-village vibes at Adriatica, but you'll drive everywhere."
+  },
+  "75024": {
+    "bestFor": "Corporate professionals who want urban energy + suburban schools (Legacy West lifestyle)",
+    "honestTake": "The suburban-urban hybrid. High diversity, great dining, corporate-corridor convenience. Not cheap, but delivers on lifestyle."
+  },
+  "75025": {
+    "bestFor": "Families who want safe, reliable, well-run suburbia without flash",
+    "honestTake": "Peak 'good suburb' energy. Clean, organized, predictable. Zero excitement, maximum reliability."
+  },
+  "75093": {
+    "bestFor": "Affluent families who want established elegance, big trees, and premium schools",
+    "honestTake": "Old-money Plano. Large homes, wide streets, golf-course neighborhoods. If you want mature prestige, this is it."
+  },
+  "75078": {
+    "bestFor": "Families who want BIG new homes, rising schools, and space",
+    "honestTake": "McMansion paradise. 85% new construction. Low diversity. Great for California transplants who want Texas-sized everything."
+  },
+  "75009": {
+    "bestFor": "Families betting on growth who want space, new builds, and small-town charm",
+    "honestTake": "Frontier suburbia. Cow pastures next to master-planned communities. High upside, high commute."
+  },
+  "76092": {
+    "bestFor": "High-net-worth families who want the best schools, safety, and prestige in DFW",
+    "honestTake": "Suburban royalty. Carroll ISD dynasty. If money is no object and schools are everything, this is the throne."
+  },
+  "76034": {
+    "bestFor": "Affluent families who want Southlake quality with less intensity",
+    "honestTake": "Quieter, warmer version of Southlake. Long-term residents who value community over flash."
+  },
+  "75007": {
+    "bestFor": "Budget-conscious families or young professionals who value diversity, dining, and central location over top-tier schools",
+    "honestTake": "Under-the-radar workhorse. Highest diversity index in dataset. Schools are mixed (research feeders carefully). Great value if you prioritize location and culture over prestige."
+  },
+  "75010": {
+    "bestFor": "Young families who want Frisco-adjacent location at non-Frisco prices with Hebron HS feeder access",
+    "honestTake": "Sleeper hit. Second-highest diversity, strong Lewisville ISD feeders (Hebron). Castle Hills energy without Castle Hills pricing."
+  },
+  "75019": {
+    "bestFor": "Families who want elite schools, safety, parks, and DFW Airport proximity",
+    "honestTake": "The suburban gold standard. Everything works. Premium price, but you get what you pay for."
+  },
+  "75052": {
+    "bestFor": "Budget-conscious families who prioritize fun (Joe Pool Lake, Epic Waters) over schools/safety",
+    "honestTake": "Most affordable option. Schools are weakest in dataset. Safety is lowest. But for pure family entertainment per dollar, it's unmatched."
+  },
+  "75080": {
+    "bestFor": "Urban-suburban hybrids who want walkability, diversity, DART access, and central location",
+    "honestTake": "Highest diversity in dataset (0.94). Mature, established, unpretentious. CityLine gives urban energy. Best value for diverse, central living."
+  },
+  "75081": {
+    "bestFor": "Budget-conscious buyers who want Richardson location without premium pricing",
+    "honestTake": "Working-class Richardson. Authentic, diverse, affordable. Not pretty, but solid bones and great location."
+  },
+  "75082": {
+    "bestFor": "Young professionals/families who want walkable lifestyle (CityLine) + diversity + affordability",
+    "honestTake": "Richardson's rising star. Urban-suburban sweet spot. Best option for people who want walkability without moving to Dallas."
+  },
+  "75038": {
+    "bestFor": "Commuters who want maximum location convenience at minimum price",
+    "honestTake": "Everything is 15 minutes away. Schools are weak. But if commute is king, nothing beats this."
+  },
+  "75039": {
+    "bestFor": "Young professionals who want urban walkability (Las Colinas) + Coppell ISD feeders",
+    "honestTake": "Las Colinas core. Walk to work, walk to dinner. Coppell ISD access is the secret weapon. Best urban-suburban hybrid for the price."
+  },
+  "75062": {
+    "bestFor": "Families who want Irving location with more residential feel than 75038/75039",
+    "honestTake": "Quieter Irving. Parks, trails, family-friendly streets. Schools improving. Solid middle-ground option."
+  },
+  "75234": {
+    "bestFor": "Families who want walkability, DART access, and inner-ring convenience",
+    "honestTake": "Walkable, diverse, affordable. DART to Dallas. Historic downtown charm. Great for people who want urban access without urban prices."
+  },
+  "75244": {
+    "bestFor": "Professionals who want Addison-adjacent location + larger homes",
+    "honestTake": "Upscale Farmers Branch. Bigger homes, better schools, close to Vitruvian Park. Smart move for Addison commuters."
+  },
+  "75067": {
+    "bestFor": "Budget-conscious families who want lake access and community feel",
+    "honestTake": "Lake Lewisville lifestyle. Old Town charm. Schools are mixed. Best for outdoorsy families who don't obsess over school rankings."
+  }
+}

@@ -1,0 +1,318 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* Apple Liquid Glass color palette - softer, atmospheric, fog-like */
+  --background: oklch(0.985 0.003 250);
+  --foreground: oklch(0.18 0.015 260);
+  --card: oklch(1 0 0 / 0.55);
+  --card-foreground: oklch(0.2 0.015 260);
+  --popover: oklch(1 0 0 / 0.75);
+  --popover-foreground: oklch(0.2 0.015 260);
+  --primary: oklch(0.58 0.18 250);
+  --primary-foreground: oklch(1 0 0);
+  --secondary: oklch(0.97 0.008 250 / 0.5);
+  --secondary-foreground: oklch(0.25 0.015 260);
+  --muted: oklch(0.95 0.006 250 / 0.4);
+  --muted-foreground: oklch(0.42 0.015 260);
+  --accent: oklch(0.94 0.015 250 / 0.5);
+  --accent-foreground: oklch(0.2 0.015 260);
+  --destructive: oklch(0.6 0.2 25);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.92 0.006 250 / 0.35);
+  --input: oklch(0.98 0.005 250 / 0.5);
+  --ring: oklch(0.58 0.18 250 / 0.4);
+  --chart-1: oklch(0.58 0.18 250);
+  --chart-2: oklch(0.68 0.12 175);
+  --chart-3: oklch(0.62 0.15 310);
+  --chart-4: oklch(0.78 0.12 90);
+  --chart-5: oklch(0.72 0.16 35);
+  --radius: 1.25rem;
+  --sidebar: oklch(0.985 0.003 250 / 0.7);
+  --sidebar-foreground: oklch(0.18 0.015 260);
+  --sidebar-primary: oklch(0.58 0.18 250);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.95 0.008 250 / 0.5);
+  --sidebar-accent-foreground: oklch(0.2 0.015 260);
+  --sidebar-border: oklch(0.92 0.006 250 / 0.25);
+  --sidebar-ring: oklch(0.58 0.18 250 / 0.4);
+
+  /* Enhanced Liquid Glass variables */
+  --glass-blur: 40px;
+  --glass-blur-light: 24px;
+  --glass-saturation: 180%;
+  --glass-brightness: 1.05;
+}
+
+.dark {
+  --background: oklch(0.1 0.015 260);
+  --foreground: oklch(0.96 0.008 250);
+  --card: oklch(0.15 0.015 260 / 0.6);
+  --card-foreground: oklch(0.96 0.008 250);
+  --popover: oklch(0.15 0.015 260 / 0.8);
+  --popover-foreground: oklch(0.96 0.008 250);
+  --primary: oklch(0.72 0.15 250);
+  --primary-foreground: oklch(0.08 0.015 260);
+  --secondary: oklch(0.22 0.015 260 / 0.5);
+  --secondary-foreground: oklch(0.96 0.008 250);
+  --muted: oklch(0.22 0.015 260 / 0.4);
+  --muted-foreground: oklch(0.62 0.008 250);
+  --accent: oklch(0.22 0.015 260 / 0.5);
+  --accent-foreground: oklch(0.96 0.008 250);
+  --destructive: oklch(0.55 0.18 25);
+  --destructive-foreground: oklch(0.96 0.008 250);
+  --border: oklch(0.28 0.015 260 / 0.35);
+  --input: oklch(0.22 0.015 260 / 0.5);
+  --ring: oklch(0.72 0.15 250 / 0.4);
+  --sidebar: oklch(0.12 0.015 260 / 0.7);
+  --sidebar-foreground: oklch(0.96 0.008 250);
+  --sidebar-primary: oklch(0.72 0.15 250);
+  --sidebar-primary-foreground: oklch(0.08 0.015 260);
+  --sidebar-accent: oklch(0.22 0.015 260 / 0.5);
+  --sidebar-accent-foreground: oklch(0.96 0.008 250);
+  --sidebar-border: oklch(0.28 0.015 260 / 0.25);
+  --sidebar-ring: oklch(0.72 0.15 250 / 0.4);
+}
+
+@theme inline {
+  /* SF Pro-like humanist font stack */
+  --font-sans: "Plus Jakarta Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", sans-serif;
+  --font-mono: "SF Mono", "JetBrains Mono", ui-monospace, monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --radius-sm: calc(var(--radius) - 6px);
+  --radius-md: calc(var(--radius) - 3px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 6px);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground antialiased;
+    font-feature-settings: "cv11", "ss01";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+}
+
+/* Apple Liquid Glass card utilities - deeper blur, specular highlights, wet/glossy feel */
+.glass-card {
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.65) 0%, rgba(255, 255, 255, 0.45) 100%);
+  backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
+  -webkit-backdrop-filter: blur(var(--glass-blur)) saturate(var(--glass-saturation)) brightness(var(--glass-brightness));
+  border: 1px solid rgba(255, 255, 255, 0.45);
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.6),
+    0 8px 40px -12px rgba(0, 0, 0, 0.08),
+    0 4px 16px -4px rgba(0, 0, 0, 0.04),
+    inset 0 1px 1px rgba(255, 255, 255, 0.9),
+    inset 0 -1px 1px rgba(255, 255, 255, 0.25);
+}
+
+.glass-card-strong {
+  background: linear-gradient(
+    145deg,
+    rgba(255, 255, 255, 0.8) 0%,
+    rgba(255, 255, 255, 0.6) 50%,
+    rgba(255, 255, 255, 0.7) 100%
+  );
+  backdrop-filter: blur(48px) saturate(200%) brightness(1.08);
+  -webkit-backdrop-filter: blur(48px) saturate(200%) brightness(1.08);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.7),
+    0 12px 48px -16px rgba(0, 0, 0, 0.1),
+    0 6px 24px -6px rgba(0, 0, 0, 0.05),
+    inset 0 2px 2px rgba(255, 255, 255, 1),
+    inset 0 -1px 2px rgba(255, 255, 255, 0.3);
+}
+
+/* Ultra-thin glass for subtle overlays */
+.glass-card-thin {
+  background: rgba(255, 255, 255, 0.35);
+  backdrop-filter: blur(var(--glass-blur-light)) saturate(160%);
+  -webkit-backdrop-filter: blur(var(--glass-blur-light)) saturate(160%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.7), 0 4px 20px -8px rgba(0, 0, 0, 0.06);
+}
+
+/* Pill button style - fluid, rounded */
+.pill-button {
+  @apply px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-out;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  box-shadow: 0 2px 8px -2px rgba(0, 0, 0, 0.06), inset 0 1px 0 rgba(255, 255, 255, 0.8);
+}
+
+.pill-button:hover {
+  background: rgba(255, 255, 255, 0.85);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px -4px rgba(0, 0, 0, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.9);
+}
+
+.pill-button-active {
+  background: linear-gradient(135deg, var(--primary) 0%, oklch(0.52 0.2 260) 100%);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 4px 20px -4px rgba(88, 100, 200, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.3);
+}
+
+/* Atmospheric gradient background - ink in water effect */
+.gradient-bg {
+  background: radial-gradient(ellipse 120% 80% at 10% -10%, oklch(0.94 0.06 245 / 0.5) 0%, transparent 50%),
+    radial-gradient(ellipse 100% 100% at 90% 110%, oklch(0.96 0.04 175 / 0.35) 0%, transparent 45%),
+    radial-gradient(ellipse 80% 60% at 50% 50%, oklch(0.98 0.02 300 / 0.15) 0%, transparent 50%),
+    radial-gradient(ellipse 60% 40% at 70% 20%, oklch(0.95 0.03 85 / 0.2) 0%, transparent 40%), oklch(0.985 0.003 250);
+}
+
+/* Soft focus glow effect for interactive elements */
+.glow-focus:focus-within {
+  box-shadow: 0 0 0 3px rgba(88, 100, 200, 0.15), 0 0 24px -4px rgba(88, 100, 200, 0.2);
+}
+
+/* Smooth elastic transitions */
+.transition-elastic {
+  transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+/* Slider track styling for liquid feel */
+input[type="range"]::-webkit-slider-track {
+  background: linear-gradient(90deg, rgba(88, 100, 200, 0.2) 0%, rgba(88, 100, 200, 0.1) 100%);
+  border-radius: 100px;
+}
+
+/* Sofee character animations - subtle idle, sparkle effects */
+@keyframes sofee-idle {
+  0%,
+  100% {
+    transform: rotate(0deg) translateY(0);
+  }
+  25% {
+    transform: rotate(-2deg) translateY(-2px);
+  }
+  50% {
+    transform: rotate(0deg) translateY(0);
+  }
+  75% {
+    transform: rotate(2deg) translateY(-1px);
+  }
+}
+
+@keyframes sofee-bounce {
+  0%,
+  100% {
+    transform: scaleY(1) translateY(0);
+  }
+  50% {
+    transform: scaleY(0.97) translateY(1px);
+  }
+}
+
+@keyframes sparkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1) rotate(180deg);
+  }
+}
+
+@keyframes sparkle-drift {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0.6) translateY(0) rotate(0deg);
+  }
+  25% {
+    opacity: 0.8;
+    transform: scale(1) translateY(-3px) rotate(90deg);
+  }
+  75% {
+    opacity: 0.6;
+    transform: scale(0.9) translateY(-1px) rotate(270deg);
+  }
+}
+
+@keyframes float-gentle {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  50% {
+    transform: translateY(-4px) rotate(1deg);
+  }
+}
+
+.animate-sofee-idle {
+  animation: sofee-idle 4s ease-in-out infinite, sofee-bounce 2.5s ease-in-out infinite;
+}
+
+.animate-sparkle {
+  animation: sparkle 2s ease-in-out infinite;
+}
+
+.animate-sparkle-delayed {
+  animation: sparkle-drift 2.5s ease-in-out infinite 0.5s;
+}
+
+.animate-sparkle-slow {
+  animation: sparkle 3s ease-in-out infinite 1s;
+}
+
+.animate-float-gentle {
+  animation: float-gentle 3s ease-in-out infinite;
+}
+
+/* Add subtle bounce animation for Sofee thinking loader */
+@keyframes bounce-subtle {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+.animate-bounce-subtle {
+  animation: bounce-subtle 2s ease-in-out infinite;
+}

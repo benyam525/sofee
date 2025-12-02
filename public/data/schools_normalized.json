@@ -1,0 +1,485 @@
+[
+  {
+    "campusId": "057903118",
+    "districtId": "057903",
+    "name": "McCoy Elementary School",
+    "address": "3939 Marsh Ln",
+    "city": "Carrollton",
+    "zip": "75007",
+    "level": "ES",
+    "gradeSpan": "PK-5",
+    "studentCount": 480,
+    "studentTeacherRatio": 13.5,
+    "year": 2024,
+    "staarMathProficiency": 0.85,
+    "staarReadingProficiency": 0.87,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.83, "reading": 0.85 },
+      { "grade": 4, "math": 0.85, "reading": 0.87 },
+      { "grade": 5, "math": 0.87, "reading": 0.89 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.84, "staarReadingProficiency": 0.86, "accountabilityRating": "A" },
+      { "year": 2022, "staarMathProficiency": 0.82, "staarReadingProficiency": 0.84, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2025-11"
+  },
+  {
+    "campusId": "057903117",
+    "districtId": "057903",
+    "name": "Kent Elementary School",
+    "address": "1800 W Rosemeade Pkwy",
+    "city": "Carrollton",
+    "zip": "75007",
+    "level": "ES",
+    "gradeSpan": "PK-5",
+    "studentCount": 430,
+    "studentTeacherRatio": 13.0,
+    "year": 2024,
+    "staarMathProficiency": 0.73,
+    "staarReadingProficiency": 0.75,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.71, "reading": 0.74 },
+      { "grade": 4, "math": 0.73, "reading": 0.75 },
+      { "grade": 5, "math": 0.75, "reading": 0.76 }
+    ],
+    "growthMath": null,
+    "growthReading": null,
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.71, "staarReadingProficiency": 0.74, "accountabilityRating": "A" },
+      { "year": 2022, "staarMathProficiency": 0.68, "staarReadingProficiency": 0.72, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2025-11"
+  },
+  {
+    "campusId": "057903119",
+    "districtId": "057903",
+    "name": "Blair Elementary School",
+    "address": "2323 E Hebron Pkwy",
+    "city": "Carrollton",
+    "zip": "75010",
+    "level": "ES",
+    "gradeSpan": "PK-5",
+    "studentCount": 465,
+    "studentTeacherRatio": 13.2,
+    "year": 2024,
+    "staarMathProficiency": 0.8,
+    "staarReadingProficiency": 0.82,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.78, "reading": 0.8 },
+      { "grade": 4, "math": 0.8, "reading": 0.82 },
+      { "grade": 5, "math": 0.82, "reading": 0.84 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.79, "staarReadingProficiency": 0.81, "accountabilityRating": "A" },
+      { "year": 2022, "staarMathProficiency": 0.77, "staarReadingProficiency": 0.79, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2025-11"
+  },
+  {
+    "campusId": "057903120",
+    "districtId": "057903",
+    "name": "Riverchase Elementary School",
+    "address": "3500 Old Denton Rd",
+    "city": "Carrollton",
+    "zip": "75010",
+    "level": "ES",
+    "gradeSpan": "PK-5",
+    "studentCount": 510,
+    "studentTeacherRatio": 14.0,
+    "year": 2024,
+    "staarMathProficiency": 0.78,
+    "staarReadingProficiency": 0.8,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.76, "reading": 0.78 },
+      { "grade": 4, "math": 0.78, "reading": 0.8 },
+      { "grade": 5, "math": 0.8, "reading": 0.82 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.77, "staarReadingProficiency": 0.79, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2025-11"
+  },
+  {
+    "campusId": "057903121",
+    "districtId": "057903",
+    "name": "Rosemeade Elementary School",
+    "address": "2626 Keller Springs Rd",
+    "city": "Carrollton",
+    "zip": "75007",
+    "level": "ES",
+    "gradeSpan": "PK-5",
+    "studentCount": 495,
+    "studentTeacherRatio": 13.8,
+    "year": 2024,
+    "staarMathProficiency": 0.77,
+    "staarReadingProficiency": 0.79,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.75, "reading": 0.77 },
+      { "grade": 4, "math": 0.77, "reading": 0.79 },
+      { "grade": 5, "math": 0.79, "reading": 0.81 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.76, "staarReadingProficiency": 0.78, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2025-11"
+  },
+  {
+    "campusId": "057903122",
+    "districtId": "057903",
+    "name": "Blalack Middle School",
+    "address": "2901 Kelly Blvd",
+    "city": "Carrollton",
+    "zip": "75007",
+    "level": "MS",
+    "gradeSpan": "6-8",
+    "studentCount": 920,
+    "studentTeacherRatio": 15.5,
+    "year": 2024,
+    "staarMathProficiency": 0.72,
+    "staarReadingProficiency": 0.75,
+    "accountabilityRating": "B",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.71, "staarReadingProficiency": 0.74, "accountabilityRating": "B" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2025-11"
+  },
+  {
+    "campusId": "campus_001",
+    "districtId": "057905",
+    "name": "Liberty Elementary",
+    "address": "5000 Main St",
+    "city": "Frisco",
+    "zip": "75034",
+    "level": "ES",
+    "gradeSpan": "K-5",
+    "studentCount": 850,
+    "studentTeacherRatio": 15.2,
+    "year": 2024,
+    "staarMathProficiency": 0.89,
+    "staarReadingProficiency": 0.91,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.87, "reading": 0.89 },
+      { "grade": 4, "math": 0.89, "reading": 0.91 },
+      { "grade": 5, "math": 0.91, "reading": 0.93 }
+    ],
+    "growthMath": 0.05,
+    "growthReading": 0.04,
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.87, "staarReadingProficiency": 0.9, "accountabilityRating": "A" },
+      { "year": 2022, "staarMathProficiency": 0.85, "staarReadingProficiency": 0.88, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_002",
+    "districtId": "057905",
+    "name": "Pearson Elementary",
+    "address": "8200 Park Blvd",
+    "city": "Frisco",
+    "zip": "75034",
+    "level": "ES",
+    "gradeSpan": "K-5",
+    "studentCount": 780,
+    "studentTeacherRatio": 14.8,
+    "year": 2024,
+    "staarMathProficiency": 0.86,
+    "staarReadingProficiency": 0.88,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.84, "reading": 0.86 },
+      { "grade": 4, "math": 0.86, "reading": 0.88 },
+      { "grade": 5, "math": 0.88, "reading": 0.9 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.84, "staarReadingProficiency": 0.87, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_003",
+    "districtId": "057905",
+    "name": "Wakeland High School",
+    "address": "10700 Legacy Dr",
+    "city": "Frisco",
+    "zip": "75034",
+    "level": "HS",
+    "gradeSpan": "9-12",
+    "studentCount": 2400,
+    "studentTeacherRatio": 16.5,
+    "year": 2024,
+    "staarMathProficiency": 0.78,
+    "staarReadingProficiency": 0.82,
+    "accountabilityRating": "B",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.76, "staarReadingProficiency": 0.81, "accountabilityRating": "B" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_004",
+    "districtId": "057905",
+    "name": "Christie Elementary",
+    "address": "12500 Preston Rd",
+    "city": "Frisco",
+    "zip": "75035",
+    "level": "ES",
+    "gradeSpan": "K-5",
+    "studentCount": 720,
+    "studentTeacherRatio": 15.0,
+    "year": 2024,
+    "staarMathProficiency": 0.85,
+    "staarReadingProficiency": 0.87,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.83, "reading": 0.85 },
+      { "grade": 4, "math": 0.85, "reading": 0.87 },
+      { "grade": 5, "math": 0.87, "reading": 0.89 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.83, "staarReadingProficiency": 0.86, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_005",
+    "districtId": "057905",
+    "name": "Heritage High School",
+    "address": "14040 Eldorado Pkwy",
+    "city": "Frisco",
+    "zip": "75035",
+    "level": "HS",
+    "gradeSpan": "9-12",
+    "studentCount": 2200,
+    "studentTeacherRatio": 16.8,
+    "year": 2024,
+    "staarMathProficiency": 0.75,
+    "staarReadingProficiency": 0.79,
+    "accountabilityRating": "B",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.74, "staarReadingProficiency": 0.78, "accountabilityRating": "B" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_006",
+    "districtId": "043907",
+    "name": "Anderson Elementary",
+    "address": "1350 Raintree Circle",
+    "city": "Allen",
+    "zip": "75013",
+    "level": "ES",
+    "gradeSpan": "K-5",
+    "studentCount": 690,
+    "studentTeacherRatio": 15.3,
+    "year": 2024,
+    "staarMathProficiency": 0.82,
+    "staarReadingProficiency": 0.84,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.8, "reading": 0.82 },
+      { "grade": 4, "math": 0.82, "reading": 0.84 },
+      { "grade": 5, "math": 0.84, "reading": 0.86 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.8, "staarReadingProficiency": 0.83, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_007",
+    "districtId": "043907",
+    "name": "Allen High School",
+    "address": "300 Rivercrest Blvd",
+    "city": "Allen",
+    "zip": "75013",
+    "level": "HS",
+    "gradeSpan": "9-12",
+    "studentCount": 5200,
+    "studentTeacherRatio": 17.2,
+    "year": 2024,
+    "staarMathProficiency": 0.74,
+    "staarReadingProficiency": 0.78,
+    "accountabilityRating": "B",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.72, "staarReadingProficiency": 0.77, "accountabilityRating": "B" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_027",
+    "districtId": "057908",
+    "name": "Dewitt Perry Middle School",
+    "address": "1201 Kelly Blvd",
+    "city": "Carrollton",
+    "zip": "75010",
+    "level": "MS",
+    "gradeSpan": "6-8",
+    "studentCount": 920,
+    "studentTeacherRatio": 15.8,
+    "year": 2024,
+    "staarMathProficiency": 0.69,
+    "staarReadingProficiency": 0.72,
+    "accountabilityRating": "C",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.68, "staarReadingProficiency": 0.71, "accountabilityRating": "C" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_012",
+    "districtId": "057909",
+    "name": "Carpenter Elementary",
+    "address": "2800 Jupiter Rd",
+    "city": "Plano",
+    "zip": "75024",
+    "level": "ES",
+    "gradeSpan": "K-5",
+    "studentCount": 710,
+    "studentTeacherRatio": 14.5,
+    "year": 2024,
+    "staarMathProficiency": 0.88,
+    "staarReadingProficiency": 0.9,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.86, "reading": 0.88 },
+      { "grade": 4, "math": 0.88, "reading": 0.9 },
+      { "grade": 5, "math": 0.9, "reading": 0.92 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.87, "staarReadingProficiency": 0.89, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_013",
+    "districtId": "057909",
+    "name": "Jasper High School",
+    "address": "6800 Archgate Dr",
+    "city": "Plano",
+    "zip": "75024",
+    "level": "HS",
+    "gradeSpan": "9-12",
+    "studentCount": 2100,
+    "studentTeacherRatio": 16.2,
+    "year": 2024,
+    "staarMathProficiency": 0.82,
+    "staarReadingProficiency": 0.86,
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.81, "staarReadingProficiency": 0.85, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_014",
+    "districtId": "057909",
+    "name": "Otto Middle School",
+    "address": "4900 Plano Pkwy",
+    "city": "Plano",
+    "zip": "75024",
+    "level": "MS",
+    "gradeSpan": "6-8",
+    "studentCount": 1050,
+    "studentTeacherRatio": 15.5,
+    "year": 2024,
+    "staarMathProficiency": 0.84,
+    "staarReadingProficiency": 0.87,
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.83, "staarReadingProficiency": 0.86, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_021",
+    "districtId": "220905",
+    "name": "Carroll Senior High School",
+    "address": "1501 W Southlake Blvd",
+    "city": "Southlake",
+    "zip": "76092",
+    "level": "HS",
+    "gradeSpan": "9-12",
+    "studentCount": 2800,
+    "studentTeacherRatio": 15.8,
+    "year": 2024,
+    "staarMathProficiency": 0.91,
+    "staarReadingProficiency": 0.93,
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.9, "staarReadingProficiency": 0.92, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_022",
+    "districtId": "220905",
+    "name": "Dawson Middle School",
+    "address": "1702 S White Chapel Blvd",
+    "city": "Southlake",
+    "zip": "76092",
+    "level": "MS",
+    "gradeSpan": "6-8",
+    "studentCount": 1200,
+    "studentTeacherRatio": 14.9,
+    "year": 2024,
+    "staarMathProficiency": 0.89,
+    "staarReadingProficiency": 0.91,
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.88, "staarReadingProficiency": 0.9, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  },
+  {
+    "campusId": "campus_023",
+    "districtId": "220905",
+    "name": "Central Elementary",
+    "address": "550 N Kimball Ave",
+    "city": "Southlake",
+    "zip": "76092",
+    "level": "ES",
+    "gradeSpan": "K-5",
+    "studentCount": 620,
+    "studentTeacherRatio": 14.2,
+    "year": 2024,
+    "staarMathProficiency": 0.9,
+    "staarReadingProficiency": 0.92,
+    "gradeLevelScores": [
+      { "grade": 3, "math": 0.88, "reading": 0.9 },
+      { "grade": 4, "math": 0.9, "reading": 0.92 },
+      { "grade": 5, "math": 0.92, "reading": 0.94 }
+    ],
+    "accountabilityRating": "A",
+    "history": [
+      { "year": 2023, "staarMathProficiency": 0.89, "staarReadingProficiency": 0.91, "accountabilityRating": "A" }
+    ],
+    "sources": ["SchoolDigger"],
+    "updatedAt": "2024-11"
+  }
+]

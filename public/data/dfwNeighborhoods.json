@@ -1,0 +1,279 @@
+{
+  "75035": [
+    {
+      "name": "Panther Creek",
+      "homeStyle": "newer master-planned community",
+      "typicalPriceRange": "$550k–$750k",
+      "vibe": "family-friendly",
+      "notes": "Known for newer builds, strong parks, and sought-after Frisco ISD schools."
+    },
+    {
+      "name": "Dominion at Panther Creek",
+      "homeStyle": "new construction + recent builds",
+      "typicalPriceRange": "$600k–$850k",
+      "vibe": "sports families",
+      "notes": "Popular with athletic families due to close access to FISD athletics and The Star."
+    },
+    {
+      "name": "Heather Ridge",
+      "homeStyle": "mid-2000s suburban",
+      "typicalPriceRange": "$500k–$700k",
+      "vibe": "quiet suburb",
+      "notes": "Established but fast-growing area known for easy access to major Frisco corridors."
+    }
+  ],
+  "75034": [
+    {
+      "name": "The Trails of Frisco",
+      "homeStyle": "golf-course community",
+      "typicalPriceRange": "$600k–$900k",
+      "vibe": "prestige",
+      "notes": "Centered around a golf course with high-rated schools and upscale homes."
+    },
+    {
+      "name": "Chapel Creek",
+      "homeStyle": "luxury homes",
+      "typicalPriceRange": "$900k–$1.5M+",
+      "vibe": "luxury",
+      "notes": "Tree-lined streets, premium custom homes, and top-tier Frisco ISD zoning."
+    },
+    {
+      "name": "Starwood",
+      "homeStyle": "gated luxury community",
+      "typicalPriceRange": "$1M–$3M",
+      "vibe": "exclusive",
+      "notes": "One of Frisco's premier gated neighborhoods with exceptional amenities."
+    }
+  ],
+  "75013": [
+    {
+      "name": "Twin Creeks",
+      "homeStyle": "established master-planned community",
+      "typicalPriceRange": "$500k–$750k",
+      "vibe": "family-friendly",
+      "notes": "Allen's flagship community with golf, parks, trails, and strong Allen ISD schools."
+    },
+    {
+      "name": "Watters Crossing",
+      "homeStyle": "1990s–2000s suburban",
+      "typicalPriceRange": "$450k–$650k",
+      "vibe": "community-oriented",
+      "notes": "Known for its community events, large trees, and neighborhood charm."
+    },
+    {
+      "name": "StarCreek",
+      "homeStyle": "newer luxury suburban",
+      "typicalPriceRange": "$650k–$900k",
+      "vibe": "upscale",
+      "notes": "High-end homes with strong access to shopping, parks, and schools."
+    }
+  ],
+  "75070": [
+    {
+      "name": "Craig Ranch",
+      "homeStyle": "newer master-planned community",
+      "typicalPriceRange": "$450k–$700k",
+      "vibe": "active lifestyle",
+      "notes": "Major sports and fitness hub featuring fields, trails, and the TPC golf course."
+    },
+    {
+      "name": "Stonebridge Ranch",
+      "homeStyle": "large master-planned community",
+      "typicalPriceRange": "$450k–$750k",
+      "vibe": "family-centric",
+      "notes": "McKinney's most iconic suburb with lakes, trails, and multiple sub-villages."
+    }
+  ],
+  "75072": [
+    {
+      "name": "Auburn Hills",
+      "homeStyle": "new construction",
+      "typicalPriceRange": "$500k–$750k",
+      "vibe": "fast-growing",
+      "notes": "One of McKinney's newest developments with modern amenities and parks."
+    },
+    {
+      "name": "Heatherwood",
+      "homeStyle": "mid-2000s suburban",
+      "typicalPriceRange": "$450k–$650k",
+      "vibe": "quiet suburb",
+      "notes": "Popular for families seeking good schools and peaceful streets."
+    }
+  ],
+  "75024": [
+    {
+      "name": "Legacy West Area",
+      "homeStyle": "townhomes + luxury apartments",
+      "typicalPriceRange": "$550k–$900k",
+      "vibe": "urban-suburban",
+      "notes": "Walkable district with shops, restaurants, and corporate HQ access."
+    },
+    {
+      "name": "Kings Ridge",
+      "homeStyle": "luxury suburban",
+      "typicalPriceRange": "$700k–$1M",
+      "vibe": "upscale",
+      "notes": "Scenic topography, mature trees, and highly rated Plano ISD schools."
+    }
+  ],
+  "75025": [
+    {
+      "name": "Whiffletree",
+      "homeStyle": "1990s–2000s suburban",
+      "typicalPriceRange": "$500k–$700k",
+      "vibe": "established",
+      "notes": "Sought-after community with excellent access to Plano ISD schools."
+    },
+    {
+      "name": "Russell Creek",
+      "homeStyle": "parks + lake-centered suburban",
+      "typicalPriceRange": "$475k–$700k",
+      "vibe": "outdoorsy families",
+      "notes": "Built around Russell Creek Park with sports fields and trails."
+    }
+  ],
+  "75093": [
+    {
+      "name": "Willow Bend",
+      "homeStyle": "luxury suburban",
+      "typicalPriceRange": "$900k–$2M",
+      "vibe": "prestige",
+      "notes": "One of Plano's most affluent areas with large custom homes."
+    },
+    {
+      "name": "Glenhollow Estates",
+      "homeStyle": "1990s luxury suburban",
+      "typicalPriceRange": "$750k–$1.1M",
+      "vibe": "quiet upscale",
+      "notes": "Tree-lined streets and proximity to elite Plano schools."
+    }
+  ],
+  "75078": [
+    {
+      "name": "Windsong Ranch",
+      "homeStyle": "resort-style master-planned community",
+      "typicalPriceRange": "$650k–$1M",
+      "vibe": "family luxury",
+      "notes": "Famous for the Crystal Lagoon and exceptional community amenities."
+    },
+    {
+      "name": "Star Trail",
+      "homeStyle": "new construction luxury",
+      "typicalPriceRange": "$700k–$1.2M",
+      "vibe": "prestige",
+      "notes": "High-end Prosper community with large homes and top schools."
+    }
+  ],
+  "75009": [
+    {
+      "name": "Light Farms",
+      "homeStyle": "newer master-planned community",
+      "typicalPriceRange": "$450k–$650k",
+      "vibe": "fast-growing",
+      "notes": "Stylish, modern community with pools, trails, and active families."
+    },
+    {
+      "name": "Bluewood",
+      "homeStyle": "new construction",
+      "typicalPriceRange": "$400k–$550k",
+      "vibe": "up-and-coming",
+      "notes": "Affordable new builds gaining popularity among young families."
+    }
+  ],
+  "76092": [
+    {
+      "name": "Timarron",
+      "homeStyle": "luxury golf-course community",
+      "typicalPriceRange": "$900k–$2M",
+      "vibe": "prestige",
+      "notes": "Southlake's premier master-planned area with elite schools."
+    },
+    {
+      "name": "Carillon",
+      "homeStyle": "luxury estate homes",
+      "typicalPriceRange": "$1.2M–$3M",
+      "vibe": "exclusive",
+      "notes": "High-end European-inspired architecture with resort-level amenities."
+    }
+  ],
+  "76034": [
+    {
+      "name": "Bransford Meadows",
+      "homeStyle": "luxury suburban",
+      "typicalPriceRange": "$850k–$1.2M",
+      "vibe": "quiet upscale",
+      "notes": "Spacious lots and highly rated Grapevine-Colleyville ISD."
+    },
+    {
+      "name": "Ross Downs",
+      "homeStyle": "upscale suburban",
+      "typicalPriceRange": "$750k–$1M",
+      "vibe": "family luxury",
+      "notes": "Tree-lined streets with excellent school access."
+    }
+  ],
+  "75007": [
+    {
+      "name": "Homestead",
+      "homeStyle": "mid-price suburban",
+      "typicalPriceRange": "$350k–$500k",
+      "vibe": "diverse community",
+      "notes": "Affordable, diverse, centrally located with solid amenities."
+    },
+    {
+      "name": "Creekview Estates",
+      "homeStyle": "1990s suburban",
+      "typicalPriceRange": "$380k–$500k",
+      "vibe": "value suburb",
+      "notes": "Good access to highways and parks with reasonable prices."
+    }
+  ],
+  "75010": [
+    {
+      "name": "Castle Hills",
+      "homeStyle": "high-end master-planned",
+      "typicalPriceRange": "$550k–$1M",
+      "vibe": "luxury family",
+      "notes": "A popular, walkable village-style community with upscale amenities."
+    },
+    {
+      "name": "Indian Creek",
+      "homeStyle": "mid-2000s suburban",
+      "typicalPriceRange": "$450k–$600k",
+      "vibe": "family-friendly",
+      "notes": "Strong location near major employers and good schools."
+    }
+  ],
+  "75019": [
+    {
+      "name": "Copperstone",
+      "homeStyle": "luxury suburban",
+      "typicalPriceRange": "$650k–$900k",
+      "vibe": "quiet upscale",
+      "notes": "Located in coveted Coppell ISD with easy commute to DFW Airport."
+    },
+    {
+      "name": "Westhaven",
+      "homeStyle": "2000s suburban",
+      "typicalPriceRange": "$500k–$700k",
+      "vibe": "family-friendly",
+      "notes": "Great schools, parks, and quick access to major highways."
+    }
+  ],
+  "75052": [
+    {
+      "name": "Mira Lagos",
+      "homeStyle": "mid-to-high-end suburban",
+      "typicalPriceRange": "$350k–$500k",
+      "vibe": "lake lifestyle",
+      "notes": "Close to Joe Pool Lake with parks and trails ideal for families."
+    },
+    {
+      "name": "Grand Peninsula",
+      "homeStyle": "master-planned near lake",
+      "typicalPriceRange": "$400k–$600k",
+      "vibe": "active families",
+      "notes": "Popular for families seeking lake access and newer community amenities."
+    }
+  ]
+}

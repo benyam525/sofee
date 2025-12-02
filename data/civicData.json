@@ -1,0 +1,578 @@
+{
+  "75007": {
+    "geo": {
+      "zip_code": "75007",
+      "city": "Carrollton",
+      "county": "Denton",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.52,
+      "rep_share": 0.48,
+      "lean_label": "Politically Mixed",
+      "data_scope": "County-level proxy"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Beth Van Duyne",
+        "party": "Republican",
+        "district": "TX-24",
+        "website_url": "https://vanduyne.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Drew Springer",
+        "party": "Republican",
+        "district": "SD-30",
+        "website_url": "https://senate.texas.gov/member.php?d=30"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Kronda Thimesch",
+        "party": "Republican",
+        "district": "HD-65",
+        "website_url": "https://house.texas.gov/members/member-page/?district=65"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Andy Eads",
+        "party": "Republican",
+        "district": "Precinct 4",
+        "website_url": "https://dentoncounty.gov/people"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "Steve Babick (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.cityofcarrollton.com/government/city-council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "CFB ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.cfbisd.edu/board"
+      }
+    ]
+  },
+  "75010": {
+    "geo": {
+      "zip_code": "75010",
+      "city": "Carrollton",
+      "county": "Denton",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.51,
+      "rep_share": 0.49,
+      "lean_label": "Politically Mixed",
+      "data_scope": "County-level proxy"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Beth Van Duyne",
+        "party": "Republican",
+        "district": "TX-24",
+        "website_url": "https://vanduyne.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Drew Springer",
+        "party": "Republican",
+        "district": "SD-30",
+        "website_url": "https://senate.texas.gov/member.php?d=30"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Kronda Thimesch",
+        "party": "Republican",
+        "district": "HD-65",
+        "website_url": "https://house.texas.gov/members/member-page/?district=65"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Andy Eads",
+        "party": "Republican",
+        "district": "Precinct 4",
+        "website_url": "https://dentoncounty.gov/people"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "Steve Babick (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.cityofcarrollton.com/government/city-council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "CFB ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.cfbisd.edu/board"
+      }
+    ]
+  },
+  "75019": {
+    "geo": {
+      "zip_code": "75019",
+      "city": "Coppell",
+      "county": "Dallas",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.48,
+      "rep_share": 0.52,
+      "lean_label": "Politically Mixed",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Beth Van Duyne",
+        "party": "Republican",
+        "district": "TX-24",
+        "website_url": "https://vanduyne.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Nathan Johnson",
+        "party": "Democrat",
+        "district": "SD-16",
+        "website_url": "https://senate.texas.gov/member.php?d=16"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Terry Meza",
+        "party": "Democrat",
+        "district": "HD-105",
+        "website_url": "https://house.texas.gov/members/member-page/?district=105"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Elba Garcia",
+        "party": "Democrat",
+        "district": "Precinct 4",
+        "website_url": "https://www.dallascounty.org/government/comcrt/districts.php"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "Wes Mays (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.coppelltx.gov/government/city-council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Coppell ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.coppellisd.com/Page/3"
+      }
+    ]
+  },
+  "75024": {
+    "geo": {
+      "zip_code": "75024",
+      "city": "Plano",
+      "county": "Collin",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.54,
+      "rep_share": 0.46,
+      "lean_label": "Leans Democratic",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Keith Self",
+        "party": "Republican",
+        "district": "TX-3",
+        "website_url": "https://self.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Angela Paxton",
+        "party": "Republican",
+        "district": "SD-8",
+        "website_url": "https://senate.texas.gov/member.php?d=8"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Jeff Leach",
+        "party": "Republican",
+        "district": "HD-67",
+        "website_url": "https://house.texas.gov/members/member-page/?district=67"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Darrell Hale",
+        "party": "Republican",
+        "district": "Precinct 3",
+        "website_url": "https://www.collincountytx.gov/government/elected-officials"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "John Muns (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.plano.gov/92/City-Council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Plano ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.pisd.edu/board"
+      }
+    ]
+  },
+  "75025": {
+    "geo": {
+      "zip_code": "75025",
+      "city": "Plano",
+      "county": "Collin",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.52,
+      "rep_share": 0.48,
+      "lean_label": "Politically Mixed",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Keith Self",
+        "party": "Republican",
+        "district": "TX-3",
+        "website_url": "https://self.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Angela Paxton",
+        "party": "Republican",
+        "district": "SD-8",
+        "website_url": "https://senate.texas.gov/member.php?d=8"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Matt Shaheen",
+        "party": "Republican",
+        "district": "HD-66",
+        "website_url": "https://house.texas.gov/members/member-page/?district=66"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Darrell Hale",
+        "party": "Republican",
+        "district": "Precinct 3",
+        "website_url": "https://www.collincountytx.gov/government/elected-officials"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "John Muns (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.plano.gov/92/City-Council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Plano ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.pisd.edu/board"
+      }
+    ]
+  },
+  "75034": {
+    "geo": {
+      "zip_code": "75034",
+      "city": "Frisco",
+      "county": "Collin",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.45,
+      "rep_share": 0.55,
+      "lean_label": "Leans Republican",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Keith Self",
+        "party": "Republican",
+        "district": "TX-3",
+        "website_url": "https://self.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Angela Paxton",
+        "party": "Republican",
+        "district": "SD-8",
+        "website_url": "https://senate.texas.gov/member.php?d=8"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Candy Noble",
+        "party": "Republican",
+        "district": "HD-89",
+        "website_url": "https://house.texas.gov/members/member-page/?district=89"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Duncan Webb",
+        "party": "Republican",
+        "district": "Precinct 1",
+        "website_url": "https://www.collincountytx.gov/government/elected-officials"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "Jeff Cheney (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.friscotexas.gov/168/City-Council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Frisco ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.friscoisd.org/about/board-of-trustees"
+      }
+    ]
+  },
+  "75035": {
+    "geo": {
+      "zip_code": "75035",
+      "city": "Frisco",
+      "county": "Collin",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.44,
+      "rep_share": 0.56,
+      "lean_label": "Leans Republican",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Keith Self",
+        "party": "Republican",
+        "district": "TX-3",
+        "website_url": "https://self.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Angela Paxton",
+        "party": "Republican",
+        "district": "SD-8",
+        "website_url": "https://senate.texas.gov/member.php?d=8"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Candy Noble",
+        "party": "Republican",
+        "district": "HD-89",
+        "website_url": "https://house.texas.gov/members/member-page/?district=89"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Duncan Webb",
+        "party": "Republican",
+        "district": "Precinct 1",
+        "website_url": "https://www.collincountytx.gov/government/elected-officials"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "Jeff Cheney (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.friscotexas.gov/168/City-Council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Frisco ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.friscoisd.org/about/board-of-trustees"
+      }
+    ]
+  },
+  "75080": {
+    "geo": {
+      "zip_code": "75080",
+      "city": "Richardson",
+      "county": "Dallas",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.58,
+      "rep_share": 0.42,
+      "lean_label": "Leans Democratic",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Jasmine Crockett",
+        "party": "Democrat",
+        "district": "TX-30",
+        "website_url": "https://crockett.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Nathan Johnson",
+        "party": "Democrat",
+        "district": "SD-16",
+        "website_url": "https://senate.texas.gov/member.php?d=16"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Ana-Maria Ramos",
+        "party": "Democrat",
+        "district": "HD-102",
+        "website_url": "https://house.texas.gov/members/member-page/?district=102"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Theresa Daniel",
+        "party": "Democrat",
+        "district": "Precinct 1",
+        "website_url": "https://www.dallascounty.org/government/comcrt/districts.php"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "Bob Dubey (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.cor.net/government/city-council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Richardson ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://web.risd.org/boardoftrustees/"
+      }
+    ]
+  },
+  "76092": {
+    "geo": {
+      "zip_code": "76092",
+      "city": "Southlake",
+      "county": "Tarrant",
+      "state": "TX"
+    },
+    "partisan_lean": {
+      "dem_share": 0.38,
+      "rep_share": 0.62,
+      "lean_label": "Leans Republican",
+      "data_scope": "Precinct-level"
+    },
+    "elected_officials": [
+      {
+        "level": "Federal",
+        "office": "U.S. Representative",
+        "name": "Rep. Kay Granger",
+        "party": "Republican",
+        "district": "TX-12",
+        "website_url": "https://kaygranger.house.gov"
+      },
+      {
+        "level": "State",
+        "office": "State Senator",
+        "name": "Sen. Kelly Hancock",
+        "party": "Republican",
+        "district": "SD-9",
+        "website_url": "https://senate.texas.gov/member.php?d=9"
+      },
+      {
+        "level": "State",
+        "office": "State Representative",
+        "name": "Rep. Giovanni Capriglione",
+        "party": "Republican",
+        "district": "HD-98",
+        "website_url": "https://house.texas.gov/members/member-page/?district=98"
+      },
+      {
+        "level": "County",
+        "office": "County Commissioner",
+        "name": "Gary Fickes",
+        "party": "Republican",
+        "district": "Precinct 1",
+        "website_url": "https://www.tarrantcounty.com/en/commissioner-precinct-1.html"
+      },
+      {
+        "level": "City",
+        "office": "City Council",
+        "name": "John Huffman (Mayor)",
+        "party": "Nonpartisan",
+        "district": "At-Large",
+        "website_url": "https://www.cityofsouthlake.com/173/City-Council"
+      },
+      {
+        "level": "School Board",
+        "office": "School Board Trustee",
+        "name": "Carroll ISD Board of Trustees",
+        "party": "Nonpartisan",
+        "district": "District-wide",
+        "website_url": "https://www.southlakecarroll.edu/Page/82"
+      }
+    ]
+  }
+}

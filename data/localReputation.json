@@ -1,0 +1,137 @@
+{
+  "75006": {
+    "city": "Carrollton",
+    "short_tag": "Balanced / Diverse",
+    "local_reputation": "Diverse, middle-class, and culturally mixed. Carrollton 75006 has pockets that lean more conservative and others that are younger, more international, and moderate. Generally viewed as balanced."
+  },
+  "75007": {
+    "city": "Carrollton",
+    "short_tag": "Moderate Suburban",
+    "local_reputation": "Family-friendly, moderate, and culturally mixed. More suburban than 75006, with a blend of long-time residents and younger families. Considered politically even-tempered."
+  },
+  "75010": {
+    "city": "Carrollton / The Colony",
+    "short_tag": "Slightly Conservative",
+    "local_reputation": "A blend of suburban Carrollton and fast-growing The Colony. Skews moderately conservative but with rapidly increasing diversity and younger families, so it feels balanced-to-slightly-red."
+  },
+  "75013": {
+    "city": "Allen (West)",
+    "short_tag": "Balanced / Affluent",
+    "local_reputation": "Higher-income, more diverse, and more moderate than east Allen. Considered balanced and family-focused, with strong schools and active neighborhoods."
+  },
+  "75019": {
+    "city": "Coppell",
+    "short_tag": "Established Conservative",
+    "local_reputation": "Wealthy, highly educated, and traditionally conservative but trending more moderate among younger families. Known for strong schools and high civic involvement."
+  },
+  "75024": {
+    "city": "Plano (West)",
+    "short_tag": "Professional / Mixed",
+    "local_reputation": "High-income, corporate, and internationally diverse. Traditionally conservative but shifting toward moderate professional-suburban as more tech workers and transplants move in."
+  },
+  "75025": {
+    "city": "Plano (North)",
+    "short_tag": "Moderate Suburban",
+    "local_reputation": "Family-focused, safe, and diverse. Reputation is moderate, with a blend of long-time conservative homeowners and newer professional households leaning centrist."
+  },
+  "75034": {
+    "city": "Frisco (West)",
+    "short_tag": "Slightly Conservative",
+    "local_reputation": "Affluent, family-oriented, and historically conservative, especially around The Star and west Frisco. Increasingly mixed as more corporate transplants arrive, but still feels slightly right-of-center."
+  },
+  "75035": {
+    "city": "Frisco (East/North)",
+    "short_tag": "Balanced Suburban",
+    "local_reputation": "Younger, fast-growing, and community-oriented. Known as more moderate than west Frisco, with a balanced reputation and strong school involvement."
+  },
+  "75067": {
+    "city": "Lewisville",
+    "short_tag": "Diverse / Mixed",
+    "local_reputation": "Very diverse, mixed-income, and culturally moderate. Has both working-class roots and young professionals. Widely seen as one of the more politically mixed suburbs in North Dallas."
+  },
+  "75070": {
+    "city": "McKinney (Central/South)",
+    "short_tag": "Moderate Suburban",
+    "local_reputation": "Balanced suburban culture, diverse demographics, and a moderate reputation. Not seen as strongly right or left, with a mix of newer and older neighborhoods."
+  },
+  "75072": {
+    "city": "McKinney (West / Stonebridge)",
+    "short_tag": "Center-Right Suburban",
+    "local_reputation": "Upscale, master-planned neighborhoods with golf courses and HOAs. Reputation is center-right but more balanced than Prosper. Very community- and school-oriented."
+  },
+  "75077": {
+    "city": "Highland Village / North Lewisville",
+    "short_tag": "Family / Conservative-Leaning",
+    "local_reputation": "Family-heavy, higher-income, and leans conservative culturally. Strong school engagement and traditional suburban norms, with a quieter, established feel."
+  },
+  "75078": {
+    "city": "Prosper / Celina",
+    "short_tag": "Strong Conservative Suburban",
+    "local_reputation": "Very family-focused, affluent, and strongly conservative culturally. Known for large new-construction homes, church life, and traditional values that attract many relocating families."
+  },
+  "75080": {
+    "city": "Richardson (Central/West)",
+    "short_tag": "Highly Diverse / Mixed",
+    "local_reputation": "Extremely diverse, with a strong international and tech community linked to UTD. Politically mixed-to-moderate and known for being pragmatic and culturally blended."
+  },
+  "75081": {
+    "city": "Richardson (Central/East)",
+    "short_tag": "Residential / Balanced",
+    "local_reputation": "Similar to 75080 but more residential and family-heavy. Very balanced culturally, with a mix of long-time residents and newer immigrant families."
+  },
+  "75082": {
+    "city": "Richardson (NE / UTD-adjacent)",
+    "short_tag": "Techy / Moderate",
+    "local_reputation": "Tech-heavy, highly educated, and internationally diverse. Considered politically moderate and globally minded, with many students and professionals."
+  },
+  "75093": {
+    "city": "Plano (Far West / Legacy)",
+    "short_tag": "Affluent / Center-Right",
+    "local_reputation": "Wealthy, corporate, and traditionally conservative, especially near the Legacy corridor. Becoming more centrist as tech, healthcare, and international residents grow."
+  },
+  "75038": {
+    "city": "Irving (Las Colinas)",
+    "short_tag": "Corporate / Mixed",
+    "local_reputation": "Urban-suburban blend with high-rise condos and corporate headquarters. Very diverse and professionally-oriented. Feels more moderate and international than traditional suburbs."
+  },
+  "75039": {
+    "city": "Irving (Las Colinas)",
+    "short_tag": "Upscale Corporate",
+    "local_reputation": "Higher-end Las Colinas with lakefront properties and corporate campuses. Diverse, educated, and moderate-leaning with a mix of professionals and families."
+  },
+  "75062": {
+    "city": "Irving",
+    "short_tag": "Diverse / Working-Class",
+    "local_reputation": "Very diverse and working-to-middle-class. More affordable than surrounding areas. Culturally mixed with a moderate-to-slightly-left lean in recent elections."
+  },
+  "75234": {
+    "city": "Farmers Branch",
+    "short_tag": "Suburban / Mixed",
+    "local_reputation": "Traditional suburban with increasing diversity. Has both older established neighborhoods and newer developments. Generally moderate with a slight conservative lean."
+  },
+  "75244": {
+    "city": "Dallas (Addison-adjacent)",
+    "short_tag": "Urban-Suburban Mix",
+    "local_reputation": "Near Addison and the Galleria area. More urban feel than typical suburbs. Diverse, younger professional population. Considered moderate-to-mixed politically."
+  },
+  "75009": {
+    "city": "Celina",
+    "short_tag": "Rural Conservative",
+    "local_reputation": "Rapidly growing from rural to suburban. Still holds traditional small-town conservative values but changing fast as new developments bring younger families from across DFW."
+  },
+  "76092": {
+    "city": "Southlake",
+    "short_tag": "Affluent / Strongly Conservative",
+    "local_reputation": "Very affluent, highly educated, and strongly conservative culturally. Known for traditional values, intense school pride, and some of the most right-leaning school board and city politics in DFW."
+  },
+  "76034": {
+    "city": "Colleyville",
+    "short_tag": "Affluent / Conservative",
+    "local_reputation": "Affluent, established, and culturally conservative. Known for large homes, church-centered community life, and a reputation as one of the more right-leaning suburbs in Tarrant County."
+  },
+  "75052": {
+    "city": "Grand Prairie",
+    "short_tag": "Diverse / Working-Class",
+    "local_reputation": "Very diverse and working-to-middle-class. Strong Hispanic and Asian communities. More affordable and considered moderate-to-slightly-left leaning in recent years."
+  }
+}
