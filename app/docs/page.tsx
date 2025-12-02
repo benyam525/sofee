@@ -72,7 +72,7 @@ export default function DocsPage() {
             <h3 className="font-semibold text-slate-900 mb-2">How It Works</h3>
             <ol className="list-decimal list-inside space-y-1 text-slate-700">
               <li>User enters budget range and optional work address</li>
-              <li>User adjusts priority sliders (0-5) for each criterion</li>
+              <li>User adjusts priority sliders (0-3) for each criterion</li>
               <li>User optionally selects lifestyle tags and special preferences</li>
               <li>System scores all 27 ZIP codes against user preferences</li>
               <li>Results displayed as "Top Matches" and "Honorable Mentions"</li>

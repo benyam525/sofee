@@ -829,7 +829,7 @@ export function ResultsContent() {
       if (!response.ok) {
         if (response.status === 404) {
           setExplorerError(
-            `ZIP code ${cleanZip} is not in Junie's database yet. We currently cover select DFW suburbs.`,
+            `ZIP code ${cleanZip} is not in Sofee's database yet. We currently cover select DFW suburbs.`,
           )
         } else {
           setExplorerError("Something went wrong. Please try again.")
@@ -939,7 +939,7 @@ export function ResultsContent() {
         <div className="mb-8 flex items-center justify-between">
           <div>
             <h1 className="text-4xl font-semibold text-foreground mb-2">Recommended Neighborhoods</h1>
-            <p className="text-muted-foreground">Let Junie work her magic...</p>
+            <p className="text-muted-foreground">Let Sofee work her magic...</p>
           </div>
           <Button variant="outline" onClick={() => router.push("/")}>
             Back
@@ -962,7 +962,7 @@ export function ResultsContent() {
           <div>
             <h1 className="text-4xl font-semibold text-foreground mb-2">Recommended Neighborhoods</h1>
             <p className="text-muted-foreground max-w-3xl mb-2">
-              We took the importance sliders you set (0–5), computed a score for each ZIP (0–100) across schools,
+              We took the importance sliders you set (0–3), computed a score for each ZIP (0–100) across schools,
               affordability, commute, safety, lifestyle, child development, taxes, and toll road convenience, and then
               ranked neighborhoods by how well they match your unique weighting.
             </p>
@@ -2237,7 +2237,7 @@ export function ResultsContent() {
           {zipExplorerOpen && (
             <div className="px-5 pb-5 border-t border-slate-200/50">
               <p className="text-sm text-slate-600 mt-4 mb-5 leading-relaxed">
-                If you've heard about a ZIP and want Junie to break it down, enter it below. This won't change your
+                If you've heard about a ZIP and want Sofee to break it down, enter it below. This won't change your
                 recommendations — it's just extra context.
               </p>
 
@@ -2337,7 +2337,7 @@ export function ResultsContent() {
                         </div>
                       </div>
 
-                      <p className="text-sm text-slate-600 mb-4 italic">Here's what Junie knows about this ZIP:</p>
+                      <p className="text-sm text-slate-600 mb-4 italic">Here's what Sofee knows about this ZIP:</p>
 
                       {/* Stats Grid - Updated with InfoTooltips */}
                       <div className="grid grid-cols-2 gap-3 mb-4">

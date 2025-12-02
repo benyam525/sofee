@@ -21,7 +21,7 @@ Final Score = Weighted Criteria Score + Lifestyle Tag Modifiers + Special Prefer
 
 ## Part 1: Priority Weights (Core Scoring)
 
-You set a weight from 0-5 for each of these 7 criteria. Higher weight = more influence on your score.
+You set a weight from 0-3 for each of these 7 criteria. Higher weight = more influence on your score.
 
 | Criterion | What It Measures | Data Sources |
 |-----------|------------------|--------------|
