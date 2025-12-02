@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://sofee-home.vercel.app/sitemap.xml
