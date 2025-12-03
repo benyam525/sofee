@@ -362,6 +362,7 @@ export async function POST(request: NextRequest) {
         safetySignal: neighborhood.safetySignal,
         medianHomePrice: neighborhood.medianHomePrice,
         convenienceClusterScore: neighborhood.convenienceClusterScore,
+        percentNewConstruction: neighborhood.percentNewConstruction,
       }
 
       const scored = scoreZipWithPrefs(zipScores, userAllPrefs)
