@@ -11,7 +11,7 @@ export default function AboutPage() {
 
         <div className="relative max-w-4xl mx-auto text-center">
           <div className="inline-block mb-6">
-            <Image src="/sofeev3.png" alt="Sofee" width={120} height={120} className="mx-auto" />
+            <Image src="/sofee-logo.png" alt="Sofee" width={120} height={120} className="mx-auto" />
           </div>
           <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
             Meet <span className="text-primary">Sofee</span>

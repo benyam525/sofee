@@ -24,7 +24,7 @@ export default function HomePage() {
               />
 
               <Image
-                src="/sofeev3.png"
+                src="/sofee-logo.png"
                 alt="Sofee - your Dallas suburbs guide"
                 width={214}
                 height={214}
