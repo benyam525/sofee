@@ -1000,10 +1000,10 @@ export function ResultsContent() {
           </Button>
         </div>
 
-        {/* Sofee's Insights Card */}
+        {/* Sofee's Insights Card - visible on all screen sizes */}
         {insights.length > 0 && (
-          <div className="mb-8">
-            <div className="glass-card-strong rounded-2xl p-5 md:p-6 border border-amber-200/50 bg-gradient-to-br from-amber-50/80 to-orange-50/60">
+          <div className="block w-full mb-8">
+            <div className="glass-card-strong rounded-2xl p-5 md:p-6 border border-amber-200/50 bg-gradient-to-br from-amber-50/80 to-orange-50/60 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
                 <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-400 text-white">
                   <Lightbulb className="w-5 h-5" />
@@ -1165,45 +1165,6 @@ export function ResultsContent() {
                       </div>
                     </div>
                     {/* END: MERGE POINT for budget display */}
-
-                    {result.scoringDetails && (
-                      <div className="mb-4 p-3 bg-blue-50/50 rounded-md border border-blue-200/50">
-                        <div className="text-sm text-gray-700 space-y-1">
-                          <div>
-                            <span className="font-semibold">
-                              Overall match for you:{" "}
-                              {Math.round(result.scoringDetails.adjustedScore || result.scoringDetails.normalized)}/100
-                            </span>
-                          </div>
-                          {result.modifiers &&
-                            (Math.abs(result.modifiers.townCenterBonus) > 0 ||
-                              Math.abs(result.modifiers.lifestyleTagBonus) > 0) && (
-                              <p className="text-xs text-gray-500 mt-1">
-                                Adjusted slightly for your preference for{" "}
-                                {searchParams.get("preferTownCenter") === "true" ? "town centers" : "lifestyle factors"}{" "}
-                                and tags.
-                              </p>
-                            )}
-                          {(() => {
-                            const topCriteria = getTopCriteria(result.scoringDetails)
-                            if (topCriteria.length > 0) {
-                              const explanations = topCriteria.map((c) => {
-                                const label = getCriteriaLabel(c.key)
-                                const scoreDesc = c.score >= 75 ? "strong" : c.score >= 50 ? "moderate" : "lower"
-                                return `${label} (${c.weight}/5 importance, ${Math.round(c.score)} score - ${scoreDesc})`
-                              })
-
-                              return (
-                                <p className="text-sm text-gray-600">
-                                  This ZIP scored well on your priorities: {explanations.join(", ")}.
-                                </p>
-                              )
-                            }
-                            return null
-                          })()}
-                        </div>
-                      </div>
-                    )}
 
                     {/* Replace score breakdown with rank-based display */}
                     {result.scoringDetails && (
