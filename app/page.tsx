@@ -13,24 +13,24 @@ export default function HomePage() {
         }}
       >
         <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-12 py-12 lg:py-16">
-          <div className="flex flex-col items-center gap-4">
-            <div className="relative">
+          <div className="flex flex-col items-center gap-6">
+            <div className="relative py-2">
               {/* Subtle radial highlight behind Sofee - using brand blue #6EA1D4 */}
               <div
-                className="absolute inset-0 rounded-full scale-[1.4]"
+                className="absolute inset-0 rounded-full scale-[1.5]"
                 style={{
-                  background: "radial-gradient(circle, rgba(110, 161, 212, 0.12) 0%, transparent 60%)",
+                  background: "radial-gradient(circle, rgba(110, 161, 212, 0.15) 0%, transparent 65%)",
                 }}
               />
 
               <Image
                 src="/sofee-logo.png"
                 alt="Sofee - your Dallas suburbs guide"
-                width={180}
-                height={120}
+                width={240}
+                height={160}
                 className="relative"
                 style={{
-                  filter: "drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))",
+                  filter: "drop-shadow(0 10px 24px rgba(0, 0, 0, 0.14)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1)) saturate(1.1) brightness(0.96)",
                 }}
                 priority
               />
