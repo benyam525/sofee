@@ -40,7 +40,7 @@ interface InsightContext {
 
 /**
  * Generate Value Alternative insight
- * "You could get 90% of what Frisco offers and save $100k with Richardson"
+ * "Richardson (75080) scores just 6 points behind your #1 — and median home is $100k less"
  */
 function generateValueAlternative(ctx: InsightContext): SofeeInsight | null {
   const { results } = ctx
@@ -49,26 +49,28 @@ function generateValueAlternative(ctx: InsightContext): SofeeInsight | null {
   const topResult = results[0]
   const topScore = topResult.scoringDetails?.adjustedScore ?? topResult.score
   const topPrice = topResult.medianPrice ?? topResult.medianHomePrice ?? 0
+  const topLabel = `${topResult.city} (${topResult.zipCode})`
 
   // Find a cheaper alternative that's within 15 points of top score
   for (let i = 1; i < results.length; i++) {
     const alt = results[i]
     const altScore = alt.scoringDetails?.adjustedScore ?? alt.score
     const altPrice = alt.medianPrice ?? alt.medianHomePrice ?? 0
+    const altLabel = `${alt.city} (${alt.zipCode})`
 
     const scoreDiff = topScore - altScore
     const priceDiff = topPrice - altPrice
 
     // Good value alternative: within 15 points but saves at least $50k
     if (scoreDiff <= 15 && scoreDiff > 0 && priceDiff >= 50000) {
-      const matchPercent = Math.round((altScore / topScore) * 100)
       const savings = Math.round(priceDiff / 1000) * 1000 // Round to nearest $1k
+      const pointsBehind = Math.round(scoreDiff)
 
       return {
         type: "value-alternative",
         icon: "piggy-bank",
         title: "Value Alternative",
-        description: `${alt.city || `ZIP ${alt.zipCode}`} scores ${matchPercent}% as well as your #1 pick (${topResult.city || topResult.zipCode}), but could save you $${(savings / 1000).toFixed(0)}k.`,
+        description: `${altLabel} scores just ${pointsBehind} point${pointsBehind === 1 ? "" : "s"} behind your #1 pick — and the median home is $${(savings / 1000).toFixed(0)}k less than ${topLabel}.`,
         highlight: `Save $${(savings / 1000).toFixed(0)}k`,
       }
     }
@@ -79,7 +81,7 @@ function generateValueAlternative(ctx: InsightContext): SofeeInsight | null {
 
 /**
  * Generate Just Out of Reach insight
- * "Bump your budget $30k and you unlock Frisco 75034 — best schools in your list"
+ * "Bump your budget $30k and you unlock Frisco (75034) — best schools in your list"
  */
 function generateJustOutOfReach(ctx: InsightContext): SofeeInsight | null {
   const { results, allResults, userBudgetMax } = ctx
@@ -117,6 +119,7 @@ function generateJustOutOfReach(ctx: InsightContext): SofeeInsight | null {
   const price = bestOverBudget.medianPrice ?? bestOverBudget.medianHomePrice ?? 0
   const budgetIncrease = price - userBudgetMax
   const score = bestOverBudget.scoringDetails?.adjustedScore ?? bestOverBudget.score
+  const zipLabel = `${bestOverBudget.city} (${bestOverBudget.zipCode})`
 
   // Skip if the increase is too small to be meaningful (< $15k)
   if (budgetIncrease < 15000) return null
@@ -145,7 +148,7 @@ function generateJustOutOfReach(ctx: InsightContext): SofeeInsight | null {
     type: "just-out-of-reach",
     icon: "unlock",
     title: "Just Out of Reach",
-    description: `Raise your budget by $${increaseK}k and you'd unlock ${bestOverBudget.city || `ZIP ${bestOverBudget.zipCode}`} (score: ${Math.round(score)}/100) — known for ${specialFeature}.`,
+    description: `${zipLabel} scores ${Math.round(score)}/100 and is known for ${specialFeature}. It's not in your Top Matches because median price exceeds your budget — but a $${increaseK}k bump would unlock it.`,
     highlight: `+$${increaseK}k unlocks more`,
   }
 }
@@ -162,6 +165,7 @@ function generateTradeOffAlert(ctx: InsightContext): SofeeInsight | null {
   if (!topResult.scoringDetails?.perCriterion) return null
 
   const topCriteria = topResult.scoringDetails.perCriterion
+  const topLabel = `${topResult.city} (${topResult.zipCode})`
 
   // Find significant trade-offs: where #1 is weak but another result is strong
   const weaknesses: { criterion: string; score: number; label: string }[] = []
@@ -195,6 +199,7 @@ function generateTradeOffAlert(ctx: InsightContext): SofeeInsight | null {
 
       const altScore = alt.scoringDetails.perCriterion[weakness.criterion]?.score ?? 0
       const scoreDiff = altScore - weakness.score
+      const altLabel = `${alt.city} (${alt.zipCode})`
 
       // Alt is significantly better (20+ points) in this criterion
       if (scoreDiff >= 20) {
@@ -206,7 +211,7 @@ function generateTradeOffAlert(ctx: InsightContext): SofeeInsight | null {
           type: "trade-off-alert",
           icon: "scale",
           title: "Trade-off to Consider",
-          description: `Your #1 pick (${topResult.city || topResult.zipCode}) scores lower on ${weakness.label}. ${alt.city || `ZIP ${alt.zipCode}`} ranks ${Math.round(scoreDiff)} points higher there, with only ${Math.round(overallDiff)} points less overall.`,
+          description: `Your #1 pick ${topLabel} scores lower on ${weakness.label}. ${altLabel} ranks ${Math.round(scoreDiff)} points higher there, with only ${Math.round(overallDiff)} points less overall.`,
           highlight: `${weakness.label} trade-off`,
         }
       }
