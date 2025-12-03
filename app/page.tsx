@@ -13,8 +13,8 @@ export default function HomePage() {
         }}
       >
         <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-12 py-12 lg:py-16">
-          <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-2">
-            <div className="relative flex-shrink-0 lg:mr-[42px] lg:-mt-[25px]">
+          <div className="flex flex-col items-center gap-4">
+            <div className="relative">
               {/* Subtle radial highlight behind Sofee - using brand blue #6EA1D4 */}
               <div
                 className="absolute inset-0 rounded-full scale-[1.4]"
@@ -26,9 +26,9 @@ export default function HomePage() {
               <Image
                 src="/sofee-logo.png"
                 alt="Sofee - your Dallas suburbs guide"
-                width={214}
-                height={214}
-                className="relative lg:w-[242px] lg:h-[242px]"
+                width={180}
+                height={120}
+                className="relative"
                 style={{
                   filter: "drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))",
                 }}
@@ -36,13 +36,13 @@ export default function HomePage() {
               />
             </div>
 
-            <div className="text-center lg:text-left flex-1 space-y-4">
+            <div className="text-center space-y-4">
               <h1 className="text-slate-900 leading-[1.15]">
                 <span
                   className="block text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-bold mb-2"
                   style={{ letterSpacing: "-0.015em" }}
                 >
-                  <span className="text-primary">Sofee.</span> Clarity for your next move.
+                  Clarity for your next move.
                 </span>
               </h1>
 

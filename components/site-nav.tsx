@@ -5,7 +5,6 @@ import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Home, BarChart3, GraduationCap, Info, Menu, X, Sparkles, Vote, Fingerprint } from "lucide-react"
 import { useState } from "react"
-import Image from "next/image"
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
@@ -28,16 +27,8 @@ export function SiteNav() {
       <div className="relative max-w-6xl mx-auto px-4 sm:px-6">
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group">
-            <div className="relative w-8 h-8">
-              <Image
-                src="/sofee-logo.png"
-                alt="Sofee"
-                fill
-                className="object-contain group-hover:scale-110 transition-transform"
-              />
-            </div>
-            <span className="font-bold text-lg text-slate-800">Sofee</span>
+          <Link href="/" className="flex items-center group">
+            <span className="font-bold text-lg text-slate-800 group-hover:text-primary transition-colors">Sofee</span>
           </Link>
 
           {/* Desktop Navigation */}

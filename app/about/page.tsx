@@ -10,12 +10,9 @@ export default function AboutPage() {
         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[600px] bg-primary/5 rounded-full blur-3xl" />
 
         <div className="relative max-w-4xl mx-auto text-center">
-          <div className="inline-block mb-6">
-            <Image src="/sofee-logo.png" alt="Sofee" width={120} height={120} className="mx-auto" />
+          <div className="inline-block mb-4">
+            <Image src="/sofee-logo.png" alt="Sofee" width={280} height={187} className="mx-auto" />
           </div>
-          <h1 className="text-4xl sm:text-5xl font-bold text-slate-900 mb-4">
-            Meet <span className="text-primary">Sofee</span>
-          </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
             Your honest guide to finding the right Dallas suburb — no fluff, no sponsored listings, just data-driven
             insights to help your family make the best decision.
