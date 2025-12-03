@@ -37,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "Sofee",
     images: [
       {
-        url: "/sofee-logo.png",
+        url: "/sofeev3.png",
         width: 800,
         height: 800,
         alt: "Sofee - Dallas Suburbs Guide",
@@ -50,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sofee - Your Honest Guide to the Dallas Suburbs",
     description: "Find your perfect Dallas suburb with data-driven recommendations for families relocating to DFW.",
-    images: ["/sofee-logo.png"],
+    images: ["/sofeev3.png"],
   },
   icons: {
     icon: [
