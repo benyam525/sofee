@@ -5,71 +5,108 @@ import Image from "next/image"
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
+      {/* Hero Section */}
       <section
-        className="w-full min-h-[48vh] lg:min-h-[52vh] flex items-center pt-[70px] lg:pt-[70px]"
+        className="w-full min-h-[80vh] flex flex-col items-center justify-center"
         style={{
-          /* Gradient using Sofee Blue (#6EA1D4) undertones */
-          background: "linear-gradient(180deg, #E5EEF7 0%, #EDF3FA 25%, #F5F8FC 55%, #FFFFFF 100%)",
+          background: "linear-gradient(180deg, #E7F2FB 0%, #FFFFFF 65%)",
         }}
       >
-        <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-12 py-12 lg:py-16">
-          <div className="flex flex-col items-center gap-6">
-            <div className="relative py-2">
-              {/* Subtle radial highlight behind Sofee - using brand blue #6EA1D4 */}
-              <div
-                className="absolute inset-0 rounded-full scale-[1.5]"
-                style={{
-                  background: "radial-gradient(circle, rgba(110, 161, 212, 0.15) 0%, transparent 65%)",
-                }}
-              />
-
-              <Image
-                src="/sofee-logo.png"
-                alt="Sofee - your Dallas suburbs guide"
-                width={240}
-                height={160}
-                className="relative"
-                style={{
-                  filter: "drop-shadow(0 10px 24px rgba(0, 0, 0, 0.14)) drop-shadow(0 4px 10px rgba(0, 0, 0, 0.1)) saturate(1.1) brightness(0.96)",
-                }}
-                priority
-              />
-            </div>
-
-            <div className="text-center space-y-4">
-              <h1 className="text-slate-900 leading-[1.15]">
-                <span
-                  className="block text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-bold mb-2"
-                  style={{ letterSpacing: "-0.015em" }}
-                >
-                  Clarity for your next move.
-                </span>
-              </h1>
-
-              <p
-                className="text-lg sm:text-xl lg:text-[22px] text-slate-600 max-w-xl font-normal"
-                style={{ lineHeight: "1.6" }}
-              >
-                Powered by data from 27 North Dallas ZIPs. Built to turn overwhelm into direction.
-              </p>
-
-              <div className="pt-1">
-                <a
-                  href="#preferences"
-                  className="inline-flex items-center justify-center gap-2 px-6 md:px-10 py-3.5 md:py-4 text-white font-semibold text-base md:text-lg rounded-full hover:opacity-95 transition-all duration-200 w-full sm:w-auto"
-                  style={{
-                    background: "linear-gradient(135deg, #6EA1D4 0%, #5A8BC0 100%)",
-                    boxShadow: "0 6px 20px rgba(110, 161, 212, 0.35), 0 2px 6px rgba(110, 161, 212, 0.2)",
-                  }}
-                >
-                  Find My Best Suburbs
-                  <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
-                  </svg>
-                </a>
-              </div>
-            </div>
+        <div
+          className="w-full flex flex-col items-center text-center"
+          style={{
+            maxWidth: "720px",
+            margin: "0 auto",
+            padding: "80px 24px 120px",
+          }}
+        >
+          {/* Logo Lockup */}
+          <div
+            className="relative inline-flex items-center"
+            style={{ gap: "10px", marginBottom: "28px" }}
+          >
+            {/* Radial glow behind lockup */}
+            <div
+              className="absolute z-[-1]"
+              style={{
+                inset: "-28px -40px",
+                background: "radial-gradient(circle, rgba(145, 189, 235, 0.18) 0%, transparent 60%)",
+              }}
+            />
+            <Image
+              src="/sofee-logo.png"
+              alt="Sofee"
+              width={56}
+              height={56}
+              className="rounded-full"
+              style={{
+                boxShadow: "0 18px 40px rgba(62, 123, 196, 0.25)",
+              }}
+              priority
+            />
+            <span
+              style={{
+                fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+                fontSize: "26px",
+                fontWeight: 700,
+                letterSpacing: "0.01em",
+                color: "#0B2037",
+              }}
+            >
+              Sofee
+            </span>
           </div>
+
+          {/* Headline */}
+          <h1
+            style={{
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Display", sans-serif',
+              fontSize: "clamp(30px, 5vw, 40px)",
+              lineHeight: 1.15,
+              letterSpacing: "-0.02em",
+              fontWeight: 700,
+              color: "#0B2037",
+              marginBottom: "16px",
+            }}
+          >
+            Know exactly where you belong.
+          </h1>
+
+          {/* Subcopy */}
+          <p
+            style={{
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              fontSize: "clamp(16px, 2.5vw, 18px)",
+              lineHeight: 1.6,
+              fontWeight: 400,
+              color: "#4A6075",
+              maxWidth: "540px",
+              margin: "0 auto 32px",
+            }}
+          >
+            Powered by data from 27 North Dallas ZIPs, Sofee turns guesswork into clarity.
+          </p>
+
+          {/* CTA Button */}
+          <a
+            href="#preferences"
+            className="inline-flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5"
+            style={{
+              padding: "14px 32px",
+              borderRadius: "999px",
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              fontSize: "16px",
+              fontWeight: 600,
+              background: "linear-gradient(135deg, #3579D6 0%, #5593F0 100%)",
+              color: "#FFFFFF",
+              boxShadow: "0 14px 30px rgba(53, 121, 214, 0.35)",
+            }}
+          >
+            Find My Best Suburbs
+            <svg className="w-4 h-4 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </a>
         </div>
       </section>
 
