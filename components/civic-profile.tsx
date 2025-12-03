@@ -175,7 +175,7 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
           </p>
           <p className="text-[10px] sm:text-xs text-slate-400 mt-1">Based on the latest certified election results.</p>
         </div>
-        <Image src="/sofeev3.png" alt="Sofee" width={48} height={48} className="opacity-60 w-8 h-8 sm:w-12 sm:h-12" />
+        <Image src="/sofee-logo.png" alt="Sofee" width={48} height={48} className="opacity-60 w-8 h-8 sm:w-12 sm:h-12" />
       </div>
 
       {/* Single/Multi County Badge */}

@@ -31,7 +31,7 @@ export function SiteNav() {
           <Link href="/" className="flex items-center gap-2 group">
             <div className="relative w-8 h-8">
               <Image
-                src="/sofeev3.png"
+                src="/sofee-logo.png"
                 alt="Sofee"
                 fill
                 className="object-contain group-hover:scale-110 transition-transform"
