@@ -394,7 +394,11 @@ export function PreferencesForm() {
         <Button
           type="submit"
           size="lg"
-          className="w-full md:w-auto px-8 md:px-20 h-14 md:h-16 text-base md:text-lg font-semibold rounded-full bg-gradient-to-r from-primary via-primary to-chart-3 hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02]"
+          className="w-full md:w-auto px-8 md:px-20 h-14 md:h-16 text-base md:text-lg font-semibold rounded-full hover:opacity-90 transition-all duration-300 hover:scale-[1.02]"
+          style={{
+            background: "linear-gradient(135deg, #6EA1D4 0%, #5A8BC0 100%)",
+            boxShadow: "0 8px 24px rgba(110, 161, 212, 0.35), 0 4px 8px rgba(110, 161, 212, 0.2)",
+          }}
         >
           Find My Neighborhoods
         </Button>

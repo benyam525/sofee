@@ -24,7 +24,7 @@ export default function HomePage() {
               />
 
               <Image
-                src="/sofeev3.png"
+                src="/sofee-logo.png"
                 alt="Sofee - your Dallas suburbs guide"
                 width={214}
                 height={214}
@@ -39,16 +39,10 @@ export default function HomePage() {
             <div className="text-center lg:text-left flex-1 space-y-4">
               <h1 className="text-slate-900 leading-[1.15]">
                 <span
-                  className="block text-[22px] sm:text-[26px] lg:text-[30px] font-semibold text-slate-700 mb-2"
-                  style={{ letterSpacing: "0.01em" }}
-                >
-                  Hi, I'm <span className="text-primary font-bold">Sofee</span>.
-                </span>
-                <span
-                  className="block text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-bold"
+                  className="block text-2xl sm:text-3xl lg:text-4xl xl:text-[44px] font-bold mb-2"
                   style={{ letterSpacing: "-0.015em" }}
                 >
-                  Let's solve your <span className="italic">'Where the hell do we live?'</span> crisis together.
+                  <span className="text-primary">Sofee.</span> Clarity for your next move.
                 </span>
               </h1>
 
@@ -56,7 +50,7 @@ export default function HomePage() {
                 className="text-lg sm:text-xl lg:text-[22px] text-slate-600 max-w-xl font-normal"
                 style={{ lineHeight: "1.6" }}
               >
-                I crunch the data across 27 North Dallas ZIP codes so you can stop guessing and start deciding.
+                Powered by data from 27 North Dallas ZIPs. Built to turn overwhelm into direction.
               </p>
 
               <div className="pt-1">
@@ -64,8 +58,8 @@ export default function HomePage() {
                   href="#preferences"
                   className="inline-flex items-center justify-center gap-2 px-6 md:px-10 py-3.5 md:py-4 text-white font-semibold text-base md:text-lg rounded-full hover:opacity-95 transition-all duration-200 w-full sm:w-auto"
                   style={{
-                    background: "linear-gradient(135deg, #2D7DFF 0%, #1D5ADC 100%)",
-                    boxShadow: "0 6px 20px rgba(45, 125, 255, 0.35), 0 2px 6px rgba(45, 125, 255, 0.2)",
+                    background: "linear-gradient(135deg, #6EA1D4 0%, #5A8BC0 100%)",
+                    boxShadow: "0 6px 20px rgba(110, 161, 212, 0.35), 0 2px 6px rgba(110, 161, 212, 0.2)",
                   }}
                 >
                   Find My Best Suburbs
