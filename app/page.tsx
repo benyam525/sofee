@@ -19,25 +19,13 @@ export default function HomePage() {
             padding: "60px 24px 100px",
           }}
         >
-          {/* Logo - Large, standalone anchor */}
-          <div className="relative mb-8">
-            {/* Soft glow behind logo */}
-            <div
-              className="absolute inset-0 scale-150"
-              style={{
-                background: "radial-gradient(circle, rgba(110, 161, 212, 0.2) 0%, transparent 70%)",
-                filter: "blur(20px)",
-              }}
-            />
+          {/* Logo */}
+          <div className="mb-8">
             <Image
               src="/sofee-logo.png"
               alt="Sofee"
-              width={140}
-              height={140}
-              className="relative"
-              style={{
-                filter: "drop-shadow(0 20px 40px rgba(62, 123, 196, 0.3))",
-              }}
+              width={322}
+              height={215}
               priority
             />
           </div>
