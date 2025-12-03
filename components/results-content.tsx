@@ -965,6 +965,9 @@ export function ResultsContent() {
               We took the importance sliders you set (0–3), computed a score for each ZIP (0–100) across schools,
               affordability, commute, safety, lifestyle, child development, taxes, and toll road convenience, and then
               ranked neighborhoods by how well they match your unique weighting.
+              <a href="/docs" className="ml-2 text-primary hover:underline text-sm font-medium">
+                How we score →
+              </a>
             </p>
             {activePriorities.length > 0 && (
               <div className="flex items-center gap-2 text-sm text-muted-foreground">
