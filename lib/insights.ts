@@ -88,14 +88,20 @@ function generateJustOutOfReach(ctx: InsightContext): SofeeInsight | null {
   // Get the top result's score for comparison
   const topShownScore = results[0]?.scoringDetails?.adjustedScore ?? results[0]?.score ?? 0
 
-  // Find results that are just over budget but score well
+  // REALISTIC CAPS: Max budget increase suggestion
+  const MAX_INCREASE_ABSOLUTE = 75000 // Never suggest more than $75k increase
+  const MAX_INCREASE_PERCENT = 0.12 // Never suggest more than 12% of their budget
+  const maxAllowedIncrease = Math.min(MAX_INCREASE_ABSOLUTE, userBudgetMax * MAX_INCREASE_PERCENT)
+  const maxPrice = userBudgetMax + maxAllowedIncrease
+
+  // Find results that are just over budget but within realistic reach
   const justOverBudget = allResults.filter((r) => {
     const price = r.medianPrice ?? r.medianHomePrice ?? 0
     const score = r.scoringDetails?.adjustedScore ?? r.score
     const budgetCeiling = userBudgetMax * 1.1 // Current filter threshold
 
-    // Just over the ceiling (within 15% above budget) and scores better than shown results
-    return price > budgetCeiling && price <= userBudgetMax * 1.25 && score > topShownScore
+    // Just over the ceiling but within realistic reach, and scores better than shown results
+    return price > budgetCeiling && price <= maxPrice && score > topShownScore
   })
 
   if (justOverBudget.length === 0) return null
@@ -111,6 +117,9 @@ function generateJustOutOfReach(ctx: InsightContext): SofeeInsight | null {
   const price = bestOverBudget.medianPrice ?? bestOverBudget.medianHomePrice ?? 0
   const budgetIncrease = price - userBudgetMax
   const score = bestOverBudget.scoringDetails?.adjustedScore ?? bestOverBudget.score
+
+  // Skip if the increase is too small to be meaningful (< $15k)
+  if (budgetIncrease < 15000) return null
 
   // Find what makes this ZIP special (highest scoring criterion)
   let specialFeature = "great overall scores"
