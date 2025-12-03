@@ -5,12 +5,6 @@ import Image from "next/image"
 export default function HomePage() {
   return (
     <main className="min-h-screen bg-white">
-      <nav className="fixed top-4 right-4 z-50">
-        <Link href="/admin" className="pill-button text-muted-foreground hover:text-foreground">
-          Admin
-        </Link>
-      </nav>
-
       <section
         className="w-full min-h-[48vh] lg:min-h-[52vh] flex items-center pt-[70px] lg:pt-[70px]"
         style={{
