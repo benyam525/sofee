@@ -20,12 +20,13 @@ export default function HomePage() {
           }}
         >
           {/* Logo */}
-          <div className="mb-8">
+          <div className="mb-4 md:mb-8">
             <Image
               src="/sofee-logo.png"
               alt="Sofee"
               width={322}
               height={215}
+              className="w-[240px] h-auto md:w-[322px]"
               priority
             />
           </div>
