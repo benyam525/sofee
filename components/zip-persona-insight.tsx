@@ -110,7 +110,7 @@ export function ZipPersonaInsight({ zipCode, isPremium = false, onUnlock }: ZipP
   )
 }
 
-// Compact teaser version for inline use in results
+// Compact teaser version for inline use in results - Premium styled
 export function ZipPersonaTeaser({ zipCode }: { zipCode: string }) {
   const router = useRouter()
   const persona = zipPersonas[zipCode]
@@ -124,17 +124,19 @@ export function ZipPersonaTeaser({ zipCode }: { zipCode: string }) {
   }
 
   return (
-    <div className="p-3 bg-slate-50/50 rounded-lg border border-slate-200/50">
-      <div className="flex items-start gap-2">
-        <User className="h-4 w-4 text-slate-400 mt-0.5 flex-shrink-0" />
+    <div className="mt-4 p-4 md:p-5 bg-gradient-to-br from-slate-50 via-white to-emerald-50/30 rounded-xl md:rounded-2xl border border-slate-200/60 shadow-sm hover:shadow-md transition-all duration-300">
+      <div className="flex items-start gap-3 md:gap-4">
+        <div className="flex-shrink-0 w-9 h-9 md:w-10 md:h-10 rounded-full bg-gradient-to-br from-emerald-100 to-teal-100 flex items-center justify-center shadow-sm">
+          <User className="h-4 w-4 md:h-5 md:w-5 text-emerald-600" />
+        </div>
         <div className="flex-1 min-w-0">
-          <p className="text-xs font-medium text-slate-600 mb-1">Who's this ZIP for?</p>
-          <p className="text-xs text-slate-500 line-clamp-2">{persona.bestFor}</p>
+          <p className="text-sm md:text-base font-semibold text-slate-800 mb-1">Who is this ZIP for?</p>
+          <p className="text-xs md:text-sm text-slate-600 leading-relaxed line-clamp-2">{persona.bestFor}</p>
           <button
             onClick={handleClick}
-            className="mt-2 text-xs text-emerald-600 hover:text-emerald-700 font-medium flex items-center gap-1"
+            className="mt-3 inline-flex items-center gap-1.5 px-3 py-1.5 md:px-4 md:py-2 text-xs md:text-sm font-medium text-white bg-gradient-to-r from-emerald-500 to-teal-500 hover:from-emerald-600 hover:to-teal-600 rounded-full shadow-sm hover:shadow-md transition-all duration-200"
           >
-            <Lock className="h-3 w-3" />
+            <Lock className="h-3 w-3 md:h-3.5 md:w-3.5" />
             See honest take
           </button>
         </div>
