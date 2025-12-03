@@ -1066,8 +1066,8 @@ export function ResultsContent() {
                   <span className="text-xs font-bold text-primary-foreground">#{index + 1}</span>
                 </div>
 
-                <div className="flex items-start justify-between pt-4 md:pt-2">
-                  <div className="flex-1 min-w-0">
+                <div className="pt-4 md:pt-2">
+                  <div className="w-full">
                     <div className="flex flex-wrap items-start md:items-center gap-2 md:gap-3 mb-3">
                       <h2 className="text-lg md:text-2xl font-semibold text-foreground">
                         {result.city ? `${result.city} (${result.zipCode})` : `ZIP ${result.zipCode}`}
@@ -1779,20 +1779,6 @@ export function ResultsContent() {
                       </div>
                     </div>
                   </div>
-                  <div className="ml-4 flex items-center gap-2">
-                    <label
-                      className="text-sm text-muted-foreground cursor-pointer"
-                      htmlFor={`compare-${result.zipCode}`}
-                    >
-                      Compare
-                    </label>
-                    <Checkbox
-                      id={`compare-${result.zipCode}`}
-                      checked={selectedZips.has(result.zipCode)}
-                      onCheckedChange={() => toggleZipSelection(result.zipCode)}
-                      disabled={!selectedZips.has(result.zipCode) && selectedZips.size >= 3}
-                    />
-                  </div>
                 </div>
               </Card>
             ))}
@@ -1815,8 +1801,8 @@ export function ResultsContent() {
                     <span className="text-xs font-bold text-muted-foreground">#{index + 5}</span>
                   </div>
 
-                  <div className="flex items-start justify-between pt-4 md:pt-2">
-                    <div className="flex-1 min-w-0">
+                  <div className="pt-4 md:pt-2">
+                    <div className="w-full">
                       <div className="flex flex-wrap items-start md:items-center gap-2 md:gap-3 mb-3">
                         <h2 className="text-lg md:text-2xl font-semibold text-foreground">
                           {result.city ? `${result.city} (${result.zipCode})` : `ZIP ${result.zipCode}`}
@@ -2266,20 +2252,6 @@ export function ResultsContent() {
                           </div>
                         </div>
                       </div>
-                    </div>
-                    <div className="ml-4 flex items-center gap-2">
-                      <label
-                        className="text-sm text-muted-foreground cursor-pointer"
-                        htmlFor={`compare-${result.zipCode}`}
-                      >
-                        Compare
-                      </label>
-                      <Checkbox
-                        id={`compare-${result.zipCode}`}
-                        checked={selectedZips.has(result.zipCode)}
-                        onCheckedChange={() => toggleZipSelection(result.zipCode)}
-                        disabled={!selectedZips.has(result.zipCode) && selectedZips.size >= 3}
-                      />
                     </div>
                   </div>
                 </Card>

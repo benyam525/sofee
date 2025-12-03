@@ -292,9 +292,12 @@ export function PreferencesForm() {
                     type="button"
                     onClick={() => !isDisabled && handleLifestyleToggle(option.id)}
                     className={`
-                      pill-button transition-elastic
-                      ${isSelected ? "pill-button-active" : ""}
-                      ${isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer"}
+                      px-3 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-medium
+                      transition-colors duration-150 ease-out
+                      ${isSelected
+                        ? "bg-gradient-to-r from-primary to-chart-3 text-white shadow-md"
+                        : "bg-white/80 border border-slate-200 text-slate-700 hover:bg-slate-50 hover:border-slate-300"}
+                      ${isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer active:scale-95"}
                     `}
                   >
                     {option.label}
