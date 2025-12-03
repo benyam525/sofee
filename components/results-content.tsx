@@ -19,6 +19,10 @@ import {
   GitCompareArrows,
   Loader2,
   Music,
+  PiggyBank,
+  Unlock,
+  Scale,
+  Lightbulb,
 } from "lucide-react"
 import { Checkbox } from "@/components/ui/checkbox"
 import type { ZipSchoolSummary } from "@/types/schools"
@@ -122,6 +126,14 @@ interface ExplorerResult {
   entertainmentCount: number
   hasTownCenter: boolean
   sources?: string[]
+}
+
+interface SofeeInsight {
+  type: "value-alternative" | "just-out-of-reach" | "trade-off-alert"
+  icon: "piggy-bank" | "unlock" | "scale"
+  title: string
+  description: string
+  highlight?: string
 }
 
 const loadingMessages = ["Crunching the zip codes…", "Weighing your priorities…", "Finding your best suburb…"]
@@ -469,6 +481,7 @@ export function ResultsContent() {
   const [compareVibeExpanded, setCompareVibeExpanded] = useState(false)
 
   const [allResults, setAllResults] = useState<NeighborhoodResult[]>([])
+  const [insights, setInsights] = useState<SofeeInsight[]>([])
 
   const [activePriorities, setActivePriorities] = useState<string[]>([])
   const commuteBurdenWeight = Number.parseInt(searchParams.get("commuteBurden") || "3")
@@ -496,6 +509,7 @@ export function ResultsContent() {
       try {
         const requestBody = {
           budget: searchParams.get("budget") || "500000",
+          budgetMin: searchParams.get("budgetMin") || "250000",
           homeType: searchParams.get("homeType") || "",
           // Removed: maxCommute: searchParams.get("maxCommute") || "",
           climate: searchParams.get("climate") || "",
@@ -603,6 +617,11 @@ export function ResultsContent() {
         setResults(resultsWithMatches)
         const allResultsCombined = [...(resultsWithMatches || [])]
         setAllResults(allResultsCombined)
+
+        // Capture insights from API response
+        if (data.insights && data.insights.length > 0) {
+          setInsights(data.insights)
+        }
       } catch (error) {
         console.error("Error fetching results:", error)
       } finally {
@@ -936,12 +955,12 @@ export function ResultsContent() {
   if (loading || !showResults) {
     return (
       <div>
-        <div className="mb-8 flex items-center justify-between">
+        <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div>
-            <h1 className="text-4xl font-semibold text-foreground mb-2">Recommended Neighborhoods</h1>
-            <p className="text-muted-foreground">Let Sofee work her magic...</p>
+            <h1 className="text-2xl md:text-4xl font-semibold text-foreground mb-2">Recommended Neighborhoods</h1>
+            <p className="text-sm md:text-base text-muted-foreground">Let Sofee work her magic...</p>
           </div>
-          <Button variant="outline" onClick={() => router.push("/")}>
+          <Button variant="outline" onClick={() => router.push("/")} className="w-fit">
             Back
           </Button>
         </div>
@@ -958,54 +977,113 @@ export function ResultsContent() {
   return (
     <TooltipProvider>
       <div>
-        <div className="mb-8 flex items-center justify-between">
-          <div>
-            <h1 className="text-4xl font-semibold text-foreground mb-2">Recommended Neighborhoods</h1>
-            <p className="text-muted-foreground max-w-3xl mb-2">
+        <div className="mb-6 md:mb-8 flex flex-col md:flex-row md:items-start justify-between gap-4">
+          <div className="flex-1">
+            <h1 className="text-2xl md:text-4xl font-semibold text-foreground mb-2">Recommended Neighborhoods</h1>
+            <p className="text-sm md:text-base text-muted-foreground max-w-3xl mb-2">
               We took the importance sliders you set (0–3), computed a score for each ZIP (0–100) across schools,
               affordability, commute, safety, lifestyle, child development, taxes, and toll road convenience, and then
               ranked neighborhoods by how well they match your unique weighting.
+              <a href="/docs" className="ml-2 text-primary hover:underline text-xs md:text-sm font-medium">
+                How we score →
+              </a>
             </p>
             {activePriorities.length > 0 && (
-              <div className="flex items-center gap-2 text-sm text-muted-foreground">
+              <div className="flex flex-wrap items-center gap-2 text-xs md:text-sm text-muted-foreground">
                 <span className="font-medium text-foreground">Your Top Priorities:</span>
                 {activePriorities.join(", ")}
               </div>
             )}
           </div>
-          <Button variant="outline" onClick={() => router.push("/")}>
+          <Button variant="outline" onClick={() => router.push("/")} className="w-fit shrink-0">
             Back
           </Button>
         </div>
+
+        {/* Sofee's Insights Card */}
+        {insights.length > 0 && (
+          <div className="mb-8">
+            <div className="glass-card-strong rounded-2xl p-5 md:p-6 border border-amber-200/50 bg-gradient-to-br from-amber-50/80 to-orange-50/60">
+              <div className="flex items-center gap-3 mb-4">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-400 text-white">
+                  <Lightbulb className="w-5 h-5" />
+                </div>
+                <div>
+                  <h3 className="text-lg font-semibold text-foreground">Sofee's Insights</h3>
+                  <p className="text-xs text-muted-foreground">Personalized tips based on your search</p>
+                </div>
+              </div>
+              <div className="space-y-3">
+                {insights.map((insight, idx) => {
+                  const IconComponent =
+                    insight.icon === "piggy-bank"
+                      ? PiggyBank
+                      : insight.icon === "unlock"
+                        ? Unlock
+                        : Scale
+
+                  const iconBg =
+                    insight.type === "value-alternative"
+                      ? "bg-emerald-100 text-emerald-600"
+                      : insight.type === "just-out-of-reach"
+                        ? "bg-blue-100 text-blue-600"
+                        : "bg-purple-100 text-purple-600"
+
+                  return (
+                    <div
+                      key={idx}
+                      className="flex items-start gap-3 p-3 md:p-4 rounded-xl bg-white/70 border border-white/50"
+                    >
+                      <div className={`p-2 rounded-lg shrink-0 ${iconBg}`}>
+                        <IconComponent className="w-4 h-4" />
+                      </div>
+                      <div className="flex-1 min-w-0">
+                        <div className="flex items-center gap-2 mb-1">
+                          <span className="text-sm font-semibold text-foreground">{insight.title}</span>
+                          {insight.highlight && (
+                            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
+                              {insight.highlight}
+                            </span>
+                          )}
+                        </div>
+                        <p className="text-sm text-muted-foreground leading-relaxed">{insight.description}</p>
+                      </div>
+                    </div>
+                  )
+                })}
+              </div>
+            </div>
+          </div>
+        )}
 
         <div className="mb-8">
           <h2 className="text-2xl font-semibold text-foreground mb-1">Top Matches</h2>
           <p className="text-sm text-muted-foreground mb-4">These neighborhoods best align with your priorities</p>
           <div className="space-y-4">
             {topMatches.map((result, index) => (
-              <Card key={result.zipCode} className="border border-border bg-white p-6 relative overflow-hidden">
-                <div className="absolute top-0 left-0 bg-primary px-3 py-1 rounded-br-lg border-b border-r border-border z-10">
+              <Card key={result.zipCode} className="border border-border bg-white p-4 md:p-6 relative overflow-hidden">
+                <div className="absolute top-0 left-0 bg-primary px-2.5 md:px-3 py-1 rounded-br-lg border-b border-r border-border z-10">
                   <span className="text-xs font-bold text-primary-foreground">#{index + 1}</span>
                 </div>
 
-                <div className="flex items-start justify-between pt-2">
-                  <div className="flex-1">
-                    <div className="flex items-center gap-3 mb-3">
-                      <h2 className="text-2xl font-semibold text-foreground">
+                <div className="flex items-start justify-between pt-4 md:pt-2">
+                  <div className="flex-1 min-w-0">
+                    <div className="flex flex-wrap items-start md:items-center gap-2 md:gap-3 mb-3">
+                      <h2 className="text-lg md:text-2xl font-semibold text-foreground">
                         {result.city ? `${result.city} (${result.zipCode})` : `ZIP ${result.zipCode}`}
                       </h2>
 
                       {result.isd && (
-                        <div className="rounded-full bg-purple-100 text-purple-700 px-3 py-1">
-                          <span className="text-xs font-medium">{result.isd}</span>
+                        <div className="rounded-full bg-purple-100 text-purple-700 px-2.5 md:px-3 py-0.5 md:py-1">
+                          <span className="text-[10px] md:text-xs font-medium">{result.isd}</span>
                         </div>
                       )}
 
                       <Tooltip>
                         <TooltipTrigger asChild>
-                          <div className="rounded-full bg-muted px-3 py-1 cursor-help">
-                            <span className="text-sm font-medium text-foreground">
-                              Match Score:{" "}
+                          <div className="rounded-full bg-muted px-2.5 md:px-3 py-0.5 md:py-1 cursor-help">
+                            <span className="text-xs md:text-sm font-medium text-foreground">
+                              Match:{" "}
                               {result.scoringDetails?.adjustedScore // Use adjustedScore if available
                                 ? `${Math.round(result.scoringDetails.adjustedScore)}/100`
                                 : `${result.score}/100`}
@@ -1024,7 +1102,7 @@ export function ResultsContent() {
                         <Tooltip>
                           <TooltipTrigger asChild>
                             <div
-                              className={`rounded-full px-2.5 py-0.5 cursor-help ${
+                              className={`rounded-full px-2 md:px-2.5 py-0.5 cursor-help ${
                                 result.dataQuality === "High"
                                   ? "bg-green-100 text-green-700"
                                   : result.dataQuality === "Medium"
@@ -1032,7 +1110,7 @@ export function ResultsContent() {
                                     : "bg-gray-100 text-gray-600"
                               }`}
                             >
-                              <span className="text-xs font-medium">{result.dataQuality} Quality</span>
+                              <span className="text-[10px] md:text-xs font-medium">{result.dataQuality} Quality</span>
                             </div>
                           </TooltipTrigger>
                           <TooltipContent>
@@ -1060,25 +1138,25 @@ export function ResultsContent() {
                     </div>
 
                     {/* START: MERGE POINT for budget display */}
-                    <div className="mb-4 p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-xl border border-emerald-200/60">
-                      <div className="flex items-center justify-between">
+                    <div className="mb-3 md:mb-4 p-3 md:p-4 bg-gradient-to-r from-emerald-50 to-green-50 rounded-lg md:rounded-xl border border-emerald-200/60">
+                      <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-4">
                         <div>
-                          <div className="text-xs text-emerald-600 font-medium uppercase tracking-wide">
+                          <div className="text-[10px] md:text-xs text-emerald-600 font-medium uppercase tracking-wide">
                             Median Home Price
                           </div>
-                          <div className="text-2xl font-bold text-emerald-800">
+                          <div className="text-xl md:text-2xl font-bold text-emerald-800">
                             ${(result.medianPrice || result.medianHomePrice)?.toLocaleString() || "N/A"}
                           </div>
                         </div>
                         {result.affordabilityGap !== undefined && (
-                          <div className="text-right">
+                          <div className="sm:text-right">
                             <div
-                              className={`text-xs font-medium uppercase tracking-wide ${result.affordabilityGap > 0 ? "text-orange-600" : "text-emerald-600"}`}
+                              className={`text-[10px] md:text-xs font-medium uppercase tracking-wide ${result.affordabilityGap > 0 ? "text-orange-600" : "text-emerald-600"}`}
                             >
                               {result.affordabilityGap > 0 ? "Over Budget" : "Under Budget"}
                             </div>
                             <div
-                              className={`text-2xl font-bold ${result.affordabilityGap > 0 ? "text-orange-600" : "text-emerald-700"}`}
+                              className={`text-xl md:text-2xl font-bold ${result.affordabilityGap > 0 ? "text-orange-600" : "text-emerald-700"}`}
                             >
                               ${Math.abs(result.affordabilityGap).toLocaleString()}
                             </div>

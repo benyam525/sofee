@@ -21,6 +21,7 @@ export interface ZipScores {
   medianHomePrice?: number
   convenienceClusterScore?: number
   qualityOfLifeScore?: number // 0-100
+  percentNewConstruction?: number // 0-100, percent of homes built after 2010
 }
 
 export interface ZipFinalScore {
@@ -184,6 +185,36 @@ export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinal
       townCenterBonus += 3
     } else {
       townCenterBonus -= 3
+    }
+  }
+
+  // Special preference: Newer Homes (+5/-5)
+  // Based on percentNewConstruction (% of homes built after 2010)
+  if (prefs.special.preferNewerHomes) {
+    const newConstruction = zip.percentNewConstruction ?? 30
+    if (newConstruction >= 60) {
+      townCenterBonus += 5 // Lots of new construction
+    } else if (newConstruction >= 40) {
+      townCenterBonus += 2 // Moderate new construction
+    } else if (newConstruction >= 25) {
+      townCenterBonus += 0 // Neutral
+    } else {
+      townCenterBonus -= 5 // Mostly older homes
+    }
+  }
+
+  // Special preference: Established Neighborhoods (+5/-5)
+  // Inverse of new construction - prefer mature, settled areas
+  if (prefs.special.preferEstablishedNeighborhoods) {
+    const newConstruction = zip.percentNewConstruction ?? 30
+    if (newConstruction <= 15) {
+      townCenterBonus += 5 // Very established, mature neighborhood
+    } else if (newConstruction <= 25) {
+      townCenterBonus += 2 // Mostly established
+    } else if (newConstruction <= 40) {
+      townCenterBonus += 0 // Neutral
+    } else {
+      townCenterBonus -= 5 // Too much new development
     }
   }
 

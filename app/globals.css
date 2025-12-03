@@ -173,7 +173,7 @@
 
 /* Pill button style - fluid, rounded */
 .pill-button {
-  @apply px-5 py-2.5 rounded-full text-sm font-medium transition-all duration-300 ease-out;
+  @apply px-3 py-2 md:px-5 md:py-2.5 rounded-full text-xs md:text-sm font-medium transition-all duration-300 ease-out;
   background: rgba(255, 255, 255, 0.6);
   backdrop-filter: blur(12px);
   border: 1px solid rgba(255, 255, 255, 0.4);

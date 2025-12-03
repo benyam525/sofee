@@ -174,25 +174,25 @@ export function PreferencesForm() {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-8">
-      <div className="glass-card-strong rounded-[2rem] p-10">
-        <div className="flex items-center gap-4 mb-8">
-          <div className="h-10 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500 rounded-full" />
+    <form onSubmit={handleSubmit} className="space-y-5 md:space-y-8">
+      <div className="glass-card-strong rounded-2xl md:rounded-[2rem] p-5 md:p-10">
+        <div className="flex items-center gap-3 md:gap-4 mb-6 md:mb-8">
+          <div className="h-8 md:h-10 w-1.5 bg-gradient-to-b from-emerald-400 to-teal-500 rounded-full" />
           <div>
-            <h3 className="text-2xl font-semibold text-foreground">What's Your Budget?</h3>
-            <p className="text-muted-foreground mt-1">Set your comfortable range — we'll find what fits</p>
+            <h3 className="text-xl md:text-2xl font-semibold text-foreground">What's Your Budget?</h3>
+            <p className="text-sm md:text-base text-muted-foreground mt-1">Set your comfortable range — we'll find what fits</p>
           </div>
         </div>
 
-        <div className="flex items-center justify-center gap-8 mb-10">
+        <div className="flex items-center justify-center gap-4 md:gap-8 mb-8 md:mb-10">
           <div className="text-center">
             <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">Min</span>
-            <div className="text-4xl font-bold text-foreground mt-1">{formatBudget(budgetRange[0])}</div>
+            <div className="text-2xl md:text-4xl font-bold text-foreground mt-1">{formatBudget(budgetRange[0])}</div>
           </div>
-          <div className="w-12 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
+          <div className="w-8 md:w-12 h-px bg-gradient-to-r from-transparent via-border to-transparent" />
           <div className="text-center">
             <span className="text-xs uppercase tracking-widest text-muted-foreground font-medium">Max</span>
-            <div className="text-4xl font-bold text-primary mt-1">{formatBudget(budgetRange[1])}</div>
+            <div className="text-2xl md:text-4xl font-bold text-primary mt-1">{formatBudget(budgetRange[1])}</div>
           </div>
         </div>
 
@@ -206,12 +206,12 @@ export function PreferencesForm() {
             className="w-full"
           />
 
-          <div className="flex justify-between mt-6 px-1">
+          <div className="flex justify-between mt-4 md:mt-6 px-1">
             {budgetMarkers.map((marker) => (
               <div key={marker.value} className="flex flex-col items-center">
                 <div className="h-2 w-px bg-border" />
                 <span
-                  className={`text-xs mt-2 font-medium ${
+                  className={`text-[10px] md:text-xs mt-1.5 md:mt-2 font-medium ${
                     marker.label === "Stretch" ? "text-primary" : "text-muted-foreground"
                   }`}
                 >
@@ -239,19 +239,19 @@ export function PreferencesForm() {
         <p className="text-xs text-muted-foreground mt-2">Leave blank for central DFW default</p>
       </div>
 
-      <div className="grid gap-6 lg:grid-cols-2">
-        <div className="glass-card-strong rounded-[2rem] p-8 space-y-6">
-          <div className="flex items-center gap-4 border-b border-border/40 pb-5">
-            <div className="h-10 w-1.5 bg-gradient-to-b from-primary to-chart-3 rounded-full" />
-            <h3 className="text-xl font-semibold text-foreground">Priorities & Trade-offs</h3>
+      <div className="grid gap-5 md:gap-6 lg:grid-cols-2">
+        <div className="glass-card-strong rounded-2xl md:rounded-[2rem] p-5 md:p-8 space-y-5 md:space-y-6">
+          <div className="flex items-center gap-3 md:gap-4 border-b border-border/40 pb-4 md:pb-5">
+            <div className="h-8 md:h-10 w-1.5 bg-gradient-to-b from-primary to-chart-3 rounded-full" />
+            <h3 className="text-lg md:text-xl font-semibold text-foreground">Priorities & Trade-offs</h3>
           </div>
 
-          <div className="space-y-4">
+          <div className="space-y-3 md:space-y-4">
             {CRITERIA.map((c) => (
-              <div key={c.key} className="glass-card rounded-2xl p-5 space-y-4 transition-elastic hover:scale-[1.01]">
-                <div className="flex items-center justify-between">
-                  <Label className="text-sm font-semibold text-foreground">{c.label}</Label>
-                  <span className="text-sm font-bold text-primary bg-primary/10 px-3 py-1 rounded-full">
+              <div key={c.key} className="glass-card rounded-xl md:rounded-2xl p-4 md:p-5 space-y-3 md:space-y-4 transition-elastic hover:scale-[1.01]">
+                <div className="flex items-center justify-between gap-2">
+                  <Label className="text-sm font-semibold text-foreground leading-tight">{c.label}</Label>
+                  <span className="text-sm font-bold text-primary bg-primary/10 px-2.5 md:px-3 py-1 rounded-full shrink-0">
                     {weights[c.key]}
                   </span>
                 </div>
@@ -273,16 +273,16 @@ export function PreferencesForm() {
           </div>
         </div>
 
-        <div className="space-y-6">
-          <div className="glass-card-strong rounded-[2rem] p-8">
-            <div className="flex items-center gap-4 border-b border-border/40 pb-5 mb-6">
-              <div className="h-10 w-1.5 bg-gradient-to-b from-chart-2 to-chart-4 rounded-full" />
+        <div className="space-y-5 md:space-y-6">
+          <div className="glass-card-strong rounded-2xl md:rounded-[2rem] p-5 md:p-8">
+            <div className="flex items-center gap-3 md:gap-4 border-b border-border/40 pb-4 md:pb-5 mb-5 md:mb-6">
+              <div className="h-8 md:h-10 w-1.5 bg-gradient-to-b from-chart-2 to-chart-4 rounded-full" />
               <div>
-                <h3 className="text-xl font-semibold text-foreground">Lifestyle & Community</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-foreground">Lifestyle & Community</h3>
                 <p className="text-xs text-muted-foreground mt-1">Select up to 2 that match your vibe</p>
               </div>
             </div>
-            <div className="flex flex-wrap gap-3">
+            <div className="flex flex-wrap gap-2 md:gap-3">
               {lifestyleOptions.map((option) => {
                 const isSelected = lifestyleTags.includes(option.id)
                 const isDisabled = lifestyleTags.length >= 2 && !isSelected
@@ -304,20 +304,20 @@ export function PreferencesForm() {
             </div>
           </div>
 
-          <div className="glass-card-strong rounded-[2rem] p-8">
-            <div className="flex items-center gap-4 border-b border-border/40 pb-5 mb-6">
-              <div className="h-10 w-1.5 bg-gradient-to-b from-rose-400/60 to-rose-300/40 rounded-full" />
+          <div className="glass-card-strong rounded-2xl md:rounded-[2rem] p-5 md:p-8">
+            <div className="flex items-center gap-3 md:gap-4 border-b border-border/40 pb-4 md:pb-5 mb-5 md:mb-6">
+              <div className="h-8 md:h-10 w-1.5 bg-gradient-to-b from-rose-400/60 to-rose-300/40 rounded-full" />
               <div>
-                <h3 className="text-xl font-semibold text-foreground">Exclude Cities</h3>
+                <h3 className="text-lg md:text-xl font-semibold text-foreground">Exclude Cities</h3>
                 <p className="text-xs text-muted-foreground mt-1">Select any you definitely don't want</p>
               </div>
             </div>
-            <div className="grid grid-cols-2 gap-2">
+            <div className="grid grid-cols-2 gap-1.5 md:gap-2">
               {allCities.map((city) => (
                 <label
                   key={city}
                   className={`
-                    flex items-center gap-2.5 px-4 py-3 rounded-xl cursor-pointer transition-all duration-200 text-sm
+                    flex items-center gap-2 md:gap-2.5 px-3 md:px-4 py-2.5 md:py-3 rounded-lg md:rounded-xl cursor-pointer transition-all duration-200 text-xs md:text-sm
                     ${
                       excludedCities.includes(city)
                         ? "bg-rose-50 border border-rose-200/60 text-rose-700"
@@ -329,20 +329,20 @@ export function PreferencesForm() {
                     id={`exclude-${city}`}
                     checked={excludedCities.includes(city)}
                     onCheckedChange={() => handleCityToggle(city)}
-                    className="data-[state=checked]:bg-rose-500 data-[state=checked]:border-rose-500"
+                    className="data-[state=checked]:bg-rose-500 data-[state=checked]:border-rose-500 h-4 w-4"
                   />
-                  <span className="font-medium">{city}</span>
+                  <span className="font-medium truncate">{city}</span>
                 </label>
               ))}
             </div>
           </div>
 
-          <div className="glass-card-strong rounded-[2rem] p-8">
-            <div className="flex items-center gap-4 border-b border-border/40 pb-5 mb-6">
-              <div className="h-10 w-1.5 bg-gradient-to-b from-amber-400 to-orange-400 rounded-full" />
-              <h3 className="text-xl font-semibold text-foreground">Special Preferences</h3>
+          <div className="glass-card-strong rounded-2xl md:rounded-[2rem] p-5 md:p-8">
+            <div className="flex items-center gap-3 md:gap-4 border-b border-border/40 pb-4 md:pb-5 mb-5 md:mb-6">
+              <div className="h-8 md:h-10 w-1.5 bg-gradient-to-b from-amber-400 to-orange-400 rounded-full" />
+              <h3 className="text-lg md:text-xl font-semibold text-foreground">Special Preferences</h3>
             </div>
-            <div className="space-y-3">
+            <div className="space-y-2.5 md:space-y-3">
               {[
                 {
                   id: "preferTownCenter",
@@ -356,8 +356,8 @@ export function PreferencesForm() {
                   key: "preferEstablishedNeighborhoods" as const,
                 },
               ].map((pref) => (
-                <div key={pref.id} className="glass-card-thin rounded-xl p-4 flex items-center justify-between gap-4">
-                  <Label htmlFor={pref.id} className="text-sm font-medium leading-snug cursor-pointer">
+                <div key={pref.id} className="glass-card-thin rounded-lg md:rounded-xl p-3 md:p-4 flex items-center justify-between gap-3 md:gap-4">
+                  <Label htmlFor={pref.id} className="text-xs md:text-sm font-medium leading-snug cursor-pointer">
                     {pref.label}
                   </Label>
                   <Switch
@@ -387,11 +387,11 @@ export function PreferencesForm() {
         </div>
       </div>
 
-      <div className="pt-4 flex justify-center">
+      <div className="pt-4 flex justify-center px-4 md:px-0">
         <Button
           type="submit"
           size="lg"
-          className="px-20 h-16 text-lg font-semibold rounded-full bg-gradient-to-r from-primary via-primary to-chart-3 hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02]"
+          className="w-full md:w-auto px-8 md:px-20 h-14 md:h-16 text-base md:text-lg font-semibold rounded-full bg-gradient-to-r from-primary via-primary to-chart-3 hover:opacity-90 transition-all duration-300 shadow-xl shadow-primary/20 hover:shadow-2xl hover:shadow-primary/30 hover:scale-[1.02]"
         >
           Find My Neighborhoods
         </Button>

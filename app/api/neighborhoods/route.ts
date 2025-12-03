@@ -3,6 +3,7 @@ import dfwData from "@/data/dfwData.json"
 import type { UserWeights, UserAllPrefs, LifestyleTag } from "@/lib/criteria"
 import { type ZipScores, scoreZipWithPrefs } from "@/lib/scoring"
 import { computeLifestyleSubscores, computeLifestyleConvenienceCultureScore } from "@/lib/scoring/lifestyle"
+import { generateInsights } from "@/lib/insights"
 import type { ZipRawData } from "@/types/zip"
 
 const DEBUG = process.env.NODE_ENV === "development"
@@ -224,7 +225,8 @@ export async function POST(request: NextRequest) {
     }
 
     const budget = Number.parseInt((body.budget || "500000").replace(/\D/g, ""))
-    if (DEBUG) console.log("[v0] Budget:", budget)
+    const budgetMin = Number.parseInt((body.budgetMin || "250000").replace(/\D/g, ""))
+    if (DEBUG) console.log("[v0] Budget:", budget, "BudgetMin:", budgetMin)
 
     const budgetThreshold = budget * 1.1
     const relaxedBudgetThreshold = budget * 1.2
@@ -362,6 +364,7 @@ export async function POST(request: NextRequest) {
         safetySignal: neighborhood.safetySignal,
         medianHomePrice: neighborhood.medianHomePrice,
         convenienceClusterScore: neighborhood.convenienceClusterScore,
+        percentNewConstruction: neighborhood.percentNewConstruction,
       }
 
       const scored = scoreZipWithPrefs(zipScores, userAllPrefs)
@@ -581,7 +584,19 @@ export async function POST(request: NextRequest) {
       console.log(`[v0] 75007 in final results: ${zip75007Final ? "Yes" : "No"}`)
     }
 
-    return NextResponse.json({ results: finalResults })
+    // Generate personalized insights
+    const insights = generateInsights({
+      results: finalResults,
+      allResults: resultsWithRankings,
+      userBudgetMax: budget,
+      userBudgetMin: budgetMin,
+    })
+
+    if (DEBUG && insights.length > 0) {
+      console.log("[v0] Generated insights:", insights.map((i) => i.type))
+    }
+
+    return NextResponse.json({ results: finalResults, insights })
   } catch (error) {
     console.error("Error processing neighborhoods:", error)
     return NextResponse.json({ error: "Failed to process neighborhoods" }, { status: 500 })

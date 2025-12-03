@@ -67,7 +67,7 @@ export default function HomePage() {
               <div className="pt-1">
                 <a
                   href="#preferences"
-                  className="inline-flex items-center gap-2 px-10 py-4 text-white font-semibold text-lg rounded-full hover:opacity-95 transition-all duration-200"
+                  className="inline-flex items-center justify-center gap-2 px-6 md:px-10 py-3.5 md:py-4 text-white font-semibold text-base md:text-lg rounded-full hover:opacity-95 transition-all duration-200 w-full sm:w-auto"
                   style={{
                     background: "linear-gradient(135deg, #2D7DFF 0%, #1D5ADC 100%)",
                     boxShadow: "0 6px 20px rgba(45, 125, 255, 0.35), 0 2px 6px rgba(45, 125, 255, 0.2)",
@@ -91,7 +91,7 @@ export default function HomePage() {
         }}
       />
 
-      <section id="preferences" className="w-full px-6 lg:px-12 pb-20 -mt-4">
+      <section id="preferences" className="w-full px-4 md:px-6 lg:px-12 pb-16 md:pb-20 -mt-4">
         <div className="max-w-6xl mx-auto">
           <PreferencesForm />
         </div>
