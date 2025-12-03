@@ -171,10 +171,10 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
     <TooltipProvider>
       <div className="space-y-4">
         {/* Header */}
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
-            <h3 className="text-lg font-semibold text-slate-800">School Clarity Grid</h3>
-            <p className="text-sm text-slate-500">Academic performance vs. diversity balance</p>
+            <h3 className="text-base md:text-lg font-semibold text-slate-800">School Clarity Grid</h3>
+            <p className="text-xs md:text-sm text-slate-500">Academic performance vs. diversity balance</p>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex items-center border rounded-lg overflow-hidden">
@@ -198,18 +198,18 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
               className="flex items-center gap-1"
             >
               <Filter className="w-4 h-4" />
-              Filters
+              <span className="hidden sm:inline">Filters</span>
             </Button>
           </div>
         </div>
 
         {/* Filters */}
         {showFilters && (
-          <div className="flex flex-wrap items-end gap-4">
+          <div className="grid grid-cols-2 sm:flex sm:flex-wrap items-end gap-2 sm:gap-4">
             <div className="space-y-1">
               <label className="text-xs text-slate-500">Level</label>
               <Select value={filters.level} onValueChange={(v) => setFilters({ ...filters, level: v })}>
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-full sm:w-32 h-9">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -223,7 +223,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
             <div className="space-y-1">
               <label className="text-xs text-slate-500">Type</label>
               <Select value={filters.schoolType} onValueChange={(v) => setFilters({ ...filters, schoolType: v })}>
-                <SelectTrigger className="w-32">
+                <SelectTrigger className="w-full sm:w-32 h-9">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -236,7 +236,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
             <div className="space-y-1">
               <label className="text-xs text-slate-500">ZIP Code</label>
               <Select value={filters.zip} onValueChange={(v) => setFilters({ ...filters, zip: v })}>
-                <SelectTrigger className="w-28">
+                <SelectTrigger className="w-full sm:w-28 h-9">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -252,7 +252,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
             <div className="space-y-1">
               <label className="text-xs text-slate-500">District</label>
               <Select value={filters.district} onValueChange={(v) => setFilters({ ...filters, district: v })}>
-                <SelectTrigger className="w-56">
+                <SelectTrigger className="w-full sm:w-56 h-9">
                   <SelectValue />
                 </SelectTrigger>
                 <SelectContent>
@@ -266,34 +266,34 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
               </Select>
             </div>
             {hasActiveFilters && (
-              <Button variant="ghost" size="sm" onClick={resetFilters} className="text-slate-500">
-                <X className="w-3 h-3 mr-1" /> Reset All
+              <Button variant="ghost" size="sm" onClick={resetFilters} className="text-slate-500 col-span-2 sm:col-span-1">
+                <X className="w-3 h-3 mr-1" /> Reset
               </Button>
             )}
           </div>
         )}
 
         {/* Legend */}
-        <div className="flex items-center justify-between">
-          <div className="flex items-center gap-4 text-sm">
+        <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+          <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm">
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-green-500" />
-              <span className="text-slate-600">Elementary</span>
+              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-green-500" />
+              <span className="text-slate-600">Elem</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-blue-500" />
+              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-blue-500" />
               <span className="text-slate-600">Middle</span>
             </div>
             <div className="flex items-center gap-1.5">
-              <div className="w-2.5 h-2.5 rounded-full bg-purple-500" />
+              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-purple-500" />
               <span className="text-slate-600">High</span>
             </div>
           </div>
-          <div className="flex items-center gap-2 text-sm text-slate-500">
+          <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-500">
             <Tooltip>
               <TooltipTrigger className="flex items-center gap-1 cursor-help">
                 <Info className="w-3.5 h-3.5" />
-                How to read
+                <span className="hidden sm:inline">How to read</span>
               </TooltipTrigger>
               <TooltipContent className="max-w-sm text-left">
                 <p className="font-semibold mb-1">How to Read the Grid</p>
@@ -487,21 +487,18 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
           <>
             <Card>
               <CardContent className="p-0">
-                <div className="overflow-x-auto">
-                  <table className="w-full text-sm">
+                <div className="overflow-x-auto -mx-4 sm:mx-0">
+                  <table className="w-full text-xs sm:text-sm min-w-[600px]">
                     <thead className="bg-slate-50 border-b">
                       <tr>
-                        <th className="text-left p-3 font-medium text-slate-600">School</th>
-                        <th className="text-left p-3 font-medium text-slate-600">District</th>
-                        <th className="text-center p-3 font-medium text-slate-600">
-                          <div className="flex items-center justify-center gap-1">
-                            <Star className="w-3.5 h-3.5 text-amber-500" />
-                            Fit
-                          </div>
+                        <th className="text-left p-2 sm:p-3 font-medium text-slate-600">School</th>
+                        <th className="text-left p-2 sm:p-3 font-medium text-slate-600 hidden sm:table-cell">District</th>
+                        <th className="text-center p-2 sm:p-3 font-medium text-slate-600 whitespace-nowrap">
+                          <span className="text-amber-600">Sofee's Fit</span>
                         </th>
-                        <th className="text-center p-3 font-medium text-slate-600">Academic</th>
-                        <th className="text-center p-3 font-medium text-slate-600">Diversity</th>
-                        <th className="text-left p-3 font-medium text-slate-600">Quadrant</th>
+                        <th className="text-center p-2 sm:p-3 font-medium text-slate-600">Academic</th>
+                        <th className="text-center p-2 sm:p-3 font-medium text-slate-600">Diversity</th>
+                        <th className="text-left p-2 sm:p-3 font-medium text-slate-600 hidden md:table-cell">Quadrant</th>
                       </tr>
                     </thead>
                     <tbody>
@@ -516,25 +513,25 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                             className={`border-b hover:bg-slate-50 cursor-pointer ${selectedSchool?.campusId === school.campusId ? "bg-blue-50" : ""}`}
                             onClick={() => setSelectedSchool(school)}
                           >
-                            <td className="p-3">
-                              <div className="flex items-center gap-2">
+                            <td className="p-2 sm:p-3">
+                              <div className="flex items-center gap-1.5 sm:gap-2">
                                 <div
-                                  className="w-2.5 h-2.5 rounded-full flex-shrink-0"
+                                  className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full flex-shrink-0"
                                   style={{ backgroundColor: LEVEL_COLORS[school.level] }}
                                 />
-                                <span className="font-medium text-slate-800">{school.name}</span>
+                                <span className="font-medium text-slate-800 line-clamp-1">{school.name}</span>
                                 {badge && (
-                                  <span className={`text-xs px-2 py-0.5 rounded-full ${badge.className}`}>
+                                  <span className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full whitespace-nowrap hidden sm:inline ${badge.className}`}>
                                     {badge.label}
                                   </span>
                                 )}
                               </div>
                             </td>
-                            <td className="p-3 text-slate-600">{school.district}</td>
-                            <td className="p-3 text-center font-semibold text-amber-600">{school.fitScore}</td>
-                            <td className="p-3 text-center font-semibold text-blue-600">{school.academicScore}</td>
-                            <td className="p-3 text-center font-semibold text-blue-600">{school.diversityScore}</td>
-                            <td className="p-3 text-slate-600 text-sm">{quadrant}</td>
+                            <td className="p-2 sm:p-3 text-slate-600 hidden sm:table-cell">{school.district}</td>
+                            <td className="p-2 sm:p-3 text-center font-semibold text-amber-600">{school.fitScore}</td>
+                            <td className="p-2 sm:p-3 text-center font-semibold text-blue-600">{school.academicScore}</td>
+                            <td className="p-2 sm:p-3 text-center font-semibold text-green-600">{school.diversityScore}</td>
+                            <td className="p-2 sm:p-3 text-slate-600 text-xs hidden md:table-cell">{quadrant}</td>
                           </tr>
                         )
                       })}
@@ -661,24 +658,24 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
 
         {/* How to Read Legend */}
         <Card className="bg-blue-50/50 border-blue-100">
-          <CardContent className="p-4">
-            <h4 className="font-medium text-blue-800 mb-2">How to Read the Grid</h4>
-            <div className="grid grid-cols-2 gap-2 text-sm">
+          <CardContent className="p-3 sm:p-4">
+            <h4 className="font-medium text-blue-800 mb-2 text-sm sm:text-base">How to Read the Grid</h4>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
               <p>
-                <span className="font-semibold text-green-700">Top-Right (Green):</span>{" "}
-                <span className="text-slate-600">Balanced & Strong — high academics AND diverse student body</span>
+                <span className="font-semibold text-green-700">Top-Right:</span>{" "}
+                <span className="text-slate-600">Balanced & Strong</span>
               </p>
               <p>
-                <span className="font-semibold text-yellow-700">Top-Left (Yellow):</span>{" "}
-                <span className="text-slate-600">Diverse but Lower Performing — diverse, but academics need work</span>
+                <span className="font-semibold text-yellow-700">Top-Left:</span>{" "}
+                <span className="text-slate-600">Diverse but Lower Performing</span>
               </p>
               <p>
-                <span className="font-semibold text-blue-700">Bottom-Right (Blue):</span>{" "}
-                <span className="text-slate-600">Strong but Less Diverse — great scores, but one group dominates</span>
+                <span className="font-semibold text-blue-700">Bottom-Right:</span>{" "}
+                <span className="text-slate-600">Strong but Less Diverse</span>
               </p>
               <p>
-                <span className="font-semibold text-red-700">Bottom-Left (Red):</span>{" "}
-                <span className="text-slate-600">Needs Improvement — both areas have room to grow</span>
+                <span className="font-semibold text-red-700">Bottom-Left:</span>{" "}
+                <span className="text-slate-600">Needs Improvement</span>
               </p>
             </div>
           </CardContent>

@@ -1800,39 +1800,39 @@ export function ResultsContent() {
         </div>
 
         {honorableMentions.length > 0 && (
-          <div>
-            <h2 className="text-2xl font-semibold text-foreground mb-1">Honorable Mentions</h2>
-            <p className="text-sm text-muted-foreground mb-4">
+          <div className="mt-8 md:mt-12">
+            <h2 className="text-xl md:text-2xl font-semibold text-foreground mb-1">Honorable Mentions</h2>
+            <p className="text-xs md:text-sm text-muted-foreground mb-4">
               These neighborhoods are also great options and worth considering.
             </p>
-            <div className="space-y-4">
+            <div className="space-y-3 md:space-y-4">
               {honorableMentions.map((result, index) => (
                 <Card
                   key={result.zipCode}
-                  className="border border-border bg-white p-6 relative overflow-hidden opacity-90"
+                  className="border border-border bg-white/90 p-4 md:p-6 relative overflow-hidden"
                 >
-                  <div className="absolute top-0 left-0 bg-muted px-3 py-1 rounded-br-lg border-b border-r border-border z-10">
+                  <div className="absolute top-0 left-0 bg-muted px-2.5 md:px-3 py-1 rounded-br-lg border-b border-r border-border z-10">
                     <span className="text-xs font-bold text-muted-foreground">#{index + 5}</span>
                   </div>
 
-                  <div className="flex items-start justify-between pt-2">
-                    <div className="flex-1">
-                      <div className="flex items-center gap-3 mb-3">
-                        <h2 className="text-2xl font-semibold text-foreground">
+                  <div className="flex items-start justify-between pt-4 md:pt-2">
+                    <div className="flex-1 min-w-0">
+                      <div className="flex flex-wrap items-start md:items-center gap-2 md:gap-3 mb-3">
+                        <h2 className="text-lg md:text-2xl font-semibold text-foreground">
                           {result.city ? `${result.city} (${result.zipCode})` : `ZIP ${result.zipCode}`}
                         </h2>
 
                         {result.isd && (
-                          <div className="rounded-full bg-purple-100 text-purple-700 px-3 py-1">
-                            <span className="text-xs font-medium">{result.isd}</span>
+                          <div className="rounded-full bg-purple-100 text-purple-700 px-2.5 md:px-3 py-0.5 md:py-1">
+                            <span className="text-[10px] md:text-xs font-medium">{result.isd}</span>
                           </div>
                         )}
 
                         <Tooltip>
                           <TooltipTrigger asChild>
-                            <div className="rounded-full bg-muted px-3 py-1 cursor-help">
-                              <span className="text-sm font-medium text-foreground">
-                                Match Score:{" "}
+                            <div className="rounded-full bg-muted px-2.5 md:px-3 py-0.5 md:py-1 cursor-help">
+                              <span className="text-xs md:text-sm font-medium text-foreground">
+                                Match:{" "}
                                 {result.scoringDetails?.adjustedScore
                                   ? `${Math.round(result.scoringDetails.adjustedScore)}/100`
                                   : `${result.score}/100`}
@@ -1850,7 +1850,7 @@ export function ResultsContent() {
                           <Tooltip>
                             <TooltipTrigger asChild>
                               <div
-                                className={`rounded-full px-2.5 py-0.5 cursor-help ${
+                                className={`rounded-full px-2 md:px-2.5 py-0.5 cursor-help ${
                                   result.dataQuality === "High"
                                     ? "bg-green-100 text-green-700"
                                     : result.dataQuality === "Medium"
@@ -1858,7 +1858,7 @@ export function ResultsContent() {
                                       : "bg-gray-100 text-gray-600"
                                 }`}
                               >
-                                <span className="text-xs font-medium">{result.dataQuality} Quality</span>
+                                <span className="text-[10px] md:text-xs font-medium">{result.dataQuality} Quality</span>
                               </div>
                             </TooltipTrigger>
                             <TooltipContent>

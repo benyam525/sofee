@@ -165,23 +165,23 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
   }
 
   return (
-    <div className="space-y-8">
+    <div className="space-y-5 sm:space-y-8">
       {/* Header */}
-      <div className="flex items-start justify-between">
+      <div className="flex items-start justify-between gap-3">
         <div>
-          <h2 className="text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">Civic Profile</h2>
-          <p className="text-slate-500 mt-1">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-semibold tracking-tight text-slate-900">Civic Profile</h2>
+          <p className="text-sm sm:text-base text-slate-500 mt-1">
             Local voting patterns for {city}, TX {zip_code}
           </p>
-          <p className="text-xs text-slate-400 mt-1">Based on the latest certified election results.</p>
+          <p className="text-[10px] sm:text-xs text-slate-400 mt-1">Based on the latest certified election results.</p>
         </div>
-        <Image src="/sofee-logo.png" alt="Sofee" width={48} height={48} className="opacity-60" />
+        <Image src="/sofee-logo.png" alt="Sofee" width={48} height={48} className="opacity-60 w-8 h-8 sm:w-12 sm:h-12" />
       </div>
 
       {/* Single/Multi County Badge */}
       <div className="flex items-center gap-2">
         <span
-          className={`inline-flex items-center gap-1.5 text-xs font-medium px-3 py-1.5 rounded-full ${
+          className={`inline-flex items-center gap-1 sm:gap-1.5 text-[10px] sm:text-xs font-medium px-2 sm:px-3 py-1 sm:py-1.5 rounded-full ${
             is_multi_county
               ? "bg-amber-50 text-amber-700 border border-amber-200"
               : "bg-emerald-50 text-emerald-700 border border-emerald-200"
@@ -189,31 +189,33 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
         >
           <MapPin className="h-3 w-3" />
           {is_multi_county
-            ? `Multi-county ZIP (${countiesDisplay})`
-            : `Single-county ZIP (${primary_counties[0]} County)`}
+            ? `Multi-county (${countiesDisplay})`
+            : `${primary_counties[0]} County`}
         </span>
       </div>
 
       {hasReputation && (
         <div className="flex justify-center">
-          <div className="inline-flex rounded-full p-1 bg-slate-100 border border-slate-200">
+          <div className="inline-flex rounded-full p-0.5 sm:p-1 bg-slate-100 border border-slate-200">
             <button
               onClick={() => setViewMode("voting")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                 viewMode === "voting" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"
               }`}
             >
-              <BarChart3 className="h-4 w-4" />
-              Voting Data
+              <BarChart3 className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Voting Data</span>
+              <span className="sm:hidden">Voting</span>
             </button>
             <button
               onClick={() => setViewMode("reputation")}
-              className={`flex items-center gap-2 px-4 py-2 rounded-full text-sm font-medium transition-all ${
+              className={`flex items-center gap-1.5 sm:gap-2 px-3 sm:px-4 py-1.5 sm:py-2 rounded-full text-xs sm:text-sm font-medium transition-all ${
                 viewMode === "reputation" ? "bg-white text-slate-900 shadow-sm" : "text-slate-500 hover:text-slate-700"
               }`}
             >
-              <MessageSquare className="h-4 w-4" />
-              Local Reputation
+              <MessageSquare className="h-3.5 w-3.5 sm:h-4 sm:w-4" />
+              <span className="hidden sm:inline">Local Reputation</span>
+              <span className="sm:hidden">Reputation</span>
             </button>
           </div>
         </div>
@@ -221,10 +223,10 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
 
       {viewMode === "voting" && (
         <>
-          <div className={`rounded-2xl p-6 border ${getLeanBgColor(political_spectrum.side)}`}>
-            <div className="flex items-center justify-between mb-4">
+          <div className={`rounded-xl sm:rounded-2xl p-4 sm:p-6 border ${getLeanBgColor(political_spectrum.side)}`}>
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2 sm:gap-4 mb-4">
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-semibold text-slate-900">Overall Political Lean</h3>
+                <h3 className="text-base sm:text-lg font-semibold text-slate-900">Overall Political Lean</h3>
                 <button
                   onClick={() => setShowSpectrumInfo(!showSpectrumInfo)}
                   className="text-slate-400 hover:text-slate-600 transition-colors"
@@ -235,7 +237,7 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
               </div>
               {/* Trend Badge */}
               <div
-                className={`flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-medium ${getTrendColor()}`}
+                className={`flex items-center gap-1.5 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-full text-[10px] sm:text-xs font-medium w-fit ${getTrendColor()}`}
               >
                 {getTrendIcon()}
                 <span>{trend.description}</span>
@@ -243,13 +245,13 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
             </div>
 
             {/* Spectrum Label */}
-            <p className={`text-2xl font-semibold mb-6 ${getLeanTextColor(political_spectrum.side)}`}>
+            <p className={`text-xl sm:text-2xl font-semibold mb-4 sm:mb-6 ${getLeanTextColor(political_spectrum.side)}`}>
               {political_spectrum.label}
             </p>
 
             {/* 7-Segment Spectrum Bar */}
             <div className="space-y-2">
-              <div className="flex h-3 rounded-full overflow-hidden">
+              <div className="flex h-2.5 sm:h-3 rounded-full overflow-hidden">
                 {SPECTRUM_SEGMENTS.map((segment, idx) => (
                   <div
                     key={segment.key}
@@ -257,21 +259,21 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
                   />
                 ))}
               </div>
-              {/* Segment Labels */}
-              <div className="flex justify-between text-[10px] text-slate-500 px-1">
+              {/* Segment Labels - hide some on mobile */}
+              <div className="flex justify-between text-[8px] sm:text-[10px] text-slate-500 px-0.5 sm:px-1">
                 {SPECTRUM_SEGMENTS.map((segment, idx) => (
                   <span
                     key={segment.key}
-                    className={`${idx === activeSegmentIndex ? "font-semibold text-slate-900" : ""}`}
+                    className={`${idx === activeSegmentIndex ? "font-semibold text-slate-900" : ""} ${idx !== 0 && idx !== 3 && idx !== 6 ? "hidden sm:inline" : ""}`}
                   >
                     {segment.label}
                   </span>
                 ))}
               </div>
               {/* Marker indicator */}
-              <div className="relative h-4 mt-1">
+              <div className="relative h-3 sm:h-4 mt-1">
                 <div
-                  className="absolute w-3 h-3 bg-slate-900 rounded-full transform -translate-x-1/2 transition-all duration-300"
+                  className="absolute w-2.5 sm:w-3 h-2.5 sm:h-3 bg-slate-900 rounded-full transform -translate-x-1/2 transition-all duration-300"
                   style={{ left: `${((activeSegmentIndex + 0.5) / SPECTRUM_SEGMENTS.length) * 100}%` }}
                 />
               </div>
@@ -305,10 +307,10 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
           </div>
 
           {/* 2020 Presidential */}
-          <div className="bg-slate-50 rounded-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between flex-wrap gap-2">
+          <div className="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
               <div className="flex items-center gap-2">
-                <h3 className="text-lg font-medium text-slate-900">2020 Presidential Election</h3>
+                <h3 className="text-base sm:text-lg font-medium text-slate-900">2020 Presidential</h3>
                 <button
                   onClick={() => setShowLeanInfo(!showLeanInfo)}
                   className="text-slate-400 hover:text-slate-600 transition-colors"
@@ -317,7 +319,7 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
                   <Info className="h-4 w-4" />
                 </button>
               </div>
-              <span className="text-xs text-slate-500 bg-white px-2 py-1 rounded-full border border-slate-200">
+              <span className="text-[10px] sm:text-xs text-slate-500 bg-white px-2 py-0.5 sm:py-1 rounded-full border border-slate-200 w-fit">
                 {presidential_2020.data_scope}
               </span>
             </div>
@@ -343,30 +345,30 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
             )}
 
             {/* Lean Bar */}
-            <div className="space-y-2">
-              <div className="h-8 rounded-full overflow-hidden flex shadow-inner">
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className="h-6 sm:h-8 rounded-full overflow-hidden flex shadow-inner">
                 <div
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-end pr-3 transition-all duration-500"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-end pr-2 sm:pr-3 transition-all duration-500"
                   style={{ width: `${presidential_2020.dem_share * 100}%` }}
                 >
                   {presidential_2020.dem_share >= 0.15 && (
-                    <span className="text-xs font-medium text-white">
+                    <span className="text-[10px] sm:text-xs font-medium text-white">
                       {Math.round(presidential_2020.dem_share * 100)}%
                     </span>
                   )}
                 </div>
                 <div
-                  className="bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-start pl-3 transition-all duration-500"
+                  className="bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-start pl-2 sm:pl-3 transition-all duration-500"
                   style={{ width: `${presidential_2020.rep_share * 100}%` }}
                 >
                   {presidential_2020.rep_share >= 0.15 && (
-                    <span className="text-xs font-medium text-white">
+                    <span className="text-[10px] sm:text-xs font-medium text-white">
                       {Math.round(presidential_2020.rep_share * 100)}%
                     </span>
                   )}
                 </div>
               </div>
-              <p className="text-sm text-slate-600 text-center">
+              <p className="text-xs sm:text-sm text-slate-600 text-center">
                 {presidential_2020.lean_label} — {Math.round(presidential_2020.dem_share * 100)}% vs{" "}
                 {Math.round(presidential_2020.rep_share * 100)}%
               </p>
@@ -374,35 +376,35 @@ export function CivicProfile({ data, isLoading }: CivicProfileProps) {
           </div>
 
           {/* 2022 Governor */}
-          <div className="bg-slate-50 rounded-2xl p-6 space-y-4">
-            <div className="flex items-center justify-between flex-wrap gap-2">
-              <h3 className="text-lg font-medium text-slate-900">2022 Governor Election</h3>
-              <span className="text-xs text-slate-500 bg-white px-2 py-1 rounded-full border border-slate-200">
+          <div className="bg-slate-50 rounded-xl sm:rounded-2xl p-4 sm:p-6 space-y-3 sm:space-y-4">
+            <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
+              <h3 className="text-base sm:text-lg font-medium text-slate-900">2022 Governor</h3>
+              <span className="text-[10px] sm:text-xs text-slate-500 bg-white px-2 py-0.5 sm:py-1 rounded-full border border-slate-200 w-fit">
                 {governor_2022.data_scope}
               </span>
             </div>
 
             {/* Lean Bar */}
-            <div className="space-y-2">
-              <div className="h-8 rounded-full overflow-hidden flex shadow-inner">
+            <div className="space-y-1.5 sm:space-y-2">
+              <div className="h-6 sm:h-8 rounded-full overflow-hidden flex shadow-inner">
                 <div
-                  className="bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-end pr-3 transition-all duration-500"
+                  className="bg-gradient-to-r from-blue-500 to-blue-600 flex items-center justify-end pr-2 sm:pr-3 transition-all duration-500"
                   style={{ width: `${governor_2022.dem_share * 100}%` }}
                 >
                   {governor_2022.dem_share >= 0.15 && (
-                    <span className="text-xs font-medium text-white">{Math.round(governor_2022.dem_share * 100)}%</span>
+                    <span className="text-[10px] sm:text-xs font-medium text-white">{Math.round(governor_2022.dem_share * 100)}%</span>
                   )}
                 </div>
                 <div
-                  className="bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-start pl-3 transition-all duration-500"
+                  className="bg-gradient-to-r from-red-500 to-red-600 flex items-center justify-start pl-2 sm:pl-3 transition-all duration-500"
                   style={{ width: `${governor_2022.rep_share * 100}%` }}
                 >
                   {governor_2022.rep_share >= 0.15 && (
-                    <span className="text-xs font-medium text-white">{Math.round(governor_2022.rep_share * 100)}%</span>
+                    <span className="text-[10px] sm:text-xs font-medium text-white">{Math.round(governor_2022.rep_share * 100)}%</span>
                   )}
                 </div>
               </div>
-              <p className="text-sm text-slate-600 text-center">
+              <p className="text-xs sm:text-sm text-slate-600 text-center">
                 {governor_2022.lean_label} — {Math.round(governor_2022.dem_share * 100)}% vs{" "}
                 {Math.round(governor_2022.rep_share * 100)}%
               </p>
