@@ -8,28 +8,29 @@ export default function HomePage() {
       <section
         className="w-full min-h-[48vh] lg:min-h-[52vh] flex items-center pt-[70px] lg:pt-[70px]"
         style={{
-          background: "linear-gradient(180deg, #E8F1FC 0%, #F0F7FF 25%, #F7FAFF 55%, #FFFFFF 100%)",
+          /* Gradient using Sofee Blue (#6EA1D4) undertones */
+          background: "linear-gradient(180deg, #E5EEF7 0%, #EDF3FA 25%, #F5F8FC 55%, #FFFFFF 100%)",
         }}
       >
         <div className="w-full max-w-[1200px] mx-auto px-6 lg:px-12 py-12 lg:py-16">
           <div className="flex flex-col lg:flex-row items-center gap-6 lg:gap-2">
             <div className="relative flex-shrink-0 lg:mr-[42px] lg:-mt-[25px]">
-              {/* Subtle radial highlight behind Sofee */}
+              {/* Subtle radial highlight behind Sofee - using brand blue #6EA1D4 */}
               <div
                 className="absolute inset-0 rounded-full scale-[1.4]"
                 style={{
-                  background: "radial-gradient(circle, rgba(59, 130, 246, 0.07) 0%, transparent 60%)",
+                  background: "radial-gradient(circle, rgba(110, 161, 212, 0.12) 0%, transparent 60%)",
                 }}
               />
 
               <Image
-                src="/sofee-logo.png"
+                src="/sofeev3.png"
                 alt="Sofee - your Dallas suburbs guide"
                 width={214}
                 height={214}
                 className="relative lg:w-[242px] lg:h-[242px]"
                 style={{
-                  filter: "drop-shadow(0 8px 20px rgba(0, 0, 0, 0.15)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.1))",
+                  filter: "drop-shadow(0 8px 20px rgba(0, 0, 0, 0.12)) drop-shadow(0 4px 8px rgba(0, 0, 0, 0.08))",
                 }}
                 priority
               />

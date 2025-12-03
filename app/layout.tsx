@@ -1,13 +1,15 @@
 import type React from "react"
 import type { Metadata } from "next"
-import { Plus_Jakarta_Sans, JetBrains_Mono } from "next/font/google"
+import { Inter, JetBrains_Mono } from "next/font/google"
 import { Analytics } from "@vercel/analytics/next"
 import { SiteNav } from "@/components/site-nav"
 import "./globals.css"
 
-const plusJakarta = Plus_Jakarta_Sans({
+// Inter - per Sofee brand spec (clean, geometric, professional)
+const inter = Inter({
   subsets: ["latin"],
   variable: "--font-sans",
+  weight: ["400", "500", "600", "700"],
 })
 
 const jetbrainsMono = JetBrains_Mono({
@@ -35,7 +37,7 @@ export const metadata: Metadata = {
     siteName: "Sofee",
     images: [
       {
-        url: "/sofee-logo.png",
+        url: "/sofeev3.png",
         width: 800,
         height: 800,
         alt: "Sofee - Dallas Suburbs Guide",
@@ -48,7 +50,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "Sofee - Your Honest Guide to the Dallas Suburbs",
     description: "Find your perfect Dallas suburb with data-driven recommendations for families relocating to DFW.",
-    images: ["/sofee-logo.png"],
+    images: ["/sofeev3.png"],
   },
   icons: {
     icon: [
@@ -77,7 +79,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${plusJakarta.variable} ${jetbrainsMono.variable} font-sans antialiased gradient-bg min-h-screen`}
+        className={`${inter.variable} ${jetbrainsMono.variable} font-sans antialiased gradient-bg min-h-screen`}
       >
         <SiteNav />
         {children}

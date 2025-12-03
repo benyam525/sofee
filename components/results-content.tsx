@@ -1000,12 +1000,12 @@ export function ResultsContent() {
           </Button>
         </div>
 
-        {/* Sofee's Insights Card - visible on all screen sizes */}
+        {/* Sofee's Insights Card - using brand blue #6EA1D4 */}
         {insights.length > 0 && (
           <div className="block w-full mb-8">
-            <div className="glass-card-strong rounded-2xl p-5 md:p-6 border border-amber-200/50 bg-gradient-to-br from-amber-50/80 to-orange-50/60 shadow-lg">
+            <div className="glass-card-strong rounded-2xl p-5 md:p-6 border border-[#6EA1D4]/30 bg-gradient-to-br from-[#6EA1D4]/10 via-white to-sky-50/40 shadow-lg">
               <div className="flex items-center gap-3 mb-4">
-                <div className="p-2 rounded-xl bg-gradient-to-br from-amber-400 to-orange-400 text-white">
+                <div className="p-2 rounded-xl bg-gradient-to-br from-[#6EA1D4] to-[#5A8BC0] text-white">
                   <Lightbulb className="w-5 h-5" />
                 </div>
                 <div>
@@ -1026,7 +1026,7 @@ export function ResultsContent() {
                     insight.type === "value-alternative"
                       ? "bg-emerald-100 text-emerald-600"
                       : insight.type === "just-out-of-reach"
-                        ? "bg-blue-100 text-blue-600"
+                        ? "bg-[#6EA1D4]/20 text-[#5A8BC0]"
                         : "bg-purple-100 text-purple-600"
 
                   return (
@@ -1041,7 +1041,7 @@ export function ResultsContent() {
                         <div className="flex items-center gap-2 mb-1">
                           <span className="text-sm font-semibold text-foreground">{insight.title}</span>
                           {insight.highlight && (
-                            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-amber-100 text-amber-700">
+                            <span className="text-xs font-medium px-2 py-0.5 rounded-full bg-[#6EA1D4]/15 text-[#5A8BC0]">
                               {insight.highlight}
                             </span>
                           )}
