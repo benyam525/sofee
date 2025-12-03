@@ -63,16 +63,16 @@ export default function HomePage() {
           {/* CTA Button */}
           <a
             href="#preferences"
-            className="inline-flex items-center justify-center transition-all duration-200 hover:-translate-y-1 hover:shadow-2xl"
+            className="inline-flex items-center justify-center transition-all duration-200 hover:-translate-y-0.5 hover:opacity-95"
             style={{
               padding: "16px 36px",
               borderRadius: "999px",
               fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
               fontSize: "17px",
               fontWeight: 600,
-              background: "linear-gradient(135deg, #3579D6 0%, #5593F0 100%)",
+              background: "linear-gradient(135deg, #6EA1D4 0%, #5A8BC0 100%)",
               color: "#FFFFFF",
-              boxShadow: "0 16px 40px rgba(53, 121, 214, 0.35)",
+              boxShadow: "0 8px 24px rgba(110, 161, 212, 0.35)",
             }}
           >
             Find My Best Suburbs
