@@ -29,6 +29,7 @@ import type { ZipSchoolSummary } from "@/types/schools"
 // import { schoolQualityIndex } from "@/lib/schoolQuality"
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip"
 import { ZipPersonaTeaser } from "@/components/zip-persona-insight"
+import { LeadCaptureSection } from "@/components/lead-capture-section"
 
 // REMOVED: Define ZipMetrics interface and import generateZipPersona function
 // All persona logic now lives in the ZipPersonaTeaser component which reads from zipPersonas.json
@@ -1745,6 +1746,23 @@ export function ResultsContent() {
             ))}
           </div>
         </div>
+
+        {/* Lead Capture Section */}
+        <LeadCaptureSection
+          topMatches={topMatches.map((m) => ({ zipCode: m.zipCode, city: m.city }))}
+          budgetMin={searchParams.get("budgetMin") || undefined}
+          budgetMax={searchParams.get("budget") || undefined}
+          priorities={{
+            schoolQuality: searchParams.get("schoolQuality") || undefined,
+            commuteBurden: searchParams.get("commuteBurden") || undefined,
+            safetyStability: searchParams.get("safetyStability") || undefined,
+            affordability: searchParams.get("affordability") || undefined,
+            lifestyleConvenienceCulture: searchParams.get("lifestyleConvenienceCulture") || undefined,
+            childDevelopmentOpportunity: searchParams.get("childDevelopmentOpportunity") || undefined,
+            taxBurden: searchParams.get("taxBurden") || undefined,
+            tollRoadConvenience: searchParams.get("tollRoadConvenience") || undefined,
+          }}
+        />
 
         {honorableMentions.length > 0 && (
           <div className="mt-8 md:mt-12">
