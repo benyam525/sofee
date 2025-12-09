@@ -152,7 +152,7 @@ function SofeeThinkingLoader() {
     <div className="min-h-[60vh] flex flex-col items-center justify-center">
       {/* Sofee thinking image with subtle bounce */}
       <div className="relative mb-8 animate-bounce-subtle">
-        <img src="/sofee-thinking.png" alt="Sofee thinking" className="w-64 h-auto md:w-80 drop-shadow-xl" />
+        <img src="/sofee-logo.png" alt="Sofee thinking" className="w-64 h-auto md:w-80 drop-shadow-xl" />
       </div>
 
       {/* Loading message with fade transition */}
