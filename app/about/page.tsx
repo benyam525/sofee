@@ -13,9 +13,11 @@ export default function AboutPage() {
           <div className="inline-block mb-4">
             <Image src="/sofee-logo.png" alt="Sofee" width={280} height={187} className="mx-auto" />
           </div>
+          <h1 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">
+            We're not here to sell you a suburb.
+          </h1>
           <p className="text-xl text-slate-600 max-w-2xl mx-auto leading-relaxed">
-            Your honest guide to finding the right Dallas suburb — no fluff, no sponsored listings, just data-driven
-            insights to help your family make the best decision.
+            Just honest, data-backed guidance so your family lands exactly where you belong.
           </p>
         </div>
       </section>
@@ -28,11 +30,12 @@ export default function AboutPage() {
               <div className="w-12 h-12 bg-rose-100 rounded-xl flex items-center justify-center mb-4">
                 <Heart className="w-6 h-6 text-rose-500" />
               </div>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Why We Built This</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-3">Why Sofee Exists</h2>
               <p className="text-slate-600 leading-relaxed">
-                Moving to DFW is overwhelming. There are dozens of suburbs, each with different school districts, price
-                points, and vibes. We built Sofee to cut through the noise and give families a clear, unbiased starting
-                point.
+                Moving to DFW is chaos. Dozens of suburbs. Conflicting opinions. Facebook groups full of "well, my realtor said…" and your cousin's hot take on Frisco vs. McKinney.
+              </p>
+              <p className="text-slate-600 leading-relaxed mt-3">
+                We built Sofee because families deserve better than guesswork. No sponsored listings. No hidden agendas. Just clarity.
               </p>
             </div>
 
@@ -40,10 +43,12 @@ export default function AboutPage() {
               <div className="w-12 h-12 bg-primary/10 rounded-xl flex items-center justify-center mb-4">
                 <Target className="w-6 h-6 text-primary" />
               </div>
-              <h2 className="text-xl font-bold text-slate-900 mb-3">Our Approach</h2>
+              <h2 className="text-xl font-bold text-slate-900 mb-3">How It Works</h2>
               <p className="text-slate-600 leading-relaxed">
-                Sofee combines real data — median home prices, school ratings, commute times, safety stats, and local
-                amenities — into a personalized scoring system based on what matters most to <em>you</em>.
+                Sofee pulls real data — median home prices, school ratings, commute times, safety stats, tax burdens, and local amenities — and weighs it against what your family actually cares about.
+              </p>
+              <p className="text-slate-600 leading-relaxed mt-3">
+                You tell us your budget, your priorities, your dealbreakers. We tell you where you belong.
               </p>
             </div>
           </div>
