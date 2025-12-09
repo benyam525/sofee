@@ -1,6 +1,7 @@
 "use client"
 
 import Link from "next/link"
+import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
 import { Home, BarChart3, GraduationCap, Info, Menu, X, Sparkles, Vote, Fingerprint } from "lucide-react"
@@ -28,7 +29,7 @@ export function SiteNav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <span className="font-bold text-lg text-slate-800 group-hover:text-primary transition-colors">Sofee</span>
+            <Image src="/sofee-logo-nav.png" alt="Sofee" width={80} height={32} className="h-8 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
