@@ -43,7 +43,7 @@ export default function HomePage() {
               marginBottom: "20px",
             }}
           >
-            Know exactly where you belong.
+            Choosing a suburb shouldn't feel like a group project.
           </h1>
 
           {/* Subcopy */}
@@ -58,7 +58,7 @@ export default function HomePage() {
               margin: "0 auto 36px",
             }}
           >
-            Powered by data from 27 North Dallas ZIPs, Sofee turns guesswork into clarity.
+            Sofee cuts through the noise, the rumors, and the "my friend said…" so you know exactly where your family belongs in North Dallas.
           </p>
 
           {/* CTA Button */}
@@ -76,7 +76,7 @@ export default function HomePage() {
               boxShadow: "0 8px 24px rgba(110, 161, 212, 0.35)",
             }}
           >
-            Find My Best Suburbs
+            Show Me Where I Belong
             <svg className="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
