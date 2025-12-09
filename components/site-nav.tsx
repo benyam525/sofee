@@ -29,7 +29,7 @@ export function SiteNav() {
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
           <Link href="/" className="flex items-center group">
-            <Image src="/sofee-logo-nav.png" alt="Sofee" width={80} height={32} className="h-8 w-auto" />
+            <Image src="/sofee-logo-nav.png" alt="Sofee" width={60} height={24} className="h-5 w-auto" />
           </Link>
 
           {/* Desktop Navigation */}
