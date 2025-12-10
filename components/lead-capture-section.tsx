@@ -3,12 +3,12 @@
 import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { LeadCaptureModal } from "@/components/lead-capture-modal"
-import { UserPlus } from "lucide-react"
 
 interface LeadCaptureSectionProps {
-  topMatches: Array<{ zipCode: string; city?: string }>
+  topMatches: Array<{ zipCode: string; city?: string; score?: number }>
   budgetMin?: string
   budgetMax?: string
+  workplaceZip?: string
   priorities?: {
     schoolQuality?: string
     commuteBurden?: string
@@ -19,40 +19,47 @@ interface LeadCaptureSectionProps {
     taxBurden?: string
     tollRoadConvenience?: string
   }
+  preferences?: {
+    lifestyleTags?: string
+    excludedCities?: string
+    preferTownCenter?: string
+    preferNewerHomes?: string
+    preferEstablishedNeighborhoods?: string
+  }
 }
 
 export function LeadCaptureSection({
   topMatches,
   budgetMin,
   budgetMax,
+  workplaceZip,
   priorities,
+  preferences,
 }: LeadCaptureSectionProps) {
   const [modalOpen, setModalOpen] = useState(false)
 
   return (
     <>
-      <div className="mt-8 md:mt-12">
-        <div className="bg-gradient-to-br from-sky-50 to-white rounded-2xl p-6 md:p-8 border border-sky-100 shadow-sm">
-          <div className="max-w-2xl mx-auto text-center">
-            <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-3">
-              Ready to take the next step?
-            </h3>
-            <p className="text-slate-600 mb-6">
-              We'll connect you with a local agent who already knows your budget,
-              priorities, and top neighborhoods — no starting from scratch.
-            </p>
-            <Button
-              onClick={() => setModalOpen(true)}
-              size="lg"
-              className="bg-primary hover:bg-primary/90 text-white px-8"
-            >
-              <UserPlus className="w-4 h-4 mr-2" />
-              Connect Me With an Agent
-            </Button>
-            <p className="text-xs text-slate-500 mt-4">
-              No cold calls. No spam. Just a helpful intro.
-            </p>
-          </div>
+      <div className="bg-gradient-to-br from-sky-50/80 to-white rounded-2xl p-6 md:p-8 border border-sky-100/50 shadow-sm">
+        <div className="max-w-2xl mx-auto text-center">
+          <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-3">
+            Want a warm intro to our local expert?
+          </h3>
+          <p className="text-slate-600 mb-6 leading-relaxed">
+            We don't work with a list of random agents. Sofee partners with one vetted,
+            top-rated North Dallas agent — someone we'd recommend to our own family.
+            She already knows your budget, priorities, and top ZIPs.
+          </p>
+          <Button
+            onClick={() => setModalOpen(true)}
+            size="lg"
+            className="bg-primary hover:bg-primary/90 text-white px-8"
+          >
+            Get Introduced
+          </Button>
+          <p className="text-xs text-slate-500 mt-4">
+            One agent. One intro. No spam.
+          </p>
         </div>
       </div>
 
@@ -62,7 +69,9 @@ export function LeadCaptureSection({
         topMatches={topMatches}
         budgetMin={budgetMin}
         budgetMax={budgetMax}
+        workplaceZip={workplaceZip}
         priorities={priorities}
+        preferences={preferences}
       />
     </>
   )

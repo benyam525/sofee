@@ -9,7 +9,8 @@ interface LeadData {
   notes?: string
   budgetMin?: string
   budgetMax?: string
-  topMatches: Array<{ zipCode: string; city?: string }>
+  workplaceZip?: string
+  topMatches: Array<{ zipCode: string; city?: string; score?: number }>
   priorities?: {
     schoolQuality?: string
     commuteBurden?: string
@@ -20,63 +21,88 @@ interface LeadData {
     taxBurden?: string
     tollRoadConvenience?: string
   }
+  preferences?: {
+    lifestyleTags?: string
+    excludedCities?: string
+    preferTownCenter?: string
+    preferNewerHomes?: string
+    preferEstablishedNeighborhoods?: string
+  }
   timestamp: string
+  leadType: "hot" | "nurture"
+}
+
+const timelineLabels: Record<string, string> = {
+  asap: "ASAP / Within 3 months",
+  "3-6months": "3–6 months",
+  "6-12months": "6–12 months",
+  exploring: "Just exploring for now",
 }
 
 function formatLeadEmail(lead: LeadData): string {
-  const timelineLabels: Record<string, string> = {
-    asap: "ASAP / Within 3 months",
-    "3-6months": "3–6 months",
-    "6-12months": "6–12 months",
-    exploring: "Just exploring for now",
+  const topMatchesList = lead.topMatches
+    .map((m, i) => {
+      const location = m.city ? `${m.zipCode} (${m.city})` : m.zipCode
+      const score = m.score ? ` — ${Math.round(m.score)}/100` : ""
+      return `${i + 1}. ${location}${score}`
+    })
+    .join("\n")
+
+  const formatYesNo = (value?: string) => {
+    if (!value) return "No"
+    return value === "true" ? "Yes" : "No"
   }
 
-  const topMatchesList = lead.topMatches
-    .map((m) => (m.city ? `${m.city} (${m.zipCode})` : `ZIP ${m.zipCode}`))
-    .join(", ")
+  return `NEW LEAD FROM SOFEE
 
-  const prioritiesSection = lead.priorities
-    ? Object.entries(lead.priorities)
-        .filter(([, value]) => value)
-        .map(([key, value]) => `  • ${key}: ${value}/5`)
-        .join("\n")
-    : "Not specified"
-
-  return `
-NEW LEAD FROM SOFEE
-====================
-
-CONTACT INFORMATION
--------------------
 Name: ${lead.firstName} ${lead.lastName}
 Email: ${lead.email}
 Phone: ${lead.phone}
 Timeline: ${timelineLabels[lead.timeline] || lead.timeline}
-
-TOP NEIGHBORHOODS
------------------
-${topMatchesList}
-
-BUDGET
-------
-Min: $${Number(lead.budgetMin || 0).toLocaleString()}
-Max: $${Number(lead.budgetMax || 0).toLocaleString()}
-
-PRIORITIES
-----------
-${prioritiesSection}
-
-NOTES
------
-${lead.notes || "None provided"}
+Notes: ${lead.notes || "None"}
 
 ---
+
+SEARCH CRITERIA
+
+Budget: $${Number(lead.budgetMin || 0).toLocaleString()} – $${Number(lead.budgetMax || 0).toLocaleString()}
+Workplace ZIP: ${lead.workplaceZip || "Not provided"}
+
+Top Matches:
+${topMatchesList}
+
+Priorities (scale of 1-5):
+- School Quality: ${lead.priorities?.schoolQuality || "3"}
+- Commute Burden: ${lead.priorities?.commuteBurden || "3"}
+- Safety & Stability: ${lead.priorities?.safetyStability || "3"}
+- Lifestyle/Convenience: ${lead.priorities?.lifestyleConvenienceCulture || "3"}
+- Family-Friendly Amenities: ${lead.priorities?.childDevelopmentOpportunity || "3"}
+- Tax Burden: ${lead.priorities?.taxBurden || "3"}
+- Toll Road Convenience: ${lead.priorities?.tollRoadConvenience || "3"}
+
+Lifestyle Tags: ${lead.preferences?.lifestyleTags || "None"}
+Excluded Cities: ${lead.preferences?.excludedCities || "None"}
+
+Preferences:
+- Town Center: ${formatYesNo(lead.preferences?.preferTownCenter)}
+- Newer Homes: ${formatYesNo(lead.preferences?.preferNewerHomes)}
+- Established Neighborhoods: ${formatYesNo(lead.preferences?.preferEstablishedNeighborhoods)}
+
+---
+
 Submitted: ${new Date(lead.timestamp).toLocaleString("en-US", {
     timeZone: "America/Chicago",
     dateStyle: "full",
     timeStyle: "short",
-  })} CT
-`
+  })} CT`
+}
+
+function getEmailSubject(lead: LeadData): string {
+  const timelineText = timelineLabels[lead.timeline] || lead.timeline
+  if (lead.leadType === "hot") {
+    return `🔥 New Sofee Lead: ${lead.firstName} ${lead.lastName} — ${timelineText}`
+  }
+  return `🌱 Nurture Lead: ${lead.firstName} ${lead.lastName} — ${timelineText}`
 }
 
 export async function POST(request: Request) {
@@ -90,12 +116,13 @@ export async function POST(request: Request) {
 
     // Format the email content
     const emailContent = formatLeadEmail(lead)
+    const emailSubject = getEmailSubject(lead)
 
     // Log the lead for debugging
-    console.log("[LEAD CAPTURE]", emailContent)
+    console.log("[LEAD CAPTURE]", emailSubject)
+    console.log(emailContent)
 
-    // Send email notification using a simple fetch to a mail service
-    // For now, we'll use Resend if available, otherwise just log
+    // Send email notification using Resend if available
     const resendApiKey = process.env.RESEND_API_KEY
 
     if (resendApiKey) {
@@ -109,7 +136,7 @@ export async function POST(request: Request) {
           body: JSON.stringify({
             from: "Sofee Leads <leads@asksofee.com>",
             to: ["hello@asksofee.com"],
-            subject: `New Lead: ${lead.firstName} ${lead.lastName} - ${lead.topMatches[0]?.city || "DFW"}`,
+            subject: emailSubject,
             text: emailContent,
           }),
         })

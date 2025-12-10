@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useState, useRef } from "react"
+import React, { useEffect, useState, useRef } from "react"
 import { useSearchParams, useRouter } from "next/navigation"
 import { Card } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -1062,7 +1062,38 @@ export function ResultsContent() {
           <p className="text-sm text-muted-foreground mb-4">These neighborhoods best align with your priorities</p>
           <div className="space-y-4">
             {topMatches.map((result, index) => (
-              <Card key={result.zipCode} className="border border-border bg-white p-4 md:p-6 relative overflow-hidden">
+              <React.Fragment key={result.zipCode}>
+                {/* Insert Lead Capture after 2nd card */}
+                {index === 2 && (
+                  <LeadCaptureSection
+                    topMatches={topMatches.map((m) => ({
+                      zipCode: m.zipCode,
+                      city: m.city,
+                      score: m.scoringDetails?.adjustedScore ?? m.scoringDetails?.normalized ?? m.score
+                    }))}
+                    budgetMin={searchParams.get("budgetMin") || undefined}
+                    budgetMax={searchParams.get("budget") || undefined}
+                    workplaceZip={searchParams.get("workplaceZip") || undefined}
+                    priorities={{
+                      schoolQuality: searchParams.get("schoolQuality") || undefined,
+                      commuteBurden: searchParams.get("commuteBurden") || undefined,
+                      safetyStability: searchParams.get("safetyStability") || undefined,
+                      affordability: searchParams.get("affordability") || undefined,
+                      lifestyleConvenienceCulture: searchParams.get("lifestyleConvenienceCulture") || undefined,
+                      childDevelopmentOpportunity: searchParams.get("childDevelopmentOpportunity") || undefined,
+                      taxBurden: searchParams.get("taxBurden") || undefined,
+                      tollRoadConvenience: searchParams.get("tollRoadConvenience") || undefined,
+                    }}
+                    preferences={{
+                      lifestyleTags: searchParams.get("lifestyleTags") || undefined,
+                      excludedCities: searchParams.get("excludedCities") || undefined,
+                      preferTownCenter: searchParams.get("preferTownCenter") || undefined,
+                      preferNewerHomes: searchParams.get("preferNewerHomes") || undefined,
+                      preferEstablishedNeighborhoods: searchParams.get("preferEstablishedNeighborhoods") || undefined,
+                    }}
+                  />
+                )}
+              <Card className="border border-border bg-white p-4 md:p-6 relative overflow-hidden">
                 <div className="absolute top-0 left-0 bg-primary px-2.5 md:px-3 py-1 rounded-br-lg border-b border-r border-border z-10">
                   <span className="text-xs font-bold text-primary-foreground">#{index + 1}</span>
                 </div>
@@ -1743,26 +1774,10 @@ export function ResultsContent() {
                   </div>
                 </div>
               </Card>
+              </React.Fragment>
             ))}
           </div>
         </div>
-
-        {/* Lead Capture Section */}
-        <LeadCaptureSection
-          topMatches={topMatches.map((m) => ({ zipCode: m.zipCode, city: m.city }))}
-          budgetMin={searchParams.get("budgetMin") || undefined}
-          budgetMax={searchParams.get("budget") || undefined}
-          priorities={{
-            schoolQuality: searchParams.get("schoolQuality") || undefined,
-            commuteBurden: searchParams.get("commuteBurden") || undefined,
-            safetyStability: searchParams.get("safetyStability") || undefined,
-            affordability: searchParams.get("affordability") || undefined,
-            lifestyleConvenienceCulture: searchParams.get("lifestyleConvenienceCulture") || undefined,
-            childDevelopmentOpportunity: searchParams.get("childDevelopmentOpportunity") || undefined,
-            taxBurden: searchParams.get("taxBurden") || undefined,
-            tollRoadConvenience: searchParams.get("tollRoadConvenience") || undefined,
-          }}
-        />
 
         {honorableMentions.length > 0 && (
           <div className="mt-8 md:mt-12">
