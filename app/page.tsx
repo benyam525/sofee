@@ -58,7 +58,7 @@ export default function HomePage() {
               margin: "0 auto 36px",
             }}
           >
-            Sofee cuts through the noise, the rumors, and the "my friend said…" so you know exactly where your family belongs in North Dallas.
+            Home buying isn't neat. It's stress, noise, trade-offs, and too many tabs open. Sofee takes that chaos and shapes it into a clear answer to the only question that matters: Where do we live?
           </p>
 
           {/* CTA Button */}
