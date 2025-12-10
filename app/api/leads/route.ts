@@ -134,8 +134,8 @@ export async function POST(request: Request) {
             "Content-Type": "application/json",
           },
           body: JSON.stringify({
-            from: "Sofee Leads <leads@asksofee.com>",
-            to: ["hello@asksofee.com"],
+            from: "Sofee Leads <onboarding@resend.dev>",
+            to: ["benyam.tesfai@gmail.com"],
             subject: emailSubject,
             text: emailContent,
           }),
