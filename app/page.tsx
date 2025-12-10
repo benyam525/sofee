@@ -31,6 +31,21 @@ export default function HomePage() {
             />
           </div>
 
+          {/* One-liner */}
+          <p
+            style={{
+              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "SF Pro Text", sans-serif',
+              fontSize: "13px",
+              fontWeight: 500,
+              letterSpacing: "0.05em",
+              textTransform: "uppercase",
+              color: "#6B7C8F",
+              marginBottom: "16px",
+            }}
+          >
+            The smarter way to find your suburb in North Dallas
+          </p>
+
           {/* Headline */}
           <h1
             style={{
@@ -43,7 +58,7 @@ export default function HomePage() {
               marginBottom: "20px",
             }}
           >
-            Choosing a suburb shouldn't feel like a group project.
+            Choosing a suburb is an ink blot — just like the one next to my name.
           </h1>
 
           {/* Subcopy */}
@@ -54,11 +69,13 @@ export default function HomePage() {
               lineHeight: 1.6,
               fontWeight: 400,
               color: "#4A6075",
-              maxWidth: "500px",
+              maxWidth: "540px",
               margin: "0 auto 36px",
             }}
           >
-            Home buying isn't neat. It's stress, noise, trade-offs, and too many tabs open. Sofee takes that chaos and shapes it into a clear answer to the only question that matters: Where do we live?
+            It's messy, irregular, stressful, and noisy — the digital equivalent of too many damn tabs open.
+            <br /><br />
+            I'm Sofee, and my job is simple: take the chaos and give you one clear, confident answer to the question every family gets stuck on: <em>Where the hell should we live?</em>
           </p>
 
           {/* CTA Button */}
