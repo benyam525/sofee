@@ -1,6 +1,7 @@
 "use client"
 
 import { useState } from "react"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { LeadCaptureModal } from "@/components/lead-capture-modal"
 
@@ -42,6 +43,13 @@ export function LeadCaptureSection({
     <>
       <div className="bg-gradient-to-br from-sky-50/80 to-white rounded-2xl p-6 md:p-8 border border-sky-100/50 shadow-sm">
         <div className="max-w-2xl mx-auto text-center">
+          <Image
+            src="/sofee-logo-nav.png"
+            alt="Sofee"
+            width={80}
+            height={32}
+            className="h-8 w-auto mx-auto mb-4"
+          />
           <h3 className="text-xl md:text-2xl font-semibold text-slate-900 mb-3">
             Want a warm intro to our local expert?
           </h3>
