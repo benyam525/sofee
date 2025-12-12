@@ -1,6 +1,6 @@
 import { type NextRequest, NextResponse } from "next/server"
 import dfwData from "@/data/dfwData.json"
-import type { UserWeights, UserAllPrefs, LifestyleTag } from "@/lib/criteria"
+import type { UserWeights, UserAllPrefs, LifestyleTag, CriterionKey } from "@/lib/criteria"
 import { type ZipScores, scoreZipWithPrefs } from "@/lib/scoring"
 import { computeLifestyleSubscores, computeLifestyleConvenienceCultureScore } from "@/lib/scoring/lifestyle"
 import { generateInsights } from "@/lib/insights"
@@ -213,15 +213,23 @@ export async function POST(request: NextRequest) {
         body.preferEstablishedNeighborhoods === "true" || body.preferEstablishedNeighborhoods === true,
     }
 
+    // Parse non-negotiables (up to 3 criteria that get 4x weight)
+    const nonNegotiablesRaw = body.nonNegotiables || ""
+    const nonNegotiables = (
+      typeof nonNegotiablesRaw === "string" ? nonNegotiablesRaw.split(",").filter(Boolean) : nonNegotiablesRaw
+    ) as CriterionKey[]
+
     if (DEBUG) {
       console.log("[v0] Lifestyle tags:", lifestyleTags)
       console.log("[v0] Special prefs:", specialPrefs)
+      console.log("[v0] Non-negotiables:", nonNegotiables)
     }
 
     const userAllPrefs: UserAllPrefs = {
       weights,
       lifestyle: { tags: lifestyleTags },
       special: specialPrefs,
+      nonNegotiables,
     }
 
     const budget = Number.parseInt((body.budget || "500000").replace(/\D/g, ""))

@@ -112,4 +112,5 @@ export interface UserAllPrefs {
   weights: UserWeights
   lifestyle: UserLifestylePrefs
   special: UserSpecialPrefs
+  nonNegotiables: CriterionKey[] // Up to 2-3 criteria that get 4x weight
 }

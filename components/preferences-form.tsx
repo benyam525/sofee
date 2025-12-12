@@ -10,7 +10,7 @@ import { Input } from "@/components/ui/input"
 import { Slider } from "@/components/ui/slider"
 import { Checkbox } from "@/components/ui/checkbox"
 import { Switch } from "@/components/ui/switch"
-import { CRITERIA, type UserWeights, type LifestyleTag, type UserSpecialPrefs } from "@/lib/criteria"
+import { CRITERIA, type UserWeights, type LifestyleTag, type UserSpecialPrefs, type CriterionKey } from "@/lib/criteria"
 
 const PREFERENCES_STORAGE_KEY = "sofee-preferences"
 
@@ -22,6 +22,7 @@ interface StoredPreferences {
   lifestyleTags: LifestyleTag[]
   specialPrefs: UserSpecialPrefs
   excludedCities: string[]
+  nonNegotiables: CriterionKey[]
 }
 
 export function PreferencesForm() {
@@ -48,6 +49,7 @@ export function PreferencesForm() {
     preferEstablishedNeighborhoods: false,
   })
   const [excludedCities, setExcludedCities] = useState<string[]>([])
+  const [nonNegotiables, setNonNegotiables] = useState<CriterionKey[]>([])
 
   useEffect(() => {
     try {
@@ -61,6 +63,7 @@ export function PreferencesForm() {
         setLifestyleTags(prefs.lifestyleTags)
         setSpecialPrefs(prefs.specialPrefs)
         setExcludedCities(prefs.excludedCities)
+        setNonNegotiables(prefs.nonNegotiables || [])
       }
     } catch (e) {
       // Ignore localStorage errors
@@ -135,6 +138,19 @@ export function PreferencesForm() {
     })
   }
 
+  const handleNonNegotiableToggle = (key: CriterionKey) => {
+    setNonNegotiables((prev) => {
+      if (prev.includes(key)) {
+        return prev.filter((k) => k !== key)
+      } else {
+        if (prev.length >= 3) {
+          return prev // Max 3 non-negotiables
+        }
+        return [...prev, key]
+      }
+    })
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
@@ -146,6 +162,7 @@ export function PreferencesForm() {
       lifestyleTags,
       specialPrefs,
       excludedCities,
+      nonNegotiables,
     }
     try {
       localStorage.setItem(PREFERENCES_STORAGE_KEY, JSON.stringify(prefsToStore))
@@ -164,6 +181,7 @@ export function PreferencesForm() {
       preferNewerHomes: specialPrefs.preferNewerHomes.toString(),
       preferEstablishedNeighborhoods: specialPrefs.preferEstablishedNeighborhoods.toString(),
       excludedCities: excludedCities.join(","),
+      nonNegotiables: nonNegotiables.join(","),
     })
 
     Object.entries(weights).forEach(([key, value]) => {
@@ -270,6 +288,40 @@ export function PreferencesForm() {
                 </div>
               </div>
             ))}
+          </div>
+
+          {/* Non-Negotiables Section */}
+          <div className="glass-card rounded-xl md:rounded-2xl p-4 md:p-5 bg-gradient-to-br from-amber-50/80 to-orange-50/60 border border-amber-200/50">
+            <div className="flex items-center gap-2 mb-3">
+              <div className="h-6 w-1 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full" />
+              <div>
+                <h4 className="text-sm font-semibold text-amber-900">Non-Negotiables</h4>
+                <p className="text-[10px] text-amber-700/80">Select up to 3 dealbreakers that must be strong</p>
+              </div>
+            </div>
+            <div className="flex flex-wrap gap-1.5 md:gap-2">
+              {CRITERIA.filter(c => c.key !== "tollRoadConvenience").map((c) => {
+                const isSelected = nonNegotiables.includes(c.key)
+                const isDisabled = nonNegotiables.length >= 3 && !isSelected
+                return (
+                  <button
+                    key={c.key}
+                    type="button"
+                    onClick={() => !isDisabled && handleNonNegotiableToggle(c.key)}
+                    className={`
+                      px-2.5 py-1.5 md:px-3 md:py-2 rounded-lg text-[10px] md:text-xs font-medium
+                      transition-all duration-150 ease-out
+                      ${isSelected
+                        ? "bg-gradient-to-r from-amber-500 to-orange-500 text-white shadow-md ring-2 ring-amber-300"
+                        : "bg-white/90 border border-amber-200 text-amber-800 hover:bg-amber-50 hover:border-amber-300"}
+                      ${isDisabled ? "opacity-40 cursor-not-allowed" : "cursor-pointer active:scale-95"}
+                    `}
+                  >
+                    {c.label}
+                  </button>
+                )
+              })}
+            </div>
           </div>
         </div>
 

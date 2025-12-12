@@ -1,4 +1,4 @@
-import type { UserWeights, UserAllPrefs } from "@/lib/criteria"
+import type { UserWeights, UserAllPrefs, CriterionKey } from "@/lib/criteria"
 
 export interface ZipScores {
   zip: string
@@ -94,46 +94,85 @@ function calculateBaselineScore(zip: ZipScores): number {
   return Math.min(100, Math.max(0, baseline))
 }
 
-function calculatePriorityWeightedScore(zip: ZipScores, weights: UserWeights): number {
-  const schoolMultiplier = weightToMultiplier(weights.schoolQuality)
-  const safetyMultiplier = weightToMultiplier(weights.safetyStability)
-  const commuteMultiplier = weightToMultiplier(weights.commuteBurden)
-  const amenitiesMultiplier = weightToMultiplier(weights.lifestyleConvenienceCulture)
-  const taxMultiplier = weightToMultiplier(weights.taxBurden)
-  const familyMultiplier = weightToMultiplier(weights.childDevelopmentOpportunity)
+function calculatePriorityWeightedScore(
+  zip: ZipScores,
+  weights: UserWeights,
+  nonNegotiables: CriterionKey[] = []
+): number {
+  const nonNegSet = new Set(nonNegotiables)
+
+  // Non-negotiables get 4x multiplier (dominant), regular criteria get base multiplier
+  const getNonNegMultiplier = (key: CriterionKey, baseMultiplier: number) =>
+    nonNegSet.has(key) ? baseMultiplier * 4 : baseMultiplier
+
+  const schoolMultiplier = getNonNegMultiplier("schoolQuality", weightToMultiplier(weights.schoolQuality))
+  const safetyMultiplier = getNonNegMultiplier("safetyStability", weightToMultiplier(weights.safetyStability))
+  const commuteMultiplier = getNonNegMultiplier("commuteBurden", weightToMultiplier(weights.commuteBurden))
+  const amenitiesMultiplier = getNonNegMultiplier(
+    "lifestyleConvenienceCulture",
+    weightToMultiplier(weights.lifestyleConvenienceCulture)
+  )
+  const taxMultiplier = getNonNegMultiplier("taxBurden", weightToMultiplier(weights.taxBurden))
+  const familyMultiplier = getNonNegMultiplier(
+    "childDevelopmentOpportunity",
+    weightToMultiplier(weights.childDevelopmentOpportunity)
+  )
+  const tollMultiplier = getNonNegMultiplier("tollRoadConvenience", weightToMultiplier(weights.tollRoadConvenience))
+
+  // Base category weights (sum to 1.0)
+  const baseWeights = {
+    school: 0.2,
+    safety: 0.2,
+    commute: 0.15,
+    amenities: 0.15,
+    tax: 0.1,
+    family: 0.15,
+    toll: 0.05,
+  }
 
   // Calculate raw weighted contributions
-  const schoolContrib = (zip.schoolQualityScore ?? 0) * schoolMultiplier * 0.2
-  const safetyContrib = (zip.safetyStabilityScore ?? 0) * safetyMultiplier * 0.2
-  const commuteContrib = (zip.commuteBurdenScore ?? 50) * commuteMultiplier * 0.15
-  const amenitiesContrib = (zip.lifestyleConvenienceCultureScore ?? 0) * amenitiesMultiplier * 0.15
-  const taxContrib = (zip.taxBurdenScore ?? 50) * taxMultiplier * 0.1
-  const familyContrib = (zip.childDevelopmentOpportunityScore ?? 0) * familyMultiplier * 0.2
+  const schoolContrib = (zip.schoolQualityScore ?? 0) * schoolMultiplier * baseWeights.school
+  const safetyContrib = (zip.safetyStabilityScore ?? 0) * safetyMultiplier * baseWeights.safety
+  const commuteContrib = (zip.commuteBurdenScore ?? 50) * commuteMultiplier * baseWeights.commute
+  const amenitiesContrib = (zip.lifestyleConvenienceCultureScore ?? 0) * amenitiesMultiplier * baseWeights.amenities
+  const taxContrib = (zip.taxBurdenScore ?? 50) * taxMultiplier * baseWeights.tax
+  const familyContrib = (zip.childDevelopmentOpportunityScore ?? 0) * familyMultiplier * baseWeights.family
+  const tollContrib = (zip.tollRoadConvenienceScore ?? 50) * tollMultiplier * baseWeights.toll
 
-  const rawScore = schoolContrib + safetyContrib + commuteContrib + amenitiesContrib + taxContrib + familyContrib
+  const rawScore =
+    schoolContrib + safetyContrib + commuteContrib + amenitiesContrib + taxContrib + familyContrib + tollContrib
 
-  // Normalize based on max possible score (if all multipliers were 2.0x)
-  // Max raw = 100 * 2.0 * (0.20 + 0.20 + 0.15 + 0.15 + 0.10 + 0.20) = 100 * 2.0 * 1.0 = 200
-  // But we want to normalize to 0-100 based on current multipliers
+  // Normalize based on actual multipliers used
   const totalWeight =
-    schoolMultiplier * 0.2 +
-    safetyMultiplier * 0.2 +
-    commuteMultiplier * 0.15 +
-    amenitiesMultiplier * 0.15 +
-    taxMultiplier * 0.1 +
-    familyMultiplier * 0.2
+    schoolMultiplier * baseWeights.school +
+    safetyMultiplier * baseWeights.safety +
+    commuteMultiplier * baseWeights.commute +
+    amenitiesMultiplier * baseWeights.amenities +
+    taxMultiplier * baseWeights.tax +
+    familyMultiplier * baseWeights.family +
+    tollMultiplier * baseWeights.toll
 
   const normalized = totalWeight > 0 ? rawScore / totalWeight : 0
 
   return Math.min(100, Math.max(0, normalized))
 }
 
-export function scoreZip(zip: ZipScores, weights: UserWeights): ZipFinalScore {
+export function scoreZip(
+  zip: ZipScores,
+  weights: UserWeights,
+  nonNegotiables: CriterionKey[] = []
+): ZipFinalScore {
   const baselineScore = calculateBaselineScore(zip)
-  const priorityWeightedScore = calculatePriorityWeightedScore(zip, weights)
+  const priorityWeightedScore = calculatePriorityWeightedScore(zip, weights, nonNegotiables)
 
-  // Final Sofee Fit Score: 60% baseline + 40% priority-weighted
-  const sofeeFitScore = baselineScore * 0.6 + priorityWeightedScore * 0.4
+  // When non-negotiables are set, weight priority score more heavily
+  // No non-negs: 60% baseline + 40% priority
+  // With non-negs: 40% baseline + 60% priority (user preferences dominate)
+  const hasNonNegs = nonNegotiables.length > 0
+  const baselineWeight = hasNonNegs ? 0.4 : 0.6
+  const priorityWeight = hasNonNegs ? 0.6 : 0.4
+
+  const sofeeFitScore = baselineScore * baselineWeight + priorityWeightedScore * priorityWeight
 
   // Legacy per-criterion breakdown for compatibility
   const perCriterion: any = {}
@@ -174,7 +213,7 @@ export function scoreZip(zip: ZipScores, weights: UserWeights): ZipFinalScore {
 }
 
 export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinalEnriched {
-  const base = scoreZip(zip, prefs.weights)
+  const base = scoreZip(zip, prefs.weights, prefs.nonNegotiables ?? [])
 
   let townCenterBonus = 0
   let lifestyleTagBonus = 0

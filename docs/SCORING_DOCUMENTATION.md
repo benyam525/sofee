@@ -23,6 +23,22 @@ Final Score = Weighted Criteria Score + Lifestyle Tag Modifiers + Special Prefer
 
 You set a weight from 0-3 for each of these 7 criteria. Higher weight = more influence on your score.
 
+### Non-Negotiables (Dealbreakers)
+
+You can mark up to **3 criteria as non-negotiables**. These are your dealbreakers — criteria that MUST be strong for a ZIP to rank well.
+
+**How it works:**
+- Non-negotiable criteria get a **4x multiplier** on top of their weight
+- When non-negotiables are set, user preferences weigh more heavily (60% priority vs 40% baseline)
+- This ensures ZIPs weak in your dealbreakers drop significantly in ranking
+
+**Example:**
+If you mark "School Quality" as non-negotiable with weight 3:
+- Normal: 3 weight → 2.0x multiplier
+- As non-negotiable: 2.0x × 4 = **8.0x multiplier**
+
+This makes schools 4x more important than any other criterion at the same weight level.
+
 | Criterion | What It Measures | Data Sources |
 |-----------|------------------|--------------|
 | **School Quality** | Public school performance in the district | SchoolDigger (STAAR scores), TEA accountability ratings |
