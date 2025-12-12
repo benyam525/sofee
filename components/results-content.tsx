@@ -1663,25 +1663,22 @@ export function ResultsContent() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-1">
                           <div className="text-xs text-muted-foreground">Schools</div>
-                          <div className="group relative">
-                            <Info className="h-3 w-3 text-muted-foreground cursor-help" />
-                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 hidden group-hover:block w-64 p-3 bg-foreground text-background text-xs rounded-md shadow-lg z-10">
-                              <div className="space-y-1.5">
-                                <p className="font-medium">How we calculate school score:</p>
-                                <p>
-                                  <strong>schoolSignal</strong> is a 0–100 composite from state accountability and
-                                  achievement data.
-                                </p>
-                                <p>
-                                  <strong>schoolScore</strong> = round(schoolSignal ÷ 10)
-                                </p>
-                                <p className="text-background/80 italic">
-                                  If schoolSignal is missing, we display "—" and adjust scoring weights proportionally.
-                                </p>
-                              </div>
-                              <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-1 border-4 border-transparent border-t-foreground"></div>
-                            </div>
-                          </div>
+                          <TooltipProvider delayDuration={200}>
+                            <Tooltip>
+                              <TooltipTrigger asChild>
+                                <button className="text-muted-foreground hover:text-foreground transition-colors">
+                                  <Info className="h-3 w-3" />
+                                </button>
+                              </TooltipTrigger>
+                              <TooltipContent side="top" className="max-w-xs bg-slate-800 text-white p-3 rounded-lg shadow-xl z-[100]">
+                                <div className="space-y-1.5 text-xs">
+                                  <p className="font-medium">How we calculate school score:</p>
+                                  <p>Average STAAR proficiency (Math + Reading) across all public schools in this ZIP.</p>
+                                  <p className="text-slate-300 italic">Data sourced from SchoolDigger.</p>
+                                </div>
+                              </TooltipContent>
+                            </Tooltip>
+                          </TooltipProvider>
                         </div>
                         <div className="text-lg font-medium text-foreground">
                           {typeof result.schools === "number" ? result.schools.toFixed(1) : result.schools}
