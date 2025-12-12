@@ -17,8 +17,38 @@ function SchoolCompareContent() {
   const [hoveredSchool, setHoveredSchool] = useState<SchoolRecord | null>(null);
 
   const DFW_ZIPS = [
-    "75007", "75010", "75013", "75019", "75024", "75025", "75034", "75035",
-    "75052", "75070", "75072", "75078", "75009", "75093", "76092", "76034"
+    // Frisco
+    "75034", "75035",
+    // Allen
+    "75002", "75013",
+    // McKinney
+    "75069", "75070", "75071", "75072",
+    // Plano
+    "75023", "75024", "75025", "75074", "75075", "75093",
+    // Prosper
+    "75078",
+    // Celina
+    "75009",
+    // Flower Mound
+    "75022", "75028",
+    // Southlake
+    "76092",
+    // Colleyville
+    "76034",
+    // Carrollton
+    "75006", "75007", "75010",
+    // Coppell
+    "75019",
+    // Grand Prairie
+    "75052",
+    // Richardson
+    "75080", "75081", "75082",
+    // Irving
+    "75038", "75039", "75062",
+    // Farmers Branch
+    "75234", "75244",
+    // Lewisville
+    "75067", "75077",
   ];
 
   useEffect(() => {
