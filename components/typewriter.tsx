@@ -13,8 +13,8 @@ const REJECTED_ATTEMPTS = [
   "a nightmare",
   "a mess",
   "total shi",
-  "an absolute clusterf",
-  "an endless spiral of",
+  "ajhdfkjhasdasf",
+  "😵‍💫🙎🏽🤬🧨💥💀",
   "an ink blot", // Final answer
 ]
 
