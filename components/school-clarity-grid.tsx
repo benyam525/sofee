@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { useState, useMemo, useRef } from "react"
 import { Card, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { Tooltip, TooltipContent, TooltipTrigger, TooltipProvider } from "@/components/ui/tooltip"
@@ -95,6 +95,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
   const [filters, setFilters] = useState(DEFAULT_FILTERS)
   const [showFilters, setShowFilters] = useState(true)
   const [viewMode, setViewMode] = useState<"grid" | "list">("list")
+  const listDetailRef = useRef<HTMLDivElement>(null)
 
   const schoolsWithFit = useMemo(() => {
     return schools.map((s) => ({
@@ -676,7 +677,12 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                           <tr
                             key={school.campusId}
                             className={`border-b hover:bg-slate-50 cursor-pointer ${selectedSchool?.campusId === school.campusId ? "bg-blue-50" : ""}`}
-                            onClick={() => setSelectedSchool(school)}
+                            onClick={() => {
+                              setSelectedSchool(school)
+                              setTimeout(() => {
+                                listDetailRef.current?.scrollIntoView({ behavior: "smooth", block: "nearest" })
+                              }, 50)
+                            }}
                           >
                             <td className="p-2 sm:p-3">
                               <div className="flex items-center gap-1.5 sm:gap-2">
@@ -684,7 +690,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                                   className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full flex-shrink-0"
                                   style={{ backgroundColor: LEVEL_COLORS[school.level] }}
                                 />
-                                <span className="font-medium text-slate-800 line-clamp-1 hover:text-blue-600 hover:underline transition-colors">{school.name}</span>
+                                <span className="font-medium text-slate-800 line-clamp-1">{school.name}</span>
                                 {badge && (
                                   <span className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full whitespace-nowrap hidden sm:inline ${badge.className}`}>
                                     {badge.label}
@@ -708,7 +714,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
 
             {/* Detail Card - Full Width Below List */}
             {selectedSchool && (
-              <Card className="w-full bg-gradient-to-br from-white/90 to-slate-50/90 backdrop-blur-sm border border-white/60 shadow-lg">
+              <Card ref={listDetailRef} className="w-full bg-gradient-to-br from-white/90 to-slate-50/90 backdrop-blur-sm border border-white/60 shadow-lg">
                 <CardContent className="p-5">
                   <div className="flex items-center justify-between mb-3">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-full">
