@@ -39,3 +39,10 @@ Thumbs.db
 # TypeScript
 *.tsbuildinfo
 next-env.d.ts
+
+# API scripts with credentials
+scripts/fetch-schools.sh
+scripts/fetch-schools-batch.sh
+scripts/fetch-schooldigger.ts
+scripts/transform-schools.ts
+public/data/schools_raw_api.json
