@@ -300,7 +300,7 @@ export function PreferencesForm() {
               </div>
             </div>
             <div className="flex flex-wrap gap-1.5 md:gap-2">
-              {CRITERIA.filter(c => c.key !== "tollRoadConvenience").map((c) => {
+              {CRITERIA.map((c) => {
                 const isSelected = nonNegotiables.includes(c.key)
                 const isDisabled = nonNegotiables.length >= 3 && !isSelected
                 return (
