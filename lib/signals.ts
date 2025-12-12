@@ -245,11 +245,63 @@ Messy decision. Clear signal.`,
   },
   {
     slug: "top-3-cities-to-buy",
-    title: "The 3 Cities Most Likely to Appreciate in the Next 5 Years",
-    excerpt: "Based on infrastructure investments, demographic shifts, and economic indicators, these three suburbs stand out.",
+    title: "The 3 North Dallas Cities Best Positioned for Home Value Growth (Next 5 Years)",
+    excerpt: "This isn't about which suburb is \"best.\" It's about where money, policy, and timing line up — and where they don't.",
     publishDate: "2025-01-10",
-    readTime: "6 min read",
-    content: `[CONTENT GOES HERE]`,
+    readTime: "4 min read",
+    content: `After reading the planning docs, these three cities consistently show the strongest setup for the next five years.
+
+---
+
+## 1) Frisco — but only if you understand where to buy
+
+Frisco already won the growth lottery. The next phase is selective.
+
+**Why Frisco still works:**
+- Massive private development districts creating regional draw
+- Commercial tax base that subsidizes city services
+- Continued public place-making investment
+
+But here's the nuance: **Not every neighborhood benefits equally anymore.**
+
+School enrollment pressure, bond fatigue, and sheer size mean proximity to the right nodes matters more than the city label. Frisco is no longer a blanket bet — it's a map-reading exercise.
+
+---
+
+## 2) Celina — infrastructure first, demand second
+
+Celina is still early, but it's not winging it.
+
+- ~$757M capital improvement plan
+- ~$2.3B school bond
+- Parks, roads, utilities arriving before full saturation
+
+That sequence matters. It reduces friction later.
+
+This is how cities quietly re-price over a 5–10 year window: remove bottlenecks early, let demand catch up, then stabilize.
+
+The tradeoff is patience. You're buying before everything feels finished.
+
+---
+
+## 3) Richardson — the quiet repositioning play
+
+Richardson doesn't get hype, and that's the opportunity.
+
+- Massive school reinvestment
+- Silver Line transit access
+- Targeted corridor redevelopment
+- Older housing stock that hasn't fully re-rated yet
+
+This is not a boom-town story. It's a disciplined reinvention story — the kind that tends to show up in appreciation charts later, not headlines.
+
+---
+
+## The pattern across all three
+
+They're not perfect. They're just aligned.
+
+**Infrastructure + policy + capital + timing.** That's the combo.`,
     featured: false,
   },
   {
