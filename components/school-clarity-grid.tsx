@@ -684,7 +684,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                                   className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full flex-shrink-0"
                                   style={{ backgroundColor: LEVEL_COLORS[school.level] }}
                                 />
-                                <span className="font-medium text-slate-800 line-clamp-1">{school.name}</span>
+                                <span className="font-medium text-slate-800 line-clamp-1 hover:text-blue-600 hover:underline transition-colors">{school.name}</span>
                                 {badge && (
                                   <span className={`text-[10px] sm:text-xs px-1.5 sm:px-2 py-0.5 rounded-full whitespace-nowrap hidden sm:inline ${badge.className}`}>
                                     {badge.label}
