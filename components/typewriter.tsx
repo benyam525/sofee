@@ -14,7 +14,6 @@ const REJECTED_ATTEMPTS = [
   "a mess",
   "total shi",
   "ajhdfkjhasdasf",
-  "😵‍💫🙎🏽🤬🧨💥💀",
   "an ink blot", // Final answer
 ]
 
@@ -72,7 +71,6 @@ export function Typewriter({ className, style }: TypewriterProps) {
 
       // Type this attempt - speed varies per attempt
       const isKeyboardSmash = attempt === "ajhdfkjhasdasf"
-      const isEmoji = attempt.includes("😵")
 
       for (const char of attempt) {
         currentText += char
@@ -82,9 +80,6 @@ export function Typewriter({ className, style }: TypewriterProps) {
         if (isKeyboardSmash) {
           // Keyboard smash is FAST and frantic
           charDelay = naturalRandom(15, 35)
-        } else if (isEmoji) {
-          // Emojis typed slower, more deliberate rage
-          charDelay = naturalRandom(60, 120)
         } else {
           // Normal typing with variation
           charDelay = naturalRandom(40, 70)
@@ -101,8 +96,6 @@ export function Typewriter({ className, style }: TypewriterProps) {
         let pauseDuration: number
         if (isKeyboardSmash) {
           pauseDuration = naturalRandom(300, 500) // quick realization
-        } else if (isEmoji) {
-          pauseDuration = naturalRandom(700, 1100) // stares at it longer
         } else if (attempt === "total shi") {
           pauseDuration = naturalRandom(400, 700) // catches self quick
         } else {
@@ -113,9 +106,7 @@ export function Typewriter({ className, style }: TypewriterProps) {
         // Delete the attempt - speed varies
         const deleteSpeed = isKeyboardSmash
           ? naturalRandom(20, 35) // rage delete
-          : isEmoji
-            ? naturalRandom(40, 70) // slower emoji delete
-            : naturalRandom(30, 50)
+          : naturalRandom(30, 50)
 
         for (let j = 0; j < attempt.length; j++) {
           currentText = currentText.slice(0, -1)
