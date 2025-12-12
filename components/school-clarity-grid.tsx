@@ -59,8 +59,14 @@ const DEFAULT_FILTERS = {
   level: "all",
   schoolType: "all",
   zip: "all",
-  district: "all",
+  districts: [] as string[], // Changed to array for multi-select (up to 2)
 }
+
+// Colors for comparing districts (border colors)
+const DISTRICT_COLORS = [
+  "#1e40af", // Blue-800
+  "#b45309", // Amber-700
+]
 
 function getQuadrantLabel(academic: number, balance: number): string {
   if (academic >= 50 && balance >= 50) return "Checks Both Boxes"
@@ -105,10 +111,18 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
       if (filters.level !== "all" && s.level !== filters.level) return false
       if (filters.schoolType !== "all" && s.schoolType !== filters.schoolType) return false
       if (filters.zip !== "all" && s.zip !== filters.zip) return false
-      if (filters.district !== "all" && s.district !== filters.district) return false
+      // Multi-district filter: if districts selected, school must be in one of them
+      if (filters.districts.length > 0 && !filters.districts.includes(s.district)) return false
       return true
     })
   }, [schoolsWithFit, filters])
+
+  // Get district color for a school (for border)
+  const getDistrictColor = (district: string): string | null => {
+    if (filters.districts.length === 0) return null
+    const idx = filters.districts.indexOf(district)
+    return idx >= 0 ? DISTRICT_COLORS[idx] : null
+  }
 
   const sortedSchools = useMemo(() => {
     return [...filteredSchools].sort((a, b) => {
@@ -146,9 +160,24 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
 
   const uniqueZips = [...new Set(schoolsWithFit.map((s) => s.zip))].sort()
   const uniqueDistricts = [...new Set(schoolsWithFit.map((s) => s.district))].sort()
-  const hasActiveFilters = Object.entries(filters).some(([_, v]) => v !== "all")
+  const hasActiveFilters =
+    filters.level !== "all" ||
+    filters.schoolType !== "all" ||
+    filters.zip !== "all" ||
+    filters.districts.length > 0
 
-  const resetFilters = () => setFilters(DEFAULT_FILTERS)
+  const resetFilters = () => setFilters({ ...DEFAULT_FILTERS, districts: [] })
+
+  // Toggle district selection (max 2)
+  const toggleDistrict = (district: string) => {
+    if (filters.districts.includes(district)) {
+      // Remove district
+      setFilters({ ...filters, districts: filters.districts.filter((d) => d !== district) })
+    } else if (filters.districts.length < 2) {
+      // Add district (max 2)
+      setFilters({ ...filters, districts: [...filters.districts, district] })
+    }
+  }
 
   if (!isPremium) {
     return (
@@ -251,19 +280,51 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                 </SelectContent>
               </Select>
             </div>
-            <div className="space-y-1">
-              <label className="text-xs text-slate-500">District</label>
-              <Select value={filters.district} onValueChange={(v) => setFilters({ ...filters, district: v })}>
-                <SelectTrigger className="w-full sm:w-56 h-9">
-                  <SelectValue />
+            <div className="space-y-1 col-span-2 sm:col-span-1">
+              <label className="text-xs text-slate-500">Compare Districts (up to 2)</label>
+              <Select
+                value={filters.districts.length === 0 ? "none" : "selected"}
+                onValueChange={(v) => {
+                  if (v === "none") {
+                    setFilters({ ...filters, districts: [] })
+                  } else if (v !== "selected") {
+                    toggleDistrict(v)
+                  }
+                }}
+              >
+                <SelectTrigger className="w-full sm:w-64 h-9">
+                  <span className="truncate">
+                    {filters.districts.length === 0
+                      ? "All Districts"
+                      : filters.districts.length === 1
+                        ? filters.districts[0].replace(" ISD", "")
+                        : `${filters.districts[0].replace(" ISD", "")} vs ${filters.districts[1].replace(" ISD", "")}`}
+                  </span>
                 </SelectTrigger>
                 <SelectContent>
-                  <SelectItem value="all">All Districts</SelectItem>
-                  {uniqueDistricts.map((d) => (
-                    <SelectItem key={d} value={d}>
-                      {d}
-                    </SelectItem>
-                  ))}
+                  <SelectItem value="none">All Districts</SelectItem>
+                  {uniqueDistricts.map((d) => {
+                    const isSelected = filters.districts.includes(d)
+                    const colorIdx = filters.districts.indexOf(d)
+                    return (
+                      <SelectItem
+                        key={d}
+                        value={d}
+                        disabled={!isSelected && filters.districts.length >= 2}
+                      >
+                        <div className="flex items-center gap-2">
+                          {isSelected && (
+                            <div
+                              className="w-3 h-3 rounded-full border-2"
+                              style={{ borderColor: DISTRICT_COLORS[colorIdx] }}
+                            />
+                          )}
+                          <span className={isSelected ? "font-medium" : ""}>{d}</span>
+                          {isSelected && <span className="text-xs text-slate-400 ml-auto">✓</span>}
+                        </div>
+                      </SelectItem>
+                    )
+                  })}
                 </SelectContent>
               </Select>
             </div>
@@ -277,19 +338,37 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
 
         {/* Legend */}
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
-          <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm">
-            <div className="flex items-center gap-1.5">
-              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-green-500" />
-              <span className="text-slate-600">Elem</span>
+          <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+            {/* School level legend */}
+            <div className="flex items-center gap-3 sm:gap-4 text-xs sm:text-sm">
+              <div className="flex items-center gap-1.5">
+                <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-green-500" />
+                <span className="text-slate-600">Elem</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-blue-500" />
+                <span className="text-slate-600">Middle</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-purple-500" />
+                <span className="text-slate-600">High</span>
+              </div>
             </div>
-            <div className="flex items-center gap-1.5">
-              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-blue-500" />
-              <span className="text-slate-600">Middle</span>
-            </div>
-            <div className="flex items-center gap-1.5">
-              <div className="w-2 sm:w-2.5 h-2 sm:h-2.5 rounded-full bg-purple-500" />
-              <span className="text-slate-600">High</span>
-            </div>
+            {/* District comparison legend (only show when comparing) */}
+            {filters.districts.length > 0 && (
+              <div className="flex items-center gap-3 text-xs sm:text-sm border-l border-slate-200 pl-3 sm:pl-4">
+                <span className="text-slate-400 text-xs">Border:</span>
+                {filters.districts.map((d, idx) => (
+                  <div key={d} className="flex items-center gap-1.5">
+                    <div
+                      className="w-3 h-3 rounded-full bg-slate-200 border-2"
+                      style={{ borderColor: DISTRICT_COLORS[idx] }}
+                    />
+                    <span className="text-slate-600 truncate max-w-24">{d.replace(" ISD", "")}</span>
+                  </div>
+                ))}
+              </div>
+            )}
           </div>
           <div className="flex items-center gap-2 text-xs sm:text-sm text-slate-500">
             <Tooltip>
@@ -401,6 +480,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                         const y = 100 - (school.academicScore / 100) * 100
                         const jitterX = ((idx * 7) % 16) - 8
                         const jitterY = ((idx * 11) % 16) - 8
+                        const districtColor = getDistrictColor(school.district)
 
                         return (
                           <button
@@ -414,10 +494,12 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                               left: `calc(${x}% + ${jitterX}px)`,
                               top: `calc(${y}% + ${jitterY}px)`,
                               backgroundColor: LEVEL_COLORS[school.level],
-                              boxShadow: "0 2px 8px rgba(0,0,0,0.15), 0 0 0 2px rgba(255,255,255,0.9)",
+                              boxShadow: districtColor
+                                ? `0 2px 8px rgba(0,0,0,0.15), 0 0 0 3px ${districtColor}`
+                                : "0 2px 8px rgba(0,0,0,0.15), 0 0 0 2px rgba(255,255,255,0.9)",
                             }}
                             onClick={() => setSelectedSchool(school)}
-                            title={school.name}
+                            title={`${school.name} (${school.district})`}
                           />
                         )
                       })}
