@@ -3,20 +3,21 @@
 import { useState, useEffect, useCallback } from "react"
 
 interface TypewriterProps {
-  text: string
   className?: string
   style?: React.CSSProperties
-  typingSpeed?: number
-  hesitationWords?: string[]
 }
 
-export function Typewriter({
-  text,
-  className,
-  style,
-  typingSpeed = 50,
-  hesitationWords = ["an", "ink", "blot"],
-}: TypewriterProps) {
+// The rejected words/phrases the writer cycles through before landing on "ink blot"
+const REJECTED_ATTEMPTS = [
+  "nightmare",
+  "mess",
+  "total shi",
+  "absolute clusterf",
+  "endless spiral of",
+  "ink blot", // Final answer
+]
+
+export function Typewriter({ className, style }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
   const [cursorVisible, setCursorVisible] = useState(true)
@@ -30,67 +31,61 @@ export function Typewriter({
   }, [])
 
   const typeText = useCallback(async () => {
-    const words = text.split(" ")
+    const baseText = "Choosing a suburb is an "
+    const endingText = " — just like the one next to my name."
+    const typingSpeed = 45
+    const deleteSpeed = 35
+
+    // Type the base text first
     let currentText = ""
+    for (const char of baseText) {
+      currentText += char
+      setDisplayedText(currentText)
+      await new Promise((r) => setTimeout(r, typingSpeed + Math.random() * 25))
+    }
 
-    for (let wordIndex = 0; wordIndex < words.length; wordIndex++) {
-      const word = words[wordIndex]
-      const isHesitationWord = hesitationWords.some(
-        (hw) => word.toLowerCase().startsWith(hw.toLowerCase())
-      )
+    // Now cycle through rejected attempts
+    for (let i = 0; i < REJECTED_ATTEMPTS.length; i++) {
+      const attempt = REJECTED_ATTEMPTS[i]
+      const isLast = i === REJECTED_ATTEMPTS.length - 1
 
-      // Check if this word should have a "wrong attempt" effect
-      // Only do this occasionally and for hesitation words
-      const shouldMistake = isHesitationWord && Math.random() > 0.6
-
-      if (shouldMistake && word.length > 2) {
-        // Type a partial "wrong" word first
-        const wrongChars = Math.min(2, Math.floor(word.length / 2))
-        const wrongAttempt = word.slice(0, wrongChars)
-
-        // Type the wrong attempt
-        for (const char of wrongAttempt) {
-          currentText += char
-          setDisplayedText(currentText)
-          await new Promise((r) => setTimeout(r, typingSpeed))
-        }
-
-        // Pause as if thinking
-        await new Promise((r) => setTimeout(r, 400))
-
-        // Backspace
-        for (let i = 0; i < wrongChars; i++) {
-          currentText = currentText.slice(0, -1)
-          setDisplayedText(currentText)
-          await new Promise((r) => setTimeout(r, 80))
-        }
-
-        // Brief pause before retyping
-        await new Promise((r) => setTimeout(r, 300))
-      }
-
-      // Type the word normally
-      for (const char of word) {
+      // Type this attempt
+      for (const char of attempt) {
         currentText += char
         setDisplayedText(currentText)
         await new Promise((r) => setTimeout(r, typingSpeed + Math.random() * 30))
       }
 
-      // Add space after word (except last word)
-      if (wordIndex < words.length - 1) {
-        currentText += " "
-        setDisplayedText(currentText)
-        await new Promise((r) => setTimeout(r, typingSpeed))
-      }
+      if (!isLast) {
+        // Pause - writer realizes this isn't right
+        // Longer pause for more dramatic effect
+        const pauseDuration = 600 + Math.random() * 400
+        await new Promise((r) => setTimeout(r, pauseDuration))
 
-      // Hesitation pause on certain words
-      if (isHesitationWord) {
-        await new Promise((r) => setTimeout(r, 200))
+        // Delete the attempt (slower, more deliberate)
+        for (let j = 0; j < attempt.length; j++) {
+          currentText = currentText.slice(0, -1)
+          setDisplayedText(currentText)
+          await new Promise((r) => setTimeout(r, deleteSpeed + Math.random() * 20))
+        }
+
+        // Brief pause before next attempt
+        await new Promise((r) => setTimeout(r, 300 + Math.random() * 200))
       }
     }
 
+    // Small pause after "ink blot" before continuing
+    await new Promise((r) => setTimeout(r, 200))
+
+    // Type the ending
+    for (const char of endingText) {
+      currentText += char
+      setDisplayedText(currentText)
+      await new Promise((r) => setTimeout(r, typingSpeed + Math.random() * 25))
+    }
+
     setIsTyping(false)
-  }, [text, typingSpeed, hesitationWords])
+  }, [])
 
   useEffect(() => {
     // Small delay before starting to type

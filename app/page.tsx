@@ -60,11 +60,7 @@ export default function HomePage() {
               minHeight: "2.2em",
             }}
           >
-            <Typewriter
-              text="Choosing a suburb is an ink blot — just like the one next to my name."
-              hesitationWords={["an", "ink", "blot"]}
-              typingSpeed={45}
-            />
+            <Typewriter />
           </h1>
 
           {/* Subcopy */}
