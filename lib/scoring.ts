@@ -179,58 +179,60 @@ export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinal
   let townCenterBonus = 0
   let lifestyleTagBonus = 0
 
-  // Special preference: Town Center (+3/-3)
+  // Special preference: Town Center (+1/-1)
+  // Reduced to stay secondary to primary weights
   if (prefs.special.preferTownCenter) {
     if (zip.hasTownCenter) {
-      townCenterBonus += 3
+      townCenterBonus += 1
     } else {
-      townCenterBonus -= 3
+      townCenterBonus -= 1
     }
   }
 
-  // Special preference: Newer Homes (+5/-5)
+  // Special preference: Newer Homes (+2/-2)
   // Based on percentNewConstruction (% of homes built after 2010)
   if (prefs.special.preferNewerHomes) {
     const newConstruction = zip.percentNewConstruction ?? 30
     if (newConstruction >= 60) {
-      townCenterBonus += 5 // Lots of new construction
+      townCenterBonus += 2 // Lots of new construction
     } else if (newConstruction >= 40) {
-      townCenterBonus += 2 // Moderate new construction
+      townCenterBonus += 1 // Moderate new construction
     } else if (newConstruction >= 25) {
       townCenterBonus += 0 // Neutral
     } else {
-      townCenterBonus -= 5 // Mostly older homes
+      townCenterBonus -= 2 // Mostly older homes
     }
   }
 
-  // Special preference: Established Neighborhoods (+5/-5)
+  // Special preference: Established Neighborhoods (+2/-2)
   // Inverse of new construction - prefer mature, settled areas
   if (prefs.special.preferEstablishedNeighborhoods) {
     const newConstruction = zip.percentNewConstruction ?? 30
     if (newConstruction <= 15) {
-      townCenterBonus += 5 // Very established, mature neighborhood
+      townCenterBonus += 2 // Very established, mature neighborhood
     } else if (newConstruction <= 25) {
-      townCenterBonus += 2 // Mostly established
+      townCenterBonus += 1 // Mostly established
     } else if (newConstruction <= 40) {
       townCenterBonus += 0 // Neutral
     } else {
-      townCenterBonus -= 5 // Too much new development
+      townCenterBonus -= 2 // Too much new development
     }
   }
 
-  // Lifestyle tags: bonuses AND penalties based on ZIP characteristics
+  // Lifestyle tags: secondary modifiers (smaller than primary weight impact)
+  // Bonuses/penalties are ±2 per tag (4-point spread) to stay secondary to primary weights
   const tagSet = new Set(prefs.lifestyle.tags)
 
   if (tagSet.has("diverseGlobal")) {
     const diversityIndex = zip.restaurantDiversityIndex ?? 0
     if (diversityIndex >= 0.85) {
-      lifestyleTagBonus += 5
-    } else if (diversityIndex >= 0.75) {
       lifestyleTagBonus += 2
+    } else if (diversityIndex >= 0.75) {
+      lifestyleTagBonus += 1
     } else if (diversityIndex >= 0.65) {
       lifestyleTagBonus += 0
     } else {
-      lifestyleTagBonus -= 5
+      lifestyleTagBonus -= 2
     }
   }
 
@@ -238,13 +240,13 @@ export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinal
     const restaurants = zip.restaurantUniqueCount ?? 0
     const entertainment = zip.entertainmentCount ?? 0
     if (restaurants >= 70 && entertainment >= 20) {
-      lifestyleTagBonus += 5
-    } else if (restaurants >= 50 && entertainment >= 12) {
       lifestyleTagBonus += 2
+    } else if (restaurants >= 50 && entertainment >= 12) {
+      lifestyleTagBonus += 1
     } else if (restaurants >= 30) {
       lifestyleTagBonus += 0
     } else {
-      lifestyleTagBonus -= 5
+      lifestyleTagBonus -= 2
     }
   }
 
@@ -252,13 +254,13 @@ export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinal
     const parks = zip.parksCountPerSqMi ?? 0
     const isSportsCity = /frisco|allen|mckinney|prosper/i.test(zip.city)
     if (isSportsCity && parks >= 3.0) {
-      lifestyleTagBonus += 5
-    } else if (isSportsCity || parks >= 3.5) {
       lifestyleTagBonus += 2
+    } else if (isSportsCity || parks >= 3.5) {
+      lifestyleTagBonus += 1
     } else if (parks >= 2.5) {
       lifestyleTagBonus += 0
     } else {
-      lifestyleTagBonus -= 5
+      lifestyleTagBonus -= 2
     }
   }
 
@@ -266,13 +268,13 @@ export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinal
     const safety = zip.safetySignal ?? 3
     const entertainment = zip.entertainmentCount ?? 0
     if (safety === 1 && entertainment <= 10) {
-      lifestyleTagBonus += 5
-    } else if (safety <= 2 && entertainment <= 15) {
       lifestyleTagBonus += 2
+    } else if (safety <= 2 && entertainment <= 15) {
+      lifestyleTagBonus += 1
     } else if (entertainment <= 20) {
       lifestyleTagBonus += 0
     } else {
-      lifestyleTagBonus -= 5
+      lifestyleTagBonus -= 2
     }
   }
 
@@ -281,21 +283,21 @@ export function scoreZipWithPrefs(zip: ZipScores, prefs: UserAllPrefs): ZipFinal
     const convenience = zip.convenienceClusterScore ?? 0
     const hasTown = zip.hasTownCenter ?? false
     if (price >= 550000 && convenience >= 85 && hasTown) {
-      lifestyleTagBonus += 5
-    } else if (price >= 450000 && convenience >= 75) {
       lifestyleTagBonus += 2
+    } else if (price >= 450000 && convenience >= 75) {
+      lifestyleTagBonus += 1
     } else if (price >= 400000 && convenience >= 70) {
       lifestyleTagBonus += 0
     } else {
-      lifestyleTagBonus -= 5
+      lifestyleTagBonus -= 2
     }
   }
 
   if (tagSet.has("townCenter")) {
     if (zip.hasTownCenter) {
-      lifestyleTagBonus += 5
+      lifestyleTagBonus += 2
     } else {
-      lifestyleTagBonus -= 5
+      lifestyleTagBonus -= 2
     }
   }
 

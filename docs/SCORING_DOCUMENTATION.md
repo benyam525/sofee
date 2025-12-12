@@ -59,7 +59,7 @@ Weighted Score = (Weight₁ × Score₁ + Weight₂ × Score₂ + ... ) / (Weigh
 
 ## Part 2: Lifestyle & Community Tags
 
-Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong matches** and **penalties for poor matches**, creating a 10-point spread.
+Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong matches** and **penalties for poor matches**, creating a 4-point spread. These are secondary modifiers designed to fine-tune results after primary weights are applied.
 
 ### Tag Definitions & Scoring
 
@@ -70,10 +70,10 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Safety Signal = Excellent (1) AND Entertainment ≤ 10 venues | **+5** |
-| Safety Signal ≤ Very Good (2) AND Entertainment ≤ 15 venues | **+2** |
+| Safety Signal = Excellent (1) AND Entertainment ≤ 10 venues | **+2** |
+| Safety Signal ≤ Very Good (2) AND Entertainment ≤ 15 venues | **+1** |
 | Entertainment ≤ 20 venues | 0 |
-| Entertainment > 20 venues (busy/noisy area) | **-5** |
+| Entertainment > 20 venues (busy/noisy area) | **-2** |
 
 ---
 
@@ -84,10 +84,10 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Sports-focused city (Frisco/Allen/McKinney/Prosper) AND Parks ≥ 3.0/sq mi | **+5** |
-| Sports city OR Parks ≥ 3.5/sq mi | **+2** |
+| Sports-focused city (Frisco/Allen/McKinney/Prosper) AND Parks ≥ 3.0/sq mi | **+2** |
+| Sports city OR Parks ≥ 3.5/sq mi | **+1** |
 | Parks ≥ 2.5/sq mi | 0 |
-| Parks < 2.5/sq mi | **-5** |
+| Parks < 2.5/sq mi | **-2** |
 
 ---
 
@@ -98,10 +98,10 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Restaurant Diversity Index ≥ 0.85 | **+5** |
-| Restaurant Diversity Index ≥ 0.75 | **+2** |
+| Restaurant Diversity Index ≥ 0.85 | **+2** |
+| Restaurant Diversity Index ≥ 0.75 | **+1** |
 | Restaurant Diversity Index ≥ 0.65 | 0 |
-| Restaurant Diversity Index < 0.65 | **-5** |
+| Restaurant Diversity Index < 0.65 | **-2** |
 
 *Note: Restaurant Diversity Index (0-1) measures the variety of international cuisines available in the area.*
 
@@ -114,10 +114,10 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Median Home Price ≥ $550k AND Convenience Score ≥ 85 AND Has Town Center | **+5** |
-| Median Home Price ≥ $450k AND Convenience Score ≥ 75 | **+2** |
+| Median Home Price ≥ $550k AND Convenience Score ≥ 85 AND Has Town Center | **+2** |
+| Median Home Price ≥ $450k AND Convenience Score ≥ 75 | **+1** |
 | Median Home Price ≥ $400k AND Convenience Score ≥ 70 | 0 |
-| Below thresholds | **-5** |
+| Below thresholds | **-2** |
 
 ---
 
@@ -128,10 +128,10 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Parks ≥ 3.0/sq mi AND School Score ≥ 85 AND Child Dev Score ≥ 80 | **+5** |
-| Parks ≥ 2.5/sq mi AND School Score ≥ 75 AND Child Dev Score ≥ 70 | **+2** |
+| Parks ≥ 3.0/sq mi AND School Score ≥ 85 AND Child Dev Score ≥ 80 | **+2** |
+| Parks ≥ 2.5/sq mi AND School Score ≥ 75 AND Child Dev Score ≥ 70 | **+1** |
 | Parks ≥ 2.0/sq mi AND School Score ≥ 70 | 0 |
-| Below thresholds | **-5** |
+| Below thresholds | **-2** |
 
 ---
 
@@ -142,8 +142,8 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Has walkable town center/main street | **+4** |
-| No walkable town center | **-4** |
+| Has walkable town center/main street | **+2** |
+| No walkable town center | **-2** |
 
 *Examples with town centers: Southlake Town Square, McKinney Downtown, Frisco Square, Carrollton Downtown*
 
@@ -156,38 +156,48 @@ Select up to 2 tags that match your vibe. Each tag applies **bonuses for strong 
 
 | Condition | Modifier |
 |-----------|----------|
-| Restaurants ≥ 70 AND Entertainment ≥ 20 venues | **+5** |
-| Restaurants ≥ 50 AND Entertainment ≥ 12 venues | **+2** |
+| Restaurants ≥ 70 AND Entertainment ≥ 20 venues | **+2** |
+| Restaurants ≥ 50 AND Entertainment ≥ 12 venues | **+1** |
 | Restaurants ≥ 30 | 0 |
-| Restaurants < 30 | **-5** |
+| Restaurants < 30 | **-2** |
 
 ---
 
 ## Part 3: Special Preferences
 
-These are yes/no toggles for specific characteristics.
+These are yes/no toggles for specific characteristics. Like lifestyle tags, these are secondary modifiers with smaller impact than primary weights.
 
 ### Prefer Real Main Street or Town Square
 **What it means:** Small bonus for ZIPs with walkable town centers.
 
 | Condition | Modifier |
 |-----------|----------|
-| Preference ON and ZIP has town center | **+3** |
-| Preference ON but user also selected "Quiet & Predictable" tag and ZIP has town center | **-2** (conflict) |
+| Preference ON and ZIP has town center | **+1** |
+| Preference ON and ZIP has no town center | **-1** |
 
 ---
 
 ### Prefer Newer Construction
 **What it means:** You want neighborhoods built in the last 10-15 years with modern homes.
 
-*Note: Currently tracked for display but not directly scored. Coming soon.*
+| Condition | Modifier |
+|-----------|----------|
+| ≥60% new construction (built after 2010) | **+2** |
+| ≥40% new construction | **+1** |
+| ≥25% new construction | 0 |
+| <25% new construction | **-2** |
 
 ---
 
 ### Prefer Established Neighborhoods
 **What it means:** You want mature trees, established communities, proven track records.
 
-*Note: Currently tracked for display but not directly scored. Coming soon.*
+| Condition | Modifier |
+|-----------|----------|
+| ≤15% new construction (mostly mature) | **+2** |
+| ≤25% new construction | **+1** |
+| ≤40% new construction | 0 |
+| >40% new construction | **-2** |
 
 ---
 
