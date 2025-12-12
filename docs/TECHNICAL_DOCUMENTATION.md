@@ -100,7 +100,7 @@ Each ZIP code entry contains:
 | `medianSalePrice` | number | Recent median sale price ($) | Zillow |
 | `rentMedian` | number | Median rent ($) | Zillow |
 | `priceUpdatedAt` | string | "YYYY-MM" of last price update | - |
-| `schoolSignal` | number | 0-100 school quality score | GreatSchools/SchoolDigger |
+| `schoolSignal` | number | 0-100 school quality score | SchoolDigger (STAAR), TEA |
 | `schoolUpdatedAt` | string | "YYYY-MM" of last school update | - |
 | `safetySignal` | number | 1-5 safety band (1=safest) | FBI Crime Statistics |
 | `safetyUpdatedAt` | string | "YYYY-MM" of last safety update | - |

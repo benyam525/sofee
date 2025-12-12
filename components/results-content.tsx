@@ -399,7 +399,7 @@ const categoryInfo: Record<string, { title: string; description: string }> = {
   schoolScore: {
     title: "School Score",
     description:
-      "A composite score (0-100) based on state test scores, graduation rates, and college readiness across all public schools in this ZIP. Data sourced from TEA and GreatSchools.",
+      "A composite score (0-100) based on STAAR test scores and TEA accountability ratings across all public schools in this ZIP. Data sourced from SchoolDigger.",
   },
   avgCommute: {
     title: "Average Commute",
@@ -430,11 +430,15 @@ const InfoTooltip = ({ category }: { category: keyof typeof categoryInfo }) => {
     <TooltipProvider delayDuration={200}>
       <Tooltip>
         <TooltipTrigger asChild>
-          <button className="ml-1 text-slate-400 hover:text-slate-600 transition-colors">
+          <button className="ml-1 text-slate-400 hover:text-slate-600 transition-colors flex-shrink-0">
             <Info className="w-3.5 h-3.5" />
           </button>
         </TooltipTrigger>
-        <TooltipContent side="top" className="max-w-xs text-sm bg-slate-800 text-white p-3 rounded-lg shadow-xl">
+        <TooltipContent
+          side="top"
+          sideOffset={5}
+          className="max-w-xs text-sm bg-slate-800 text-white p-3 rounded-lg shadow-xl z-[100]"
+        >
           <p className="font-medium mb-1">{info.title}</p>
           <p className="text-slate-300 text-xs leading-relaxed">{info.description}</p>
         </TooltipContent>

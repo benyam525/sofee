@@ -25,12 +25,12 @@ You set a weight from 0-3 for each of these 7 criteria. Higher weight = more inf
 
 | Criterion | What It Measures | Data Sources |
 |-----------|------------------|--------------|
-| **School Quality** | Public school performance in the district | GreatSchools ratings, TEA accountability, test scores |
-| **Commute Burden** | Travel time from this ZIP to your workplace | Google Maps API estimates to your workplace ZIP |
-| **Safety & Stability** | Crime rates and neighborhood stability | FBI crime data, local police reports |
-| **Lifestyle, Convenience & Culture** | Access to restaurants, entertainment, shopping | Yelp data, entertainment venue counts, convenience scoring |
-| **Family-Friendly Amenities** | Parks, libraries, youth sports, enrichment programs | City parks data, recreation center locations |
-| **Tax Burden** | Property tax rates including MUD districts | County tax assessor data, MUD rates |
+| **School Quality** | Public school performance in the district | SchoolDigger (STAAR scores), TEA accountability ratings |
+| **Commute Burden** | Travel time from this ZIP to your workplace | Estimated commute times by ZIP |
+| **Safety & Stability** | Crime rates and neighborhood stability | FBI UCR data, local police reports |
+| **Lifestyle, Convenience & Culture** | Access to restaurants, entertainment, shopping | Yelp data, entertainment venue counts |
+| **Family-Friendly Amenities** | Parks, libraries, youth sports, enrichment programs | City parks data |
+| **Tax Burden** | Property tax rates including MUD districts | County tax assessor data |
 | **Toll Road Convenience** | Quick access to major toll roads and highways | Proximity to DNT, PGBT, SH-121, etc. |
 
 ### How Weighted Scoring Works
@@ -246,13 +246,23 @@ Any cities you exclude are completely removed before scoring.
 
 | Data Type | Source | Update Frequency |
 |-----------|--------|------------------|
-| School Ratings | GreatSchools, TEA | Annually |
-| Crime/Safety | FBI UCR, Local PD | Quarterly |
-| Home Prices | Zillow, Realtor.com | Monthly |
-| Commute Times | Google Maps API | Real-time |
-| Restaurant Data | Yelp API | Monthly |
-| Tax Rates | County Assessors | Annually |
-| Parks/Recreation | City Open Data | Annually |
+| School Ratings | SchoolDigger (STAAR scores), TEA accountability | Annually |
+| Crime/Safety | FBI UCR, Local PD | Manual review |
+| Home Prices | Zillow | On-demand refresh |
+| Commute Times | Estimated by ZIP | Manual review |
+| Restaurant Data | Yelp | Manual review |
+| Tax Rates | County Assessors | Manual review |
+| Parks/Recreation | City Parks Depts | On-demand refresh |
+
+### How School Scores Are Computed
+
+The `schoolSignal` (0-100) is the average STAAR proficiency across all public schools in the ZIP:
+
+```
+schoolSignal = (avgMathProficiency + avgReadingProficiency) / 2 × 100
+```
+
+This is the most direct measure of educational outcomes — the percentage of students performing at or above grade level.
 
 ---
 
