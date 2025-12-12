@@ -336,9 +336,34 @@ export interface SchoolClarityData {
   schoolType: "Public" | "Charter" | "Private"
 }
 
+// Charter school district patterns
+const CHARTER_PATTERNS = [
+  /charter/i,
+  /academy/i,
+  /preparatory/i,
+  /uplift/i,
+  /life school/i,
+  /harmony/i,
+  /great hearts/i,
+  /leadership prep/i,
+  /texans can/i,
+  /winfree/i,
+  /premier high/i,
+  /trinity basin/i,
+  /imagine/i,
+  /international leadership/i,
+  /iltexas/i,
+  /north texas collegiate/i,
+]
+
+function isCharterSchool(districtId: string): boolean {
+  return CHARTER_PATTERNS.some((pattern) => pattern.test(districtId))
+}
+
 export function getSchoolClarityData(schools: SchoolRecord[]): SchoolClarityData[] {
   return schools
     .filter((s) => s.zip && getSupportedZips().includes(s.zip))
+    .filter((s) => !isCharterSchool(s.districtId || "")) // Filter out charter schools
     .map((s) => {
       const academicScore = calculateAcademicScore(s)
       const diversityScore = calculateDiversityScore(s)

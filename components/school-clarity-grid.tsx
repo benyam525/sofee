@@ -510,8 +510,9 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     </div>
                     <div className="flex h-5 mb-1">
                       {DEMO_CONFIG.map((demo) => {
-                        const value =
+                        const rawValue =
                           selectedSchool.demographics[demo.key as keyof typeof selectedSchool.demographics] || 0
+                        const value = Math.round(rawValue)
                         if (value < 1) return null
                         return (
                           <div
@@ -526,8 +527,9 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     </div>
                     <div className="h-6 rounded-lg overflow-hidden flex">
                       {DEMO_CONFIG.map((demo) => {
-                        const value =
+                        const rawValue =
                           selectedSchool.demographics[demo.key as keyof typeof selectedSchool.demographics] || 0
+                        const value = Math.round(rawValue)
                         if (value < 1) return null
                         return (
                           <div
@@ -696,8 +698,9 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     </div>
                     <div className="flex h-5 mb-1">
                       {DEMO_CONFIG.map((demo) => {
-                        const value =
+                        const rawValue =
                           selectedSchool.demographics[demo.key as keyof typeof selectedSchool.demographics] || 0
+                        const value = Math.round(rawValue)
                         if (value < 1) return null
                         return (
                           <div
@@ -712,8 +715,9 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     </div>
                     <div className="h-6 rounded-lg overflow-hidden flex">
                       {DEMO_CONFIG.map((demo) => {
-                        const value =
+                        const rawValue =
                           selectedSchool.demographics[demo.key as keyof typeof selectedSchool.demographics] || 0
+                        const value = Math.round(rawValue)
                         if (value < 1) return null
                         return (
                           <div
