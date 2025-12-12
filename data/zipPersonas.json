@@ -98,5 +98,45 @@
   "75067": {
     "bestFor": "Budget-conscious families who want lake access and community feel",
     "honestTake": "Lake Lewisville lifestyle. Old Town charm. Schools are mixed. Best for outdoorsy families who don't obsess over school rankings."
+  },
+  "75002": {
+    "bestFor": "Families who want classic suburban living with Allen ISD schools and community pride",
+    "honestTake": "The heart of Allen. Home to Allen High School (largest in Texas). Strong community identity, great sports culture, and solid schools. Not flashy, just reliably good."
+  },
+  "75006": {
+    "bestFor": "Diverse families who want affordability, central location, and cultural variety",
+    "honestTake": "Carrollton's diverse core. Highest cultural variety in the area. Schools are mixed but improving. Great for families who value diversity over prestige."
+  },
+  "75022": {
+    "bestFor": "Families who want Flower Mound quality with Lewisville ISD at a slightly lower price",
+    "honestTake": "East Flower Mound gem. Great schools, lake proximity, and strong community. Less expensive than west FM but same family-focused culture."
+  },
+  "75023": {
+    "bestFor": "Families who want established Plano living with mature trees and central access",
+    "honestTake": "Classic Plano. Mature neighborhoods, reliable schools, and central location. Not the newest, but has character and accessibility that newer areas lack."
+  },
+  "75028": {
+    "bestFor": "Families who want top-tier Lewisville ISD schools (Marcus HS) and master-planned community life",
+    "honestTake": "Marcus High School territory. Premium master-planned communities with strong school culture. Conservative, family-focused, and community-heavy."
+  },
+  "75069": {
+    "bestFor": "Families who want historic charm, walkable downtown, and McKinney authenticity",
+    "honestTake": "Historic McKinney. Downtown square, local character, and established neighborhoods. Less cookie-cutter than newer areas. Great for families who value authenticity."
+  },
+  "75071": {
+    "bestFor": "Growing families who want new construction, multiple school options, and room to grow",
+    "honestTake": "McKinney's growth engine. New developments, new schools, and young families everywhere. High upside as area matures. Commute-heavy but affordable."
+  },
+  "75074": {
+    "bestFor": "Budget-conscious families who want Plano location and international culture",
+    "honestTake": "Affordable Plano. Most diverse ZIP in Plano. Schools are mixed but location is excellent. Best value for Plano access."
+  },
+  "75075": {
+    "bestFor": "Families who want established Plano diversity and multiple high school options",
+    "honestTake": "Southeast Plano. High diversity, established neighborhoods, and multiple HS feeders. Not prestigious but solid, diverse, and well-located."
+  },
+  "75077": {
+    "bestFor": "Families who want Highland Village quality with Lewisville ISD schools",
+    "honestTake": "Highland Village territory. Family-heavy, conservative, and community-focused. Strong schools and quiet streets. Premium suburban living without Southlake prices."
   }
 }

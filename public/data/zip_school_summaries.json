@@ -310,5 +310,113 @@
     "topPerformers": ["campus_043", "campus_044"],
     "updatedAt": "2024-09",
     "source": "SchoolDigger"
+  },
+  {
+    "zip": "75002",
+    "year": 2024,
+    "counts": { "total": 17, "ES": 11, "MS": 3, "HS": 3 },
+    "avgProficiency": { "math": 0.79, "reading": 0.82 },
+    "pctRatedA": 65,
+    "volatility": { "math": 0.03, "reading": 0.02 },
+    "trend": { "math": 0.02, "reading": 0.02 },
+    "topPerformers": ["campus_045", "campus_046"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75006",
+    "year": 2024,
+    "counts": { "total": 14, "ES": 8, "MS": 2, "HS": 4 },
+    "avgProficiency": { "math": 0.70, "reading": 0.73 },
+    "pctRatedA": 36,
+    "volatility": { "math": 0.05, "reading": 0.04 },
+    "trend": { "math": 0.02, "reading": 0.01 },
+    "topPerformers": ["campus_047"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75022",
+    "year": 2024,
+    "counts": { "total": 5, "ES": 3, "MS": 1, "HS": 1 },
+    "avgProficiency": { "math": 0.81, "reading": 0.84 },
+    "pctRatedA": 68,
+    "volatility": { "math": 0.03, "reading": 0.02 },
+    "trend": { "math": 0.02, "reading": 0.01 },
+    "topPerformers": ["campus_048"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75023",
+    "year": 2024,
+    "counts": { "total": 9, "ES": 7, "MS": 2, "HS": 0 },
+    "avgProficiency": { "math": 0.82, "reading": 0.85 },
+    "pctRatedA": 72,
+    "volatility": { "math": 0.02, "reading": 0.02 },
+    "trend": { "math": 0.01, "reading": 0.01 },
+    "topPerformers": ["campus_049", "campus_050"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75028",
+    "year": 2024,
+    "counts": { "total": 14, "ES": 9, "MS": 4, "HS": 1 },
+    "avgProficiency": { "math": 0.80, "reading": 0.83 },
+    "pctRatedA": 65,
+    "volatility": { "math": 0.03, "reading": 0.03 },
+    "trend": { "math": 0.02, "reading": 0.02 },
+    "topPerformers": ["campus_051", "campus_052"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75069",
+    "year": 2024,
+    "counts": { "total": 10, "ES": 6, "MS": 2, "HS": 2 },
+    "avgProficiency": { "math": 0.75, "reading": 0.78 },
+    "pctRatedA": 52,
+    "volatility": { "math": 0.04, "reading": 0.03 },
+    "trend": { "math": 0.02, "reading": 0.02 },
+    "topPerformers": ["campus_053"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75071",
+    "year": 2024,
+    "counts": { "total": 18, "ES": 13, "MS": 1, "HS": 4 },
+    "avgProficiency": { "math": 0.78, "reading": 0.81 },
+    "pctRatedA": 60,
+    "volatility": { "math": 0.04, "reading": 0.03 },
+    "trend": { "math": 0.03, "reading": 0.02 },
+    "topPerformers": ["campus_054", "campus_055"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75074",
+    "year": 2024,
+    "counts": { "total": 14, "ES": 10, "MS": 3, "HS": 1 },
+    "avgProficiency": { "math": 0.73, "reading": 0.76 },
+    "pctRatedA": 45,
+    "volatility": { "math": 0.05, "reading": 0.04 },
+    "trend": { "math": 0.02, "reading": 0.01 },
+    "topPerformers": ["campus_056"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
+  },
+  {
+    "zip": "75075",
+    "year": 2024,
+    "counts": { "total": 14, "ES": 8, "MS": 2, "HS": 4 },
+    "avgProficiency": { "math": 0.72, "reading": 0.75 },
+    "pctRatedA": 43,
+    "volatility": { "math": 0.05, "reading": 0.04 },
+    "trend": { "math": 0.01, "reading": 0.02 },
+    "topPerformers": ["campus_057"],
+    "updatedAt": "2024-09",
+    "source": "SchoolDigger"
   }
 ]

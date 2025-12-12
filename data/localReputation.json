@@ -133,5 +133,45 @@
     "city": "Grand Prairie",
     "short_tag": "Diverse / Working-Class",
     "local_reputation": "Very diverse and working-to-middle-class. Strong Hispanic and Asian communities. More affordable and considered moderate-to-slightly-left leaning in recent years."
+  },
+  "75002": {
+    "city": "Allen (East)",
+    "short_tag": "Established Suburban",
+    "local_reputation": "Classic suburban Allen. Family-oriented, strong schools, and moderately conservative. Known for Allen High School and well-maintained neighborhoods with active community involvement."
+  },
+  "75022": {
+    "city": "Flower Mound (East)",
+    "short_tag": "Affluent / Family-Focused",
+    "local_reputation": "Upscale family area with excellent Lewisville ISD schools including Flower Mound High School. Conservative-leaning, community-oriented, and known for parks and trails along the lake."
+  },
+  "75023": {
+    "city": "Plano (Central)",
+    "short_tag": "Established / Diverse",
+    "local_reputation": "Mature Plano neighborhoods with strong schools and diverse demographics. More moderate than outer suburbs. Known for established trees, good parks, and central location."
+  },
+  "75028": {
+    "city": "Flower Mound (West/Central)",
+    "short_tag": "Master-Planned / Conservative",
+    "local_reputation": "Master-planned communities with Marcus High School feeder zone. Family-focused, affluent, and traditionally conservative. Known for community events, youth sports, and well-maintained HOAs."
+  },
+  "75069": {
+    "city": "McKinney (Historic / Central)",
+    "short_tag": "Historic / Moderate",
+    "local_reputation": "Includes historic downtown McKinney. Mix of older homes and newer development. More moderate and diverse than outer McKinney. Known for local shops, restaurants, and community feel."
+  },
+  "75071": {
+    "city": "McKinney (East / New Construction)",
+    "short_tag": "Growing / Family-Oriented",
+    "local_reputation": "Rapidly growing with new construction and young families. Multiple high schools serving the area. Moderate-to-conservative, community-focused, and known for new master-planned developments."
+  },
+  "75074": {
+    "city": "Plano (East)",
+    "short_tag": "Diverse / Working-Class",
+    "local_reputation": "More diverse and affordable than west Plano. Mix of cultures and incomes. Politically mixed with strong community roots. Known for authentic international dining and accessible housing."
+  },
+  "75075": {
+    "city": "Plano (Southeast)",
+    "short_tag": "Diverse / Established",
+    "local_reputation": "Established neighborhoods with high diversity. Home to multiple high schools including Plano Senior High. Moderate politically, strong community ties, and known for cultural diversity."
   }
 }
