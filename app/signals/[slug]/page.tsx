@@ -1,8 +1,9 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
 import { SiteNav } from "@/components/site-nav"
-import { getArticleBySlug, getAllArticles, SignalArticle } from "@/lib/signals"
+import { getArticleBySlug, getAllArticles } from "@/lib/signals"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
+import ReactMarkdown from "react-markdown"
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -92,6 +93,7 @@ export default function SignalArticlePage({ params }: { params: { slug: string }
               >
                 {article.title}
               </h1>
+              <p className="text-xl text-slate-600 leading-relaxed mb-6">{article.excerpt}</p>
               <div className="flex items-center gap-4 text-sm text-slate-500">
                 <span className="flex items-center gap-1.5">
                   <Calendar className="w-4 h-4" />
@@ -105,17 +107,38 @@ export default function SignalArticlePage({ params }: { params: { slug: string }
             </header>
 
             {/* Article content */}
-            <div
-              className="prose prose-slate prose-lg max-w-none"
-              style={{
-                fontSize: "18px",
-                lineHeight: 1.75,
-              }}
-            >
-              <p className="text-slate-600 text-xl leading-relaxed mb-8">{article.excerpt}</p>
-              <div className="bg-slate-50 border border-slate-200 rounded-xl p-8 text-center">
-                <p className="text-slate-500 italic">{article.content}</p>
-              </div>
+            <div className="prose prose-slate prose-lg max-w-none prose-headings:font-bold prose-h2:text-2xl prose-h2:mt-12 prose-h2:mb-4 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3 prose-p:text-slate-700 prose-p:leading-relaxed prose-strong:text-slate-900 prose-ul:my-4 prose-li:text-slate-700 prose-hr:my-8 prose-hr:border-slate-200">
+              <ReactMarkdown
+                components={{
+                  h2: ({ children }) => (
+                    <h2 style={{ fontFamily: "Georgia, serif" }}>{children}</h2>
+                  ),
+                  h3: ({ children }) => (
+                    <h3 style={{ fontFamily: "Georgia, serif" }}>{children}</h3>
+                  ),
+                  p: ({ children }) => (
+                    <p className="text-[17px] leading-[1.8] text-slate-700 mb-5">{children}</p>
+                  ),
+                  strong: ({ children }) => (
+                    <strong className="font-semibold text-slate-900">{children}</strong>
+                  ),
+                  ul: ({ children }) => (
+                    <ul className="my-4 ml-4 space-y-2">{children}</ul>
+                  ),
+                  ol: ({ children }) => (
+                    <ol className="my-4 ml-4 space-y-2 list-decimal">{children}</ol>
+                  ),
+                  li: ({ children }) => (
+                    <li className="text-[17px] text-slate-700 pl-2">{children}</li>
+                  ),
+                  hr: () => <hr className="my-10 border-t border-slate-200" />,
+                  em: ({ children }) => (
+                    <em className="text-slate-600 not-italic">{children}</em>
+                  ),
+                }}
+              >
+                {article.content}
+              </ReactMarkdown>
             </div>
 
             {/* Back to Signals link */}
