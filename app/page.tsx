@@ -1,4 +1,5 @@
 import { PreferencesForm } from "@/components/preferences-form"
+import { Typewriter } from "@/components/typewriter"
 import Image from "next/image"
 
 export default function HomePage() {
@@ -56,9 +57,14 @@ export default function HomePage() {
               fontWeight: 700,
               color: "#0B2037",
               marginBottom: "20px",
+              minHeight: "2.2em",
             }}
           >
-            Choosing a suburb is an ink blot — just like the one next to my name.
+            <Typewriter
+              text="Choosing a suburb is an ink blot — just like the one next to my name."
+              hesitationWords={["an", "ink", "blot"]}
+              typingSpeed={45}
+            />
           </h1>
 
           {/* Subcopy */}
