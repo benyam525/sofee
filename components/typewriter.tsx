@@ -8,13 +8,14 @@ interface TypewriterProps {
 }
 
 // The rejected words/phrases the writer cycles through before landing on "ink blot"
+// Each includes the article (a/an) so grammar works with "Choosing a suburb is"
 const REJECTED_ATTEMPTS = [
-  "nightmare",
-  "mess",
+  "a nightmare",
+  "a mess",
   "total shi",
-  "absolute clusterf",
-  "endless spiral of",
-  "ink blot", // Final answer
+  "an absolute clusterf",
+  "an endless spiral of",
+  "an ink blot", // Final answer
 ]
 
 export function Typewriter({ className, style }: TypewriterProps) {
@@ -31,7 +32,7 @@ export function Typewriter({ className, style }: TypewriterProps) {
   }, [])
 
   const typeText = useCallback(async () => {
-    const baseText = "Choosing a suburb is an "
+    const baseText = "Choosing a suburb is "
     const endingText = " — just like the one next to my name."
     const typingSpeed = 45
     const deleteSpeed = 35
