@@ -321,23 +321,47 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
         {viewMode === "grid" && (
           <div className="flex flex-col gap-4">
             <Card>
-              <CardContent className="p-4">
-                <div className="relative aspect-square max-w-lg mx-auto">
-                  {/* Quadrant backgrounds */}
+              <CardContent className="p-4 sm:p-6">
+                <div className="relative aspect-square max-w-lg mx-auto ml-10 mb-8">
+                  {/* Quadrant backgrounds with labels */}
                   <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
-                    <div className="bg-yellow-100/50" />
-                    <div className="bg-green-100/50" />
-                    <div className="bg-red-100/50" />
-                    <div className="bg-blue-100/50" />
+                    <div className="bg-yellow-100/50 relative">
+                      <span className="absolute top-2 left-2 text-[10px] sm:text-xs text-yellow-700 font-medium">
+                        Balanced, Weaker Academics
+                      </span>
+                    </div>
+                    <div className="bg-green-100/50 relative">
+                      <span className="absolute top-2 right-2 text-[10px] sm:text-xs text-green-700 font-medium text-right">
+                        Strong & Balanced
+                      </span>
+                    </div>
+                    <div className="bg-red-100/50 relative">
+                      <span className="absolute bottom-2 left-2 text-[10px] sm:text-xs text-red-700 font-medium">
+                        Needs Improvement
+                      </span>
+                    </div>
+                    <div className="bg-blue-100/50 relative">
+                      <span className="absolute bottom-2 right-2 text-[10px] sm:text-xs text-blue-700 font-medium text-right">
+                        Strong, One Group Dominant
+                      </span>
+                    </div>
                   </div>
 
-                  {/* Axis labels */}
-                  <div className="absolute -left-8 top-1/2 -translate-y-1/2 -rotate-90 text-xs text-slate-500 whitespace-nowrap">
-                    Academic Score →
+                  {/* Y-axis label (Academic Score) */}
+                  <div className="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-xs sm:text-sm text-slate-600 font-medium whitespace-nowrap">
+                    ← Academic Score →
                   </div>
-                  <div className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 text-xs text-slate-500">
-                    Demographic Balance →
+                  {/* Y-axis markers */}
+                  <div className="absolute -left-6 top-0 text-[10px] text-slate-500">High</div>
+                  <div className="absolute -left-6 bottom-0 text-[10px] text-slate-500">Low</div>
+
+                  {/* X-axis label (Demographic Balance) */}
+                  <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs sm:text-sm text-slate-600 font-medium">
+                    ← Demographic Balance →
                   </div>
+                  {/* X-axis markers */}
+                  <div className="absolute -bottom-4 left-0 text-[10px] text-slate-500">One Group</div>
+                  <div className="absolute -bottom-4 right-0 text-[10px] text-slate-500">Even Mix</div>
 
                   {/* School dots */}
                   {sortedSchools.map((school, idx) => {
