@@ -70,12 +70,12 @@ export default function AboutPage() {
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
             {[
-              { name: "Zillow", desc: "Median home prices", color: "bg-blue-50 text-blue-700" },
-              { name: "GreatSchools", desc: "School ratings & reviews", color: "bg-green-50 text-green-700" },
-              { name: "SchoolDigger", desc: "School rankings & demographics", color: "bg-purple-50 text-purple-700" },
+              { name: "SchoolDigger", desc: "School rankings, test scores & demographics", color: "bg-purple-50 text-purple-700" },
+              { name: "TEA (Texas)", desc: "STAAR scores & accountability ratings", color: "bg-green-50 text-green-700" },
+              { name: "TX Secretary of State", desc: "Voting patterns & election data", color: "bg-blue-50 text-blue-700" },
+              { name: "Zillow", desc: "Median home prices", color: "bg-sky-50 text-sky-700" },
               { name: "Yelp", desc: "Restaurant & entertainment counts", color: "bg-red-50 text-red-700" },
-              { name: "FBI/Local PD", desc: "Crime & safety statistics", color: "bg-orange-50 text-orange-700" },
-              { name: "Google Maps", desc: "Commute time estimates", color: "bg-sky-50 text-sky-700" },
+              { name: "FBI UCR", desc: "Crime & safety statistics", color: "bg-orange-50 text-orange-700" },
             ].map((source) => (
               <div key={source.name} className="bg-white rounded-xl p-4 border border-slate-100">
                 <span className={`inline-block px-2 py-1 rounded-md text-xs font-semibold ${source.color} mb-2`}>
