@@ -18,6 +18,13 @@ const REJECTED_ATTEMPTS = [
   "an ink blot", // Final answer
 ]
 
+// Helper for more natural random timing - clusters around the middle
+function naturalRandom(min: number, max: number): number {
+  // Use average of two randoms for more bell-curve distribution
+  const r = (Math.random() + Math.random()) / 2
+  return min + r * (max - min)
+}
+
 export function Typewriter({ className, style }: TypewriterProps) {
   const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
@@ -34,15 +41,23 @@ export function Typewriter({ className, style }: TypewriterProps) {
   const typeText = useCallback(async () => {
     const baseText = "Choosing a suburb is "
     const endingText = " — just like the one next to my name."
-    const typingSpeed = 45
-    const deleteSpeed = 35
+
+    // Initial pause - just cursor blinking, drawing user in
+    await new Promise((r) => setTimeout(r, naturalRandom(1200, 1800)))
 
     // Type the base text first
     let currentText = ""
-    for (const char of baseText) {
+    for (let i = 0; i < baseText.length; i++) {
+      const char = baseText[i]
       currentText += char
       setDisplayedText(currentText)
-      await new Promise((r) => setTimeout(r, typingSpeed + Math.random() * 25))
+
+      // Vary typing speed - occasionally pause slightly longer (thinking)
+      let delay = naturalRandom(35, 65)
+      if (Math.random() < 0.08) {
+        delay += naturalRandom(80, 180) // occasional micro-hesitation
+      }
+      await new Promise((r) => setTimeout(r, delay))
     }
 
     // Now cycle through rejected attempts
@@ -50,51 +65,97 @@ export function Typewriter({ className, style }: TypewriterProps) {
       const attempt = REJECTED_ATTEMPTS[i]
       const isLast = i === REJECTED_ATTEMPTS.length - 1
 
-      // Type this attempt
+      // Small thinking pause before each attempt (varies by attempt)
+      if (i > 0) {
+        await new Promise((r) => setTimeout(r, naturalRandom(150, 350)))
+      }
+
+      // Type this attempt - speed varies per attempt
+      const isKeyboardSmash = attempt === "ajhdfkjhasdasf"
+      const isEmoji = attempt.includes("😵")
+
       for (const char of attempt) {
         currentText += char
         setDisplayedText(currentText)
-        await new Promise((r) => setTimeout(r, typingSpeed + Math.random() * 30))
+
+        let charDelay: number
+        if (isKeyboardSmash) {
+          // Keyboard smash is FAST and frantic
+          charDelay = naturalRandom(15, 35)
+        } else if (isEmoji) {
+          // Emojis typed slower, more deliberate rage
+          charDelay = naturalRandom(60, 120)
+        } else {
+          // Normal typing with variation
+          charDelay = naturalRandom(40, 70)
+          if (Math.random() < 0.1) {
+            charDelay += naturalRandom(50, 120)
+          }
+        }
+        await new Promise((r) => setTimeout(r, charDelay))
       }
 
       if (!isLast) {
         // Pause - writer realizes this isn't right
-        // Longer pause for more dramatic effect
-        const pauseDuration = 600 + Math.random() * 400
+        // Vary dramatically based on the attempt
+        let pauseDuration: number
+        if (isKeyboardSmash) {
+          pauseDuration = naturalRandom(300, 500) // quick realization
+        } else if (isEmoji) {
+          pauseDuration = naturalRandom(700, 1100) // stares at it longer
+        } else if (attempt === "total shi") {
+          pauseDuration = naturalRandom(400, 700) // catches self quick
+        } else {
+          pauseDuration = naturalRandom(500, 900)
+        }
         await new Promise((r) => setTimeout(r, pauseDuration))
 
-        // Delete the attempt (slower, more deliberate)
+        // Delete the attempt - speed varies
+        const deleteSpeed = isKeyboardSmash
+          ? naturalRandom(20, 35) // rage delete
+          : isEmoji
+            ? naturalRandom(40, 70) // slower emoji delete
+            : naturalRandom(30, 50)
+
         for (let j = 0; j < attempt.length; j++) {
           currentText = currentText.slice(0, -1)
           setDisplayedText(currentText)
-          await new Promise((r) => setTimeout(r, deleteSpeed + Math.random() * 20))
+
+          // Occasional speed variation in delete
+          let delDelay = deleteSpeed
+          if (Math.random() < 0.15) {
+            delDelay *= naturalRandom(0.5, 1.5)
+          }
+          await new Promise((r) => setTimeout(r, delDelay))
         }
 
-        // Brief pause before next attempt
-        await new Promise((r) => setTimeout(r, 300 + Math.random() * 200))
+        // Brief pause before next attempt - varies
+        await new Promise((r) => setTimeout(r, naturalRandom(200, 450)))
       }
     }
 
-    // Small pause after "ink blot" before continuing
-    await new Promise((r) => setTimeout(r, 200))
+    // Pause after landing on "ink blot" - a satisfied moment
+    await new Promise((r) => setTimeout(r, naturalRandom(250, 400)))
 
-    // Type the ending
-    for (const char of endingText) {
+    // Type the ending - slightly faster, more confident now
+    for (let i = 0; i < endingText.length; i++) {
+      const char = endingText[i]
       currentText += char
       setDisplayedText(currentText)
-      await new Promise((r) => setTimeout(r, typingSpeed + Math.random() * 25))
+
+      let delay = naturalRandom(30, 55)
+      // Pause slightly after em dash
+      if (endingText[i - 1] === "—") {
+        delay += naturalRandom(100, 200)
+      }
+      await new Promise((r) => setTimeout(r, delay))
     }
 
     setIsTyping(false)
   }, [])
 
   useEffect(() => {
-    // Small delay before starting to type
-    const startDelay = setTimeout(() => {
-      typeText()
-    }, 800)
-
-    return () => clearTimeout(startDelay)
+    typeText()
   }, [typeText])
 
   return (
