@@ -59,13 +59,13 @@ interface CivicProfileProps {
 }
 
 const SPECTRUM_SEGMENTS = [
-  { key: "Far Republican", label: "Far R", color: "bg-red-600" },
-  { key: "Lean Republican", label: "Lean R", color: "bg-red-400" },
-  { key: "Slight Republican", label: "Slight R", color: "bg-red-200" },
-  { key: "Politically Mixed", label: "Mixed", color: "bg-slate-300" },
-  { key: "Slight Democratic", label: "Slight D", color: "bg-blue-200" },
-  { key: "Lean Democratic", label: "Lean D", color: "bg-blue-400" },
   { key: "Far Democratic", label: "Far D", color: "bg-blue-600" },
+  { key: "Lean Democratic", label: "Lean D", color: "bg-blue-400" },
+  { key: "Slight Democratic", label: "Slight D", color: "bg-blue-200" },
+  { key: "Politically Mixed", label: "Mixed", color: "bg-slate-300" },
+  { key: "Slight Republican", label: "Slight R", color: "bg-red-200" },
+  { key: "Lean Republican", label: "Lean R", color: "bg-red-400" },
+  { key: "Far Republican", label: "Far R", color: "bg-red-600" },
 ]
 
 type ViewMode = "voting" | "reputation"
