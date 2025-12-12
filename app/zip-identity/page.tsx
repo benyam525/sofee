@@ -17,69 +17,47 @@ import {
 import { Button } from "@/components/ui/button"
 import { Card } from "@/components/ui/card"
 import zipPersonasData from "@/data/zipPersonas.json"
+import dfwData from "@/data/dfwData.json"
 
 interface PersonaData {
   bestFor: string
   honestTake: string
 }
 
+interface DfwDataEntry {
+  zip: string
+  city: string
+  medianHomePrice: number
+  schoolSignal: number
+  safetySignal: number
+  restaurantDiversityIndex: number
+}
+
 const zipPersonas = zipPersonasData as Record<string, PersonaData>
 
-// ZIP metadata for display
+// Build zipMetadata from dfwData.json
+const safetyLabels: Record<number, string> = {
+  1: "Excellent",
+  2: "Very Good",
+  3: "Good",
+  4: "Fair",
+  5: "Below Avg",
+}
+
 const zipMetadata: Record<string, { city: string; price: string; schools: number; safety: string; diversity: number }> =
-  {
-    // Frisco
-    "75034": { city: "Frisco", price: "$650k", schools: 93, safety: "Excellent", diversity: 0.85 },
-    "75035": { city: "Frisco", price: "$620k", schools: 95, safety: "Excellent", diversity: 0.75 },
-    // Allen
-    "75002": { city: "Allen", price: "$550k", schools: 92, safety: "Excellent", diversity: 0.72 },
-    "75013": { city: "Allen", price: "$520k", schools: 90, safety: "Excellent", diversity: 0.7 },
-    // McKinney
-    "75069": { city: "McKinney", price: "$450k", schools: 83, safety: "Very Good", diversity: 0.74 },
-    "75070": { city: "McKinney", price: "$490k", schools: 85, safety: "Very Good", diversity: 0.65 },
-    "75071": { city: "McKinney", price: "$520k", schools: 86, safety: "Very Good", diversity: 0.68 },
-    "75072": { city: "McKinney", price: "$540k", schools: 87, safety: "Very Good", diversity: 0.68 },
-    // Plano
-    "75023": { city: "Plano", price: "$480k", schools: 85, safety: "Very Good", diversity: 0.78 },
-    "75024": { city: "Plano", price: "$580k", schools: 88, safety: "Very Good", diversity: 0.92 },
-    "75025": { city: "Plano", price: "$520k", schools: 86, safety: "Excellent", diversity: 0.75 },
-    "75074": { city: "Plano", price: "$450k", schools: 84, safety: "Very Good", diversity: 0.95 },
-    "75075": { city: "Plano", price: "$520k", schools: 87, safety: "Excellent", diversity: 0.82 },
-    "75093": { city: "Plano", price: "$670k", schools: 92, safety: "Excellent", diversity: 0.8 },
-    // Prosper
-    "75078": { city: "Prosper", price: "$700k", schools: 90, safety: "Excellent", diversity: 0.6 },
-    // Celina
-    "75009": { city: "Celina", price: "$550k", schools: 85, safety: "Very Good", diversity: 0.5 },
-    // Flower Mound
-    "75022": { city: "Flower Mound", price: "$580k", schools: 88, safety: "Excellent", diversity: 0.68 },
-    "75028": { city: "Flower Mound", price: "$620k", schools: 90, safety: "Excellent", diversity: 0.7 },
-    // Southlake
-    "76092": { city: "Southlake", price: "$1.1M", schools: 100, safety: "Excellent", diversity: 0.82 },
-    // Colleyville
-    "76034": { city: "Colleyville", price: "$850k", schools: 94, safety: "Excellent", diversity: 0.72 },
-    // Carrollton
-    "75006": { city: "Carrollton", price: "$410k", schools: 75, safety: "Good", diversity: 0.88 },
-    "75007": { city: "Carrollton", price: "$430k", schools: 78, safety: "Good", diversity: 0.88 },
-    "75010": { city: "Carrollton", price: "$480k", schools: 80, safety: "Good", diversity: 0.9 },
-    // Coppell
-    "75019": { city: "Coppell", price: "$620k", schools: 90, safety: "Excellent", diversity: 0.7 },
-    // Grand Prairie
-    "75052": { city: "Grand Prairie", price: "$380k", schools: 70, safety: "Fair", diversity: 0.85 },
-    // Richardson
-    "75080": { city: "Richardson", price: "$450k", schools: 82, safety: "Very Good", diversity: 0.94 },
-    "75081": { city: "Richardson", price: "$460k", schools: 80, safety: "Good", diversity: 0.92 },
-    "75082": { city: "Richardson", price: "$470k", schools: 84, safety: "Very Good", diversity: 0.93 },
-    // Irving
-    "75038": { city: "Irving", price: "$390k", schools: 72, safety: "Good", diversity: 0.91 },
-    "75039": { city: "Irving", price: "$410k", schools: 74, safety: "Very Good", diversity: 0.89 },
-    "75062": { city: "Irving", price: "$400k", schools: 76, safety: "Very Good", diversity: 0.87 },
-    // Farmers Branch
-    "75234": { city: "Farmers Branch", price: "$440k", schools: 79, safety: "Very Good", diversity: 0.86 },
-    "75244": { city: "Farmers Branch", price: "$460k", schools: 81, safety: "Very Good", diversity: 0.84 },
-    // Lewisville
-    "75067": { city: "Lewisville", price: "$420k", schools: 77, safety: "Good", diversity: 0.72 },
-    "75077": { city: "Lewisville", price: "$500k", schools: 82, safety: "Very Good", diversity: 0.76 },
-  }
+  (dfwData as DfwDataEntry[]).reduce(
+    (acc, entry) => {
+      acc[entry.zip] = {
+        city: entry.city,
+        price: `$${Math.round(entry.medianHomePrice / 1000)}k`,
+        schools: entry.schoolSignal,
+        safety: safetyLabels[entry.safetySignal] || "Good",
+        diversity: entry.restaurantDiversityIndex,
+      }
+      return acc
+    },
+    {} as Record<string, { city: string; price: string; schools: number; safety: string; diversity: number }>,
+  )
 
 // Group ZIPs by city for browsing
 const zipsByCity = Object.entries(zipMetadata).reduce(
@@ -181,8 +159,8 @@ function ZipIdentityContent() {
           {/* Data Sources */}
           <div className="text-center pt-6 sm:pt-8 mt-6 sm:mt-8 border-t border-slate-100">
             <p className="text-[10px] sm:text-xs text-slate-400 px-2">
-              Analysis based on median home prices, GreatSchools ratings, FBI crime statistics, restaurant diversity
-              index, and amenity density data. Updated monthly.
+              Analysis based on median home prices, SchoolDigger STAAR scores, FBI crime statistics, restaurant diversity
+              index, and amenity density data.
             </p>
           </div>
         </div>
@@ -275,8 +253,8 @@ function ZipIdentityContent() {
           {/* Data Sources */}
           <div className="text-center pt-4 border-t border-slate-100">
             <p className="text-[10px] sm:text-xs text-slate-400 px-2">
-              Analysis based on median home prices, GreatSchools ratings, FBI crime statistics, restaurant diversity
-              index, and amenity density data. Updated monthly.
+              Analysis based on median home prices, SchoolDigger STAAR scores, FBI crime statistics, restaurant diversity
+              index, and amenity density data.
             </p>
           </div>
         </div>
