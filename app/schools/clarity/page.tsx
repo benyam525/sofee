@@ -15,10 +15,12 @@ const FALLBACK_SCHOOLS: SchoolClarityData[] = [
     level: "ES",
     gradeSpan: "PK-5",
     enrollment: 480,
+    fitScore: 80,
+    fitLabel: "Excellent Fit",
     academicScore: 85,
     academicLabel: "Strong Academics",
     diversityScore: 75,
-    diversityLabel: "Balanced Diversity",
+    diversityLabel: "Well Balanced",
     demographics: { white: 23, hispanic: 37, black: 15, asian: 20, other: 5 },
     proficiency: { math: 85, reading: 87 },
     stateRank: 138,
@@ -34,10 +36,12 @@ const FALLBACK_SCHOOLS: SchoolClarityData[] = [
     level: "ES",
     gradeSpan: "PK-5",
     enrollment: 430,
+    fitScore: 73,
+    fitLabel: "Great Fit",
     academicScore: 68,
     academicLabel: "Solid Academics",
     diversityScore: 77,
-    diversityLabel: "Balanced Diversity",
+    diversityLabel: "Well Balanced",
     demographics: { white: 20, hispanic: 40, black: 15, asian: 20, other: 5 },
     proficiency: { math: 73, reading: 75 },
     stateRank: 441,
@@ -53,10 +57,12 @@ const FALLBACK_SCHOOLS: SchoolClarityData[] = [
     level: "ES",
     gradeSpan: "PK-5",
     enrollment: 379,
+    fitScore: 74,
+    fitLabel: "Great Fit",
     academicScore: 70,
     academicLabel: "Solid Academics",
     diversityScore: 78,
-    diversityLabel: "Balanced Diversity",
+    diversityLabel: "Well Balanced",
     demographics: { white: 22, hispanic: 38, black: 13, asian: 22, other: 5 },
     proficiency: { math: 70, reading: 78 },
     stateRank: 575,
@@ -72,10 +78,12 @@ const FALLBACK_SCHOOLS: SchoolClarityData[] = [
     level: "ES",
     gradeSpan: "PK-5",
     enrollment: 392,
+    fitScore: 72,
+    fitLabel: "Great Fit",
     academicScore: 66,
     academicLabel: "Solid Academics",
     diversityScore: 77,
-    diversityLabel: "Balanced Diversity",
+    diversityLabel: "Well Balanced",
     demographics: { white: 23, hispanic: 37, black: 13, asian: 22, other: 5 },
     proficiency: { math: 77, reading: 79 },
     stateRank: 628,
@@ -91,10 +99,12 @@ const FALLBACK_SCHOOLS: SchoolClarityData[] = [
     level: "ES",
     gradeSpan: "PK-5",
     enrollment: 336,
+    fitScore: 64,
+    fitLabel: "Good Fit",
     academicScore: 52,
     academicLabel: "Below Average",
     diversityScore: 75,
-    diversityLabel: "Balanced Diversity",
+    diversityLabel: "Well Balanced",
     demographics: { white: 18, hispanic: 42, black: 15, asian: 20, other: 5 },
     proficiency: { math: 72, reading: 76 },
     stateRank: 1181,
@@ -147,10 +157,12 @@ export default function SchoolClarityPage() {
       <div className="max-w-7xl mx-auto px-4 py-8">
         <div className="mb-8">
           <h1 className="text-3xl font-bold text-slate-900 mb-2">School Clarity Grid</h1>
-          <p className="text-slate-600">
-            Visualize how schools balance academic performance with student diversity. Click any dot to see detailed
-            breakdowns.
+          <p className="text-slate-600 mb-3">
+            See how schools stack up on academics AND demographic balance. Click any school to dig into the details.
           </p>
+          <div className="bg-amber-50 border border-amber-200 rounded-lg p-4 text-sm text-amber-900">
+            <strong>A note on "Demographic Balance":</strong> This isn't a judgment on whether a school is "diverse enough." We simply measure how evenly the student body is split across racial groups. A school that's 60% White scores the same as one that's 60% Hispanic — both have one dominant group. We show you the data; you decide what matters for your family.
+          </div>
           {error && <p className="text-amber-600 text-sm mt-2">Using sample data: {error}</p>}
         </div>
 

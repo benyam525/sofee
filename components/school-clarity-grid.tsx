@@ -8,24 +8,24 @@ import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@
 import { GraduationCap, Users, Info, X, Filter, LayoutGrid, List, Star } from "lucide-react"
 
 interface SchoolData {
-  campusId: number
+  campusId: string
   name: string
-  city: string
+  city: string | null
   zip: string
   district: string
   level: "ES" | "MS" | "HS"
-  gradeSpan: string
-  enrollment: number
-  fitScore: number
+  gradeSpan: string | null
+  enrollment: number | null
+  fitScore: number | null
   fitLabel: string
-  academicScore: number
+  academicScore: number | null
   academicLabel: string
-  diversityScore: number
+  diversityScore: number | null
   diversityLabel: string
-  demographics: { white: number; hispanic: number; asian: number; black: number; other: number }
-  proficiency: { math: number; reading: number }
-  stateRank: number
-  stateTotal: number
+  demographics: { white: number | null; hispanic: number | null; asian: number | null; black: number | null; other: number | null }
+  proficiency: { math: number | null; reading: number | null }
+  stateRank: number | null
+  stateTotal: number | null
   schoolType: string
 }
 
@@ -62,10 +62,10 @@ const DEFAULT_FILTERS = {
   district: "all",
 }
 
-function getQuadrantLabel(academic: number, diversity: number): string {
-  if (academic >= 50 && diversity >= 50) return "Balanced & Strong"
-  if (academic >= 50 && diversity < 50) return "Strong, Less Diverse"
-  if (academic < 50 && diversity >= 50) return "Diverse, Lower Performing"
+function getQuadrantLabel(academic: number, balance: number): string {
+  if (academic >= 50 && balance >= 50) return "Strong & Balanced"
+  if (academic >= 50 && balance < 50) return "Strong, One Group Dominant"
+  if (academic < 50 && balance >= 50) return "Balanced, Weaker Academics"
   return "Needs Improvement"
 }
 
@@ -93,8 +93,10 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
   const schoolsWithFit = useMemo(() => {
     return schools.map((s) => ({
       ...s,
-      fitScore: s.fitScore ?? Math.round((s.academicScore + s.diversityScore) / 2),
-      fitLabel: s.fitLabel ?? getFitLabel(Math.round((s.academicScore + s.diversityScore) / 2)),
+      academicScore: s.academicScore ?? 0,
+      diversityScore: s.diversityScore ?? 0,
+      fitScore: s.fitScore ?? Math.round(((s.academicScore ?? 0) + (s.diversityScore ?? 0)) / 2),
+      fitLabel: s.fitLabel ?? getFitLabel(Math.round(((s.academicScore ?? 0) + (s.diversityScore ?? 0)) / 2)),
     }))
   }, [schools])
 
@@ -130,9 +132,9 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
     // Sort each group by fit score and assign ranks
     Object.values(groups).forEach((group) => {
       const sorted = [...group].sort((a, b) => {
-        if (b.fitScore !== a.fitScore) return b.fitScore - a.fitScore
-        if (b.academicScore !== a.academicScore) return b.academicScore - a.academicScore
-        return b.diversityScore - a.diversityScore
+        if ((b.fitScore ?? 0) !== (a.fitScore ?? 0)) return (b.fitScore ?? 0) - (a.fitScore ?? 0)
+        if ((b.academicScore ?? 0) !== (a.academicScore ?? 0)) return (b.academicScore ?? 0) - (a.academicScore ?? 0)
+        return (b.diversityScore ?? 0) - (a.diversityScore ?? 0)
       })
       sorted.forEach((school, idx) => {
         rankings[school.campusId] = idx + 1
@@ -174,7 +176,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
           <div>
             <h3 className="text-base md:text-lg font-semibold text-slate-800">School Clarity Grid</h3>
-            <p className="text-xs md:text-sm text-slate-500">Academic performance vs. diversity balance</p>
+            <p className="text-xs md:text-sm text-slate-500">Academic performance vs. demographic balance</p>
           </div>
           <div className="flex items-center gap-2">
             <div className="flex items-center border rounded-lg overflow-hidden">
@@ -298,13 +300,13 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
               <TooltipContent className="max-w-sm text-left">
                 <p className="font-semibold mb-1">How to Read the Grid</p>
                 <p className="text-xs">
-                  <strong>Top-Right (Green):</strong> Balanced & Strong — high academics AND diverse student body
+                  <strong>Top-Right (Green):</strong> Strong & Balanced — high academics AND no single group dominates
                 </p>
                 <p className="text-xs">
-                  <strong>Top-Left (Yellow):</strong> Diverse but Lower Performing — diverse, but academics need work
+                  <strong>Top-Left (Yellow):</strong> Balanced, Weaker Academics — even mix, but test scores lag
                 </p>
                 <p className="text-xs">
-                  <strong>Bottom-Right (Blue):</strong> Strong but Less Diverse — great scores, but one group dominates
+                  <strong>Bottom-Right (Blue):</strong> Strong, One Group Dominant — great scores, but 60%+ one race
                 </p>
                 <p className="text-xs">
                   <strong>Bottom-Left (Red):</strong> Needs Improvement — both areas have room to grow
@@ -334,15 +336,15 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     Academic Score →
                   </div>
                   <div className="absolute bottom-[-24px] left-1/2 -translate-x-1/2 text-xs text-slate-500">
-                    Diversity Score →
+                    Demographic Balance →
                   </div>
 
                   {/* School dots */}
-                  {sortedSchools.map((school) => {
+                  {sortedSchools.map((school, idx) => {
                     const x = (school.diversityScore / 100) * 100
                     const y = 100 - (school.academicScore / 100) * 100
-                    const jitterX = ((school.campusId * 7) % 16) - 8
-                    const jitterY = ((school.campusId * 11) % 16) - 8
+                    const jitterX = ((idx * 7) % 16) - 8
+                    const jitterY = ((idx * 11) % 16) - 8
 
                     return (
                       <button
@@ -417,13 +419,15 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     <div className="bg-green-50 border border-green-100 rounded-lg p-3">
                       <div className="flex items-center gap-1 mb-1">
                         <Users className="w-3.5 h-3.5 text-green-600" />
-                        <span className="text-xs text-green-600 font-medium">Diversity Score</span>
+                        <span className="text-xs text-green-600 font-medium">Demographic Balance</span>
                         <Tooltip>
                           <TooltipTrigger>
                             <Info className="w-3 h-3 text-green-400" />
                           </TooltipTrigger>
-                          <TooltipContent className="max-w-xs">
-                            Entropy-based balance + dominance penalty (0 if any group &gt;80%)
+                          <TooltipContent className="max-w-xs p-3">
+                            <p className="font-medium mb-1">What this measures:</p>
+                            <p className="text-xs mb-2">How evenly the student body is split across racial groups — not whether a school is "diverse" in the traditional sense.</p>
+                            <p className="text-xs"><strong>Example:</strong> A school that's 60% White and a school that's 60% Hispanic get the same score. Both have one dominant group.</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -497,7 +501,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                           <span className="text-amber-600">Sofee's Fit</span>
                         </th>
                         <th className="text-center p-2 sm:p-3 font-medium text-slate-600">Academic</th>
-                        <th className="text-center p-2 sm:p-3 font-medium text-slate-600">Diversity</th>
+                        <th className="text-center p-2 sm:p-3 font-medium text-slate-600">Balance</th>
                         <th className="text-left p-2 sm:p-3 font-medium text-slate-600 hidden md:table-cell">Quadrant</th>
                       </tr>
                     </thead>
@@ -591,13 +595,15 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
                     <div className="bg-green-50 border border-green-100 rounded-lg p-3">
                       <div className="flex items-center gap-1 mb-1">
                         <Users className="w-3.5 h-3.5 text-green-600" />
-                        <span className="text-xs text-green-600 font-medium">Diversity Score</span>
+                        <span className="text-xs text-green-600 font-medium">Demographic Balance</span>
                         <Tooltip>
                           <TooltipTrigger>
                             <Info className="w-3 h-3 text-green-400" />
                           </TooltipTrigger>
-                          <TooltipContent className="max-w-xs">
-                            Entropy-based balance + dominance penalty (0 if any group &gt;80%)
+                          <TooltipContent className="max-w-xs p-3">
+                            <p className="font-medium mb-1">What this measures:</p>
+                            <p className="text-xs mb-2">How evenly the student body is split across racial groups — not whether a school is "diverse" in the traditional sense.</p>
+                            <p className="text-xs"><strong>Example:</strong> A school that's 60% White and a school that's 60% Hispanic get the same score. Both have one dominant group.</p>
                           </TooltipContent>
                         </Tooltip>
                       </div>
@@ -659,23 +665,26 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
         {/* How to Read Legend */}
         <Card className="bg-blue-50/50 border-blue-100">
           <CardContent className="p-3 sm:p-4">
-            <h4 className="font-medium text-blue-800 mb-2 text-sm sm:text-base">How to Read the Grid</h4>
+            <h4 className="font-medium text-blue-800 mb-2 text-sm sm:text-base">Understanding the Grid</h4>
+            <p className="text-xs text-slate-600 mb-3">
+              <strong>What "Demographic Balance" means:</strong> We measure how evenly students are distributed across racial groups — not whether a school is "diverse" in the way you might typically think. A school that's 60% White gets the same balance score as one that's 60% Hispanic. Both have one dominant group.
+            </p>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
               <p>
                 <span className="font-semibold text-green-700">Top-Right:</span>{" "}
-                <span className="text-slate-600">Balanced & Strong</span>
+                <span className="text-slate-600">Strong & Balanced — high scores, no group dominates</span>
               </p>
               <p>
                 <span className="font-semibold text-yellow-700">Top-Left:</span>{" "}
-                <span className="text-slate-600">Diverse but Lower Performing</span>
+                <span className="text-slate-600">Balanced, Weaker Academics — even mix, lower scores</span>
               </p>
               <p>
                 <span className="font-semibold text-blue-700">Bottom-Right:</span>{" "}
-                <span className="text-slate-600">Strong but Less Diverse</span>
+                <span className="text-slate-600">Strong, One Group Dominant — great scores, 60%+ one race</span>
               </p>
               <p>
                 <span className="font-semibold text-red-700">Bottom-Left:</span>{" "}
-                <span className="text-slate-600">Needs Improvement</span>
+                <span className="text-slate-600">Needs Improvement — both areas need work</span>
               </p>
             </div>
           </CardContent>

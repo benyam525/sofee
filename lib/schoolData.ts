@@ -257,12 +257,16 @@ export function getMajorityGroup(demo: SchoolDemographics | undefined): string {
 }
 
 /**
- * Get diversity score label for parent-friendly display
+ * Get demographic balance label for parent-friendly display
+ *
+ * Note: This measures how evenly distributed the student body is across
+ * racial groups - NOT whether a school is "diverse" in the colloquial sense.
+ * A school that's 60% Hispanic gets the same score as one that's 60% White.
  */
 export function getDiversityLabel(score: number | null, demo?: SchoolDemographics): string {
   if (score === null) return "Insufficient Data"
-  if (score >= 70) return "Balanced Diversity"
-  if (score >= 40) return "Some Diversity (leans toward one group)"
+  if (score >= 70) return "Well Balanced"
+  if (score >= 40) return "Leans One Group"
   return `Mostly ${getMajorityGroup(demo)}`
 }
 
