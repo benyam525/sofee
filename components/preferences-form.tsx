@@ -143,8 +143,8 @@ export function PreferencesForm() {
       if (prev.includes(key)) {
         return prev.filter((k) => k !== key)
       } else {
-        if (prev.length >= 3) {
-          return prev // Max 3 non-negotiables
+        if (prev.length >= 2) {
+          return prev // Max 2 non-negotiables
         }
         return [...prev, key]
       }
@@ -296,13 +296,13 @@ export function PreferencesForm() {
               <div className="h-6 w-1 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full" />
               <div>
                 <h4 className="text-sm font-semibold text-amber-900">Non-Negotiables</h4>
-                <p className="text-[10px] text-amber-700/80">Select up to 3 dealbreakers that must be strong</p>
+                <p className="text-[10px] text-amber-700/80">Select up to 2 dealbreakers that must be strong</p>
               </div>
             </div>
             <div className="flex flex-wrap gap-1.5 md:gap-2">
               {CRITERIA.map((c) => {
                 const isSelected = nonNegotiables.includes(c.key)
-                const isDisabled = nonNegotiables.length >= 3 && !isSelected
+                const isDisabled = nonNegotiables.length >= 2 && !isSelected
                 return (
                   <button
                     key={c.key}
