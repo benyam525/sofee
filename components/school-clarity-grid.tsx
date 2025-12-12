@@ -320,82 +320,124 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
         {/* Grid View */}
         {viewMode === "grid" && (
           <div className="flex flex-col gap-4">
-            <Card>
-              <CardContent className="p-4 sm:p-6">
-                <div className="relative aspect-square max-w-lg mx-auto ml-10 mb-8">
-                  {/* Quadrant backgrounds with labels */}
-                  <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
-                    <div className="bg-yellow-100/50 relative">
-                      <span className="absolute top-2 left-2 text-[10px] sm:text-xs text-yellow-700 font-medium">
-                        Balanced, Weaker Academics
-                      </span>
+            <Card className="overflow-hidden bg-gradient-to-br from-white/80 to-slate-50/80 backdrop-blur-sm border border-white/60 shadow-xl">
+              <CardContent className="p-6 sm:p-8">
+                {/* Grid container with axis labels */}
+                <div className="flex items-stretch gap-4">
+                  {/* Y-axis label */}
+                  <div className="flex flex-col items-center justify-center w-8 sm:w-10">
+                    <div className="text-[10px] sm:text-xs text-slate-500 font-medium mb-auto pt-2">High</div>
+                    <div className="-rotate-90 text-xs sm:text-sm text-slate-600 font-semibold whitespace-nowrap tracking-wide">
+                      Academic Score
                     </div>
-                    <div className="bg-green-100/50 relative">
-                      <span className="absolute top-2 right-2 text-[10px] sm:text-xs text-green-700 font-medium text-right">
-                        Strong & Balanced
-                      </span>
-                    </div>
-                    <div className="bg-red-100/50 relative">
-                      <span className="absolute bottom-2 left-2 text-[10px] sm:text-xs text-red-700 font-medium">
-                        Needs Improvement
-                      </span>
-                    </div>
-                    <div className="bg-blue-100/50 relative">
-                      <span className="absolute bottom-2 right-2 text-[10px] sm:text-xs text-blue-700 font-medium text-right">
-                        Strong, One Group Dominant
-                      </span>
-                    </div>
+                    <div className="text-[10px] sm:text-xs text-slate-500 font-medium mt-auto pb-2">Low</div>
                   </div>
 
-                  {/* Y-axis label (Academic Score) */}
-                  <div className="absolute -left-10 top-1/2 -translate-y-1/2 -rotate-90 text-xs sm:text-sm text-slate-600 font-medium whitespace-nowrap">
-                    ← Academic Score →
+                  {/* Main grid area */}
+                  <div className="flex-1 flex flex-col">
+                    <div className="relative w-full aspect-square max-w-3xl mx-auto rounded-2xl overflow-hidden shadow-inner">
+                      {/* Quadrant backgrounds with centered labels - liquid glass effect */}
+                      <div className="absolute inset-0 grid grid-cols-2 grid-rows-2">
+                        {/* Top-Left: Balanced, Weaker Academics */}
+                        <div className="relative bg-gradient-to-br from-yellow-100/70 to-yellow-50/50 backdrop-blur-sm border-r border-b border-white/40 flex items-center justify-center">
+                          <div className="text-center px-2">
+                            <span className="text-xs sm:text-sm text-yellow-800/90 font-semibold drop-shadow-sm">
+                              Balanced,
+                            </span>
+                            <br />
+                            <span className="text-xs sm:text-sm text-yellow-800/90 font-semibold drop-shadow-sm">
+                              Weaker Academics
+                            </span>
+                          </div>
+                        </div>
+                        {/* Top-Right: Strong & Balanced */}
+                        <div className="relative bg-gradient-to-bl from-green-100/70 to-green-50/50 backdrop-blur-sm border-b border-white/40 flex items-center justify-center">
+                          <div className="text-center px-2">
+                            <span className="text-xs sm:text-sm text-green-800/90 font-semibold drop-shadow-sm">
+                              Strong &
+                            </span>
+                            <br />
+                            <span className="text-xs sm:text-sm text-green-800/90 font-semibold drop-shadow-sm">
+                              Balanced
+                            </span>
+                          </div>
+                        </div>
+                        {/* Bottom-Left: Needs Improvement */}
+                        <div className="relative bg-gradient-to-tr from-red-100/70 to-red-50/50 backdrop-blur-sm border-r border-white/40 flex items-center justify-center">
+                          <div className="text-center px-2">
+                            <span className="text-xs sm:text-sm text-red-800/90 font-semibold drop-shadow-sm">
+                              Needs
+                            </span>
+                            <br />
+                            <span className="text-xs sm:text-sm text-red-800/90 font-semibold drop-shadow-sm">
+                              Improvement
+                            </span>
+                          </div>
+                        </div>
+                        {/* Bottom-Right: Strong, One Group Dominant */}
+                        <div className="relative bg-gradient-to-tl from-blue-100/70 to-blue-50/50 backdrop-blur-sm flex items-center justify-center">
+                          <div className="text-center px-2">
+                            <span className="text-xs sm:text-sm text-blue-800/90 font-semibold drop-shadow-sm">
+                              Strong,
+                            </span>
+                            <br />
+                            <span className="text-xs sm:text-sm text-blue-800/90 font-semibold drop-shadow-sm">
+                              One Group Dominant
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Center crosshair lines with glass effect */}
+                      <div className="absolute inset-0 pointer-events-none">
+                        <div className="absolute left-1/2 top-0 bottom-0 w-px bg-gradient-to-b from-slate-300/60 via-slate-400/80 to-slate-300/60" />
+                        <div className="absolute top-1/2 left-0 right-0 h-px bg-gradient-to-r from-slate-300/60 via-slate-400/80 to-slate-300/60" />
+                      </div>
+
+                      {/* School dots */}
+                      {sortedSchools.map((school, idx) => {
+                        const x = (school.diversityScore / 100) * 100
+                        const y = 100 - (school.academicScore / 100) * 100
+                        const jitterX = ((idx * 7) % 16) - 8
+                        const jitterY = ((idx * 11) % 16) - 8
+
+                        return (
+                          <button
+                            key={school.campusId}
+                            className={`absolute w-4 h-4 sm:w-5 sm:h-5 rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all duration-200 hover:scale-150 hover:z-20 ${
+                              selectedSchool?.campusId === school.campusId
+                                ? "ring-2 ring-offset-2 ring-slate-800 scale-150 z-20"
+                                : "z-10"
+                            }`}
+                            style={{
+                              left: `calc(${x}% + ${jitterX}px)`,
+                              top: `calc(${y}% + ${jitterY}px)`,
+                              backgroundColor: LEVEL_COLORS[school.level],
+                              boxShadow: "0 2px 8px rgba(0,0,0,0.15), 0 0 0 2px rgba(255,255,255,0.9)",
+                            }}
+                            onClick={() => setSelectedSchool(school)}
+                            title={school.name}
+                          />
+                        )
+                      })}
+                    </div>
+
+                    {/* X-axis label */}
+                    <div className="flex items-center justify-between mt-3 px-2">
+                      <div className="text-[10px] sm:text-xs text-slate-500 font-medium">One Group</div>
+                      <div className="text-xs sm:text-sm text-slate-600 font-semibold tracking-wide">
+                        Demographic Balance
+                      </div>
+                      <div className="text-[10px] sm:text-xs text-slate-500 font-medium">Even Mix</div>
+                    </div>
                   </div>
-                  {/* Y-axis markers */}
-                  <div className="absolute -left-6 top-0 text-[10px] text-slate-500">High</div>
-                  <div className="absolute -left-6 bottom-0 text-[10px] text-slate-500">Low</div>
-
-                  {/* X-axis label (Demographic Balance) */}
-                  <div className="absolute -bottom-7 left-1/2 -translate-x-1/2 text-xs sm:text-sm text-slate-600 font-medium">
-                    ← Demographic Balance →
-                  </div>
-                  {/* X-axis markers */}
-                  <div className="absolute -bottom-4 left-0 text-[10px] text-slate-500">One Group</div>
-                  <div className="absolute -bottom-4 right-0 text-[10px] text-slate-500">Even Mix</div>
-
-                  {/* School dots */}
-                  {sortedSchools.map((school, idx) => {
-                    const x = (school.diversityScore / 100) * 100
-                    const y = 100 - (school.academicScore / 100) * 100
-                    const jitterX = ((idx * 7) % 16) - 8
-                    const jitterY = ((idx * 11) % 16) - 8
-
-                    return (
-                      <button
-                        key={school.campusId}
-                        className={`absolute w-4 h-4 rounded-full transform -translate-x-1/2 -translate-y-1/2 transition-all hover:scale-150 hover:z-10 ${
-                          selectedSchool?.campusId === school.campusId
-                            ? "ring-2 ring-offset-1 ring-slate-800 scale-150 z-10"
-                            : ""
-                        }`}
-                        style={{
-                          left: `calc(${x}% + ${jitterX}px)`,
-                          top: `calc(${y}% + ${jitterY}px)`,
-                          backgroundColor: LEVEL_COLORS[school.level],
-                          boxShadow: "0 0 0 2px white",
-                        }}
-                        onClick={() => setSelectedSchool(school)}
-                        title={school.name}
-                      />
-                    )
-                  })}
                 </div>
               </CardContent>
             </Card>
 
             {/* Detail Card - Full Width Below Grid */}
             {selectedSchool && (
-              <Card className="w-full">
+              <Card className="w-full bg-gradient-to-br from-white/90 to-slate-50/90 backdrop-blur-sm border border-white/60 shadow-lg">
                 <CardContent className="p-5">
                   <div className="flex items-center justify-between mb-3">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-full">
@@ -571,7 +613,7 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
 
             {/* Detail Card - Full Width Below List */}
             {selectedSchool && (
-              <Card className="w-full">
+              <Card className="w-full bg-gradient-to-br from-white/90 to-slate-50/90 backdrop-blur-sm border border-white/60 shadow-lg">
                 <CardContent className="p-5">
                   <div className="flex items-center justify-between mb-3">
                     <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-amber-50 border border-amber-200 rounded-full">
@@ -687,29 +729,41 @@ export function SchoolClarityGrid({ schools, isPremium = true, onUnlock }: Schoo
         )}
 
         {/* How to Read Legend */}
-        <Card className="bg-blue-50/50 border-blue-100">
-          <CardContent className="p-3 sm:p-4">
-            <h4 className="font-medium text-blue-800 mb-2 text-sm sm:text-base">Understanding the Grid</h4>
-            <p className="text-xs text-slate-600 mb-3">
+        <Card className="bg-gradient-to-br from-blue-50/80 to-slate-50/60 backdrop-blur-sm border border-blue-100/60 shadow-md">
+          <CardContent className="p-4 sm:p-5">
+            <h4 className="font-semibold text-blue-900 mb-2 text-sm sm:text-base">Understanding the Grid</h4>
+            <p className="text-xs sm:text-sm text-slate-600 mb-4">
               <strong>What "Demographic Balance" means:</strong> We measure how evenly students are distributed across racial groups — not whether a school is "diverse" in the way you might typically think. A school that's 60% White gets the same balance score as one that's 60% Hispanic. Both have one dominant group.
             </p>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 text-xs sm:text-sm">
-              <p>
-                <span className="font-semibold text-green-700">Top-Right:</span>{" "}
-                <span className="text-slate-600">Strong & Balanced — high scores, no group dominates</span>
-              </p>
-              <p>
-                <span className="font-semibold text-yellow-700">Top-Left:</span>{" "}
-                <span className="text-slate-600">Balanced, Weaker Academics — even mix, lower scores</span>
-              </p>
-              <p>
-                <span className="font-semibold text-blue-700">Bottom-Right:</span>{" "}
-                <span className="text-slate-600">Strong, One Group Dominant — great scores, 60%+ one race</span>
-              </p>
-              <p>
-                <span className="font-semibold text-red-700">Bottom-Left:</span>{" "}
-                <span className="text-slate-600">Needs Improvement — both areas need work</span>
-              </p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs sm:text-sm">
+              <div className="flex items-start gap-2 p-2 rounded-lg bg-green-50/60">
+                <div className="w-3 h-3 rounded bg-gradient-to-br from-green-200 to-green-100 flex-shrink-0 mt-0.5" />
+                <p>
+                  <span className="font-semibold text-green-800">Top-Right:</span>{" "}
+                  <span className="text-slate-600">Strong & Balanced — high scores, no group dominates</span>
+                </p>
+              </div>
+              <div className="flex items-start gap-2 p-2 rounded-lg bg-yellow-50/60">
+                <div className="w-3 h-3 rounded bg-gradient-to-br from-yellow-200 to-yellow-100 flex-shrink-0 mt-0.5" />
+                <p>
+                  <span className="font-semibold text-yellow-800">Top-Left:</span>{" "}
+                  <span className="text-slate-600">Balanced, Weaker Academics — even mix, lower scores</span>
+                </p>
+              </div>
+              <div className="flex items-start gap-2 p-2 rounded-lg bg-blue-50/60">
+                <div className="w-3 h-3 rounded bg-gradient-to-br from-blue-200 to-blue-100 flex-shrink-0 mt-0.5" />
+                <p>
+                  <span className="font-semibold text-blue-800">Bottom-Right:</span>{" "}
+                  <span className="text-slate-600">Strong, One Group Dominant — great scores, 60%+ one race</span>
+                </p>
+              </div>
+              <div className="flex items-start gap-2 p-2 rounded-lg bg-red-50/60">
+                <div className="w-3 h-3 rounded bg-gradient-to-br from-red-200 to-red-100 flex-shrink-0 mt-0.5" />
+                <p>
+                  <span className="font-semibold text-red-800">Bottom-Left:</span>{" "}
+                  <span className="text-slate-600">Needs Improvement — both areas need work</span>
+                </p>
+              </div>
             </div>
           </CardContent>
         </Card>
