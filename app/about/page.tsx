@@ -96,21 +96,26 @@ export default function AboutPage() {
               <Users className="w-6 h-6 text-primary" />
             </div>
             <h2 className="text-2xl font-bold text-slate-900 mb-3">Currently Covering</h2>
-            <p className="text-5xl font-bold text-primary mb-2">27</p>
-            <p className="text-slate-600 mb-6">North Dallas ZIP codes across 10+ school districts</p>
+            <p className="text-5xl font-bold text-primary mb-2">35</p>
+            <p className="text-slate-600 mb-6">North Dallas ZIP codes across 15+ school districts</p>
             <div className="flex flex-wrap justify-center gap-2 text-sm">
               {[
                 "Frisco",
                 "Plano",
                 "Allen",
                 "McKinney",
+                "Prosper",
+                "Celina",
                 "Coppell",
                 "Southlake",
+                "Colleyville",
                 "Flower Mound",
                 "Richardson",
                 "Carrollton",
                 "Irving",
                 "Lewisville",
+                "Grand Prairie",
+                "Farmers Branch",
               ].map((city) => (
                 <span key={city} className="px-3 py-1 bg-white rounded-full text-slate-600 border border-slate-200">
                   {city}

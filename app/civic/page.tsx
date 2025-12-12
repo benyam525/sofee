@@ -8,32 +8,56 @@ import { Input } from "@/components/ui/input"
 import { Button } from "@/components/ui/button"
 
 const ZIP_CITY_MAP: Record<string, string> = {
+  // Allen
+  "75002": "Allen",
+  "75013": "Allen",
+  // Carrollton
   "75006": "Carrollton",
   "75007": "Carrollton",
-  "75009": "Celina",
   "75010": "Carrollton",
-  "75013": "Allen",
+  // Celina
+  "75009": "Celina",
+  // Coppell
   "75019": "Coppell",
+  // Flower Mound
+  "75022": "Flower Mound",
+  "75028": "Flower Mound",
+  // Plano
+  "75023": "Plano",
   "75024": "Plano",
   "75025": "Plano",
+  "75074": "Plano",
+  "75075": "Plano",
+  "75093": "Plano",
+  // Frisco
   "75034": "Frisco",
   "75035": "Frisco",
+  // Irving
   "75038": "Irving",
   "75039": "Irving",
-  "75052": "Grand Prairie",
   "75062": "Irving",
+  // Grand Prairie
+  "75052": "Grand Prairie",
+  // Lewisville
   "75067": "Lewisville",
-  "75070": "McKinney",
-  "75072": "McKinney",
   "75077": "Lewisville",
+  // McKinney
+  "75069": "McKinney",
+  "75070": "McKinney",
+  "75071": "McKinney",
+  "75072": "McKinney",
+  // Prosper
   "75078": "Prosper",
+  // Richardson
   "75080": "Richardson",
   "75081": "Richardson",
   "75082": "Richardson",
-  "75093": "Plano",
-  "75234": "Dallas",
-  "75244": "Dallas",
+  // Farmers Branch
+  "75234": "Farmers Branch",
+  "75244": "Farmers Branch",
+  // Colleyville
   "76034": "Colleyville",
+  // Southlake
   "76092": "Southlake",
 }
 
