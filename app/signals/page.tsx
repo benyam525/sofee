@@ -1,5 +1,4 @@
 import Link from "next/link"
-import { SiteNav } from "@/components/site-nav"
 import { getAllArticles, getFeaturedArticle, SignalArticle } from "@/lib/signals"
 import { ArrowRight, Calendar, Clock } from "lucide-react"
 
@@ -81,9 +80,7 @@ export default function SignalsPage() {
   const nonFeaturedArticles = allArticles.filter((a) => !a.featured)
 
   return (
-    <>
-      <SiteNav />
-      <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
+    <main className="min-h-screen bg-gradient-to-b from-slate-50 to-white">
         {/* Header Section */}
         <section className="w-full pt-16 pb-12 px-4 md:px-6">
           <div className="max-w-4xl mx-auto text-center">
@@ -125,7 +122,6 @@ export default function SignalsPage() {
             </div>
           </div>
         </section>
-      </main>
-    </>
+    </main>
   )
 }

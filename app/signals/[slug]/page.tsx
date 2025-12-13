@@ -1,6 +1,5 @@
 import Link from "next/link"
 import { notFound } from "next/navigation"
-import { SiteNav } from "@/components/site-nav"
 import { getArticleBySlug, getAllArticles } from "@/lib/signals"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import ReactMarkdown from "react-markdown"
@@ -73,9 +72,7 @@ export default async function SignalArticlePage({ params }: { params: Promise<{ 
   }
 
   return (
-    <>
-      <SiteNav />
-      <main className="min-h-screen bg-white">
+    <main className="min-h-screen bg-white">
         <article className="w-full pt-12 pb-20 px-4 md:px-6">
           <div className="max-w-[680px] mx-auto">
             {/* Back link */}
@@ -158,7 +155,6 @@ export default async function SignalArticlePage({ params }: { params: Promise<{ 
             <RelatedArticles currentSlug={article.slug} />
           </div>
         </article>
-      </main>
-    </>
+    </main>
   )
 }
