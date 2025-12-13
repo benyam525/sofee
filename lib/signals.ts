@@ -357,11 +357,13 @@ Irving isn't underrated everywhere. But in specific pockets, it absolutely is.`,
   },
   {
     slug: "heb-effect",
-    title: "Where H-E-B Goes, Home Values Follow",
-    excerpt: "H-E-B doesn't chase growth. It confirms it. Here's why their site selection tells you more about future home values than school ratings alone.",
+    title: "Where H-E-B Goes, Home Values Follow (Part 1)",
+    excerpt: "Part 1 of a series. H-E-B doesn't chase growth. It confirms it. Here's why their site selection tells you more about future home values than school ratings alone.",
     publishDate: "2024-12-28",
     readTime: "6 min read",
-    content: `**Sofee Signal Type:** Retail Anchor → Demographic Confidence → Price Stability
+    content: `*This is Part 1 of a series on retail anchors and home values.*
+
+**Sofee Signal Type:** Retail Anchor → Demographic Confidence → Price Stability
 
 ---
 
