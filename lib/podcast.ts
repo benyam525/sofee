@@ -5,7 +5,7 @@ export interface PodcastEpisode {
   description: string
   duration: string
   publishDate: string
-  audioUrl: string
+  spotifyEpisodeId: string
   showNotes: string
 }
 
@@ -19,7 +19,7 @@ export const PODCAST_EPISODES: PodcastEpisode[] = [
     description: "Two of North Dallas's most underestimated cities go head-to-head—one betting on reinvention and lake-life vibes, the other winning quietly with transit, diversity, and unbeatable location. It's comeback energy versus central-city leverage, and the gap between hype and reality gets exposed fast.",
     duration: "17 min",
     publishDate: "2025-01-12",
-    audioUrl: "/audio/Lewisville_vs_Carrollton_DFW_Suburban_Strategy_Showdown.mp3",
+    spotifyEpisodeId: "5j0gDUiKX8vT7KXj5ttS79",
     showNotes: `## Episode Overview
 
 Lewisville vs. Carrollton — two cities that rarely make the "best suburbs" lists but might be the smartest plays in North Dallas right now.
@@ -69,7 +69,7 @@ Lewisville vs. Carrollton — two cities that rarely make the "best suburbs" lis
     description: "Frisco vs. McKinney is a no-holds-barred debate between proven polish and long-game potential—one city flexing finished infrastructure, the other betting big on what's coming next. If you're choosing between certainty today and upside tomorrow, this episode puts the data (and the trash talk) on the table.",
     duration: "15 min",
     publishDate: "2025-01-10",
-    audioUrl: "/audio/Frisco_Versus_McKinney_Economic_Showdown.mp3",
+    spotifyEpisodeId: "6sfwLs2q0acXyU4Vx75Eie",
     showNotes: `## Episode Overview
 
 The ultimate North Dallas heavyweight matchup: Frisco's proven track record versus McKinney's massive growth potential.
@@ -120,7 +120,7 @@ The ultimate North Dallas heavyweight matchup: Frisco's proven track record vers
     description: "Frisco vs. Prosper is the North Dallas civil war nobody admits they're in — proven power versus protected potential, density versus discipline, new money versus newer money. One city already won the growth game, the other is betting it can win by refusing to play it the same way.",
     duration: "12 min",
     publishDate: "2025-01-08",
-    audioUrl: "/audio/Frisco_Versus_Prosper_Real_Estate_Battle.mp3",
+    spotifyEpisodeId: "52uLK7Xm7AAas7g8Hek8kH",
     showNotes: `## Episode Overview
 
 The North Dallas civil war: Frisco's explosive growth model versus Prosper's intentional scarcity strategy.
@@ -170,7 +170,7 @@ The North Dallas civil war: Frisco's explosive growth model versus Prosper's int
     description: "Two fully built North Dallas heavyweights go head-to-head over who actually evolved instead of just aging well. Richardson argues reinvention, transit, and real-world diversity; Plano fires back with corporate gravity, polish, and stability—leaving listeners to decide which city truly understands 2025 families.",
     duration: "8 min",
     publishDate: "2025-01-05",
-    audioUrl: "/audio/Richardson_Reinvention_Versus_Plano_Stability.mp3",
+    spotifyEpisodeId: "7iWHdML07mWQ6EHcsFV2xs",
     showNotes: `## Episode Overview
 
 The inaugural episode of Sofee's Suburb Wars pits two mature North Dallas giants against each other: Richardson's reinvention story versus Plano's stability play.

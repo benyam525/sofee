@@ -147,16 +147,18 @@ export default async function EpisodePage({ params }: { params: Promise<{ slug: 
             </div>
           </header>
 
-          {/* Audio Player */}
-          <div className="mb-10 p-4 bg-slate-50 rounded-xl">
-            <audio
-              controls
-              className="w-full"
-              style={{ height: "40px" }}
-            >
-              <source src={episode.audioUrl} type="audio/mpeg" />
-              Your browser does not support the audio element.
-            </audio>
+          {/* Spotify Player */}
+          <div className="mb-10">
+            <iframe
+              style={{ borderRadius: "12px" }}
+              src={`https://open.spotify.com/embed/episode/${episode.spotifyEpisodeId}?utm_source=generator`}
+              width="100%"
+              height="352"
+              frameBorder="0"
+              allowFullScreen={true}
+              allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture"
+              loading="lazy"
+            />
           </div>
 
           {/* Show Notes */}
