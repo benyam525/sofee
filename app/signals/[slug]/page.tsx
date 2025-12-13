@@ -3,6 +3,7 @@ import { notFound } from "next/navigation"
 import { getArticleBySlug, getAllArticles } from "@/lib/signals"
 import { ArrowLeft, Calendar, Clock } from "lucide-react"
 import ReactMarkdown from "react-markdown"
+import { SignalsLeadGen } from "@/components/signals-lead-gen"
 
 function formatDate(dateString: string): string {
   return new Date(dateString).toLocaleDateString("en-US", {
@@ -216,6 +217,9 @@ export default async function SignalArticlePage({ params }: { params: Promise<{ 
               {article.content}
             </ReactMarkdown>
           </div>
+
+          {/* Lead Gen CTA */}
+          <SignalsLeadGen />
 
           {/* Back to Signals link */}
           <div className="mt-14 pt-8 border-t border-slate-200">
