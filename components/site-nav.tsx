@@ -4,16 +4,16 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, BarChart3, GraduationCap, Info, Menu, X, Sparkles, Vote, Fingerprint, Radio } from "lucide-react"
+import { Home, BarChart3, GraduationCap, Info, Menu, X, Vote, Fingerprint, Radio } from "lucide-react"
 import { useState } from "react"
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/results", label: "Results", icon: BarChart3 },
   { href: "/signals", label: "Signals", icon: Radio },
-  { href: "/schools/clarity", label: "School Clarity Grid", icon: GraduationCap, premium: true },
-  { href: "/civic", label: "Civic Profile", icon: Vote, premium: true },
-  { href: "/zip-identity", label: "ZIP Identity", icon: Fingerprint, premium: true },
+  { href: "/schools/clarity", label: "School Clarity Grid", icon: GraduationCap },
+  { href: "/civic", label: "Civic Profile", icon: Vote },
+  { href: "/zip-identity", label: "ZIP Identity", icon: Fingerprint },
   { href: "/about", label: "About", icon: Info },
 ]
 
@@ -50,12 +50,6 @@ export function SiteNav() {
                 >
                   <Icon className="w-4 h-4" />
                   <span>{item.label}</span>
-                  {item.premium && (
-                    <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-[10px] font-bold rounded-full uppercase tracking-wide">
-                      <Sparkles className="w-2.5 h-2.5" />
-                      Pro
-                    </span>
-                  )}
                 </Link>
               )
             })}
@@ -90,12 +84,6 @@ export function SiteNav() {
                   >
                     <Icon className="w-5 h-5" />
                     <span>{item.label}</span>
-                    {item.premium && (
-                      <span className="flex items-center gap-0.5 px-1.5 py-0.5 bg-gradient-to-r from-amber-400 to-orange-400 text-white text-[10px] font-bold rounded-full uppercase tracking-wide ml-auto">
-                        <Sparkles className="w-2.5 h-2.5" />
-                        Pro
-                      </span>
-                    )}
                   </Link>
                 )
               })}
