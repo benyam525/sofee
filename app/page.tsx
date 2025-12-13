@@ -75,8 +75,6 @@ export default function HomePage() {
               margin: "0 auto 36px",
             }}
           >
-            It's messy, irregular, stressful, and noisy — the digital equivalent of too many damn tabs open.
-            <br /><br />
             I'm Sofee, and my job is simple: take the chaos and give you one clear, confident answer to the question every family gets stuck on: <em>Where the hell should we live?</em>
           </p>
 
