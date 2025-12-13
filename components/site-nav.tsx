@@ -4,13 +4,14 @@ import Link from "next/link"
 import Image from "next/image"
 import { usePathname } from "next/navigation"
 import { cn } from "@/lib/utils"
-import { Home, BarChart3, GraduationCap, Info, Menu, X, Vote, Fingerprint, Radio } from "lucide-react"
+import { Home, BarChart3, GraduationCap, Info, Menu, X, Vote, Fingerprint, Radio, Mic } from "lucide-react"
 import { useState } from "react"
 
 const navItems = [
   { href: "/", label: "Home", icon: Home },
   { href: "/results", label: "Results", icon: BarChart3 },
   { href: "/signals", label: "Signals", icon: Radio },
+  { href: "/podcast", label: "Podcast", icon: Mic },
   { href: "/schools/clarity", label: "School Clarity Grid", icon: GraduationCap },
   { href: "/civic", label: "Civic Profile", icon: Vote },
   { href: "/zip-identity", label: "ZIP Identity", icon: Fingerprint },
