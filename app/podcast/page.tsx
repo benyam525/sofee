@@ -1,5 +1,5 @@
 import Link from "next/link"
-import { getAllEpisodes, PodcastEpisode } from "@/lib/podcast"
+import { getAllEpisodes, PodcastEpisode, SPOTIFY_SHOW_URL } from "@/lib/podcast"
 import { Play, Clock, Calendar } from "lucide-react"
 
 function formatDate(dateString: string): string {
@@ -98,24 +98,16 @@ export default function PodcastPage() {
           {/* Subscribe buttons */}
           <div className="flex flex-wrap items-center justify-center gap-3">
             <a
-              href="#"
+              href={SPOTIFY_SHOW_URL}
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#1DB954] text-white font-medium rounded-full hover:bg-[#1aa34a] transition-colors"
               style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
             >
               <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M12 0C5.4 0 0 5.4 0 12s5.4 12 12 12 12-5.4 12-12S18.66 0 12 0zm5.521 17.34c-.24.359-.66.48-1.021.24-2.82-1.74-6.36-2.101-10.561-1.141-.418.122-.779-.179-.899-.539-.12-.421.18-.78.54-.9 4.56-1.021 8.52-.6 11.64 1.32.42.18.479.659.301 1.02zm1.44-3.3c-.301.42-.841.6-1.262.3-3.239-1.98-8.159-2.58-11.939-1.38-.479.12-1.02-.12-1.14-.6-.12-.48.12-1.021.6-1.141C9.6 9.9 15 10.561 18.72 12.84c.361.181.54.78.241 1.2zm.12-3.36C15.24 8.4 8.82 8.16 5.16 9.301c-.6.179-1.2-.181-1.38-.721-.18-.601.18-1.2.72-1.381 4.26-1.26 11.28-1.02 15.721 1.621.539.3.719 1.02.419 1.56-.299.421-1.02.599-1.559.3z" />
               </svg>
-              Spotify
-            </a>
-            <a
-              href="#"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#9933FF] text-white font-medium rounded-full hover:bg-[#8829e6] transition-colors"
-              style={{ fontFamily: "system-ui, -apple-system, sans-serif" }}
-            >
-              <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                <path d="M5.34 0A5.328 5.328 0 000 5.34v13.32A5.328 5.328 0 005.34 24h13.32A5.328 5.328 0 0024 18.66V5.34A5.328 5.328 0 0018.66 0H5.34zm6.525 3.6c3.6 0 5.925 2.55 5.925 5.475 0 1.125-.3 2.1-.75 2.775l.975 1.125c.225.225.15.6-.075.75l-1.35 1.05c-.3.225-.6.15-.825-.075l-.9-.975c-.75.375-1.65.6-2.7.6-3.6 0-5.85-2.55-5.85-5.475 0-2.925 2.25-5.25 5.55-5.25zm-.15 2.85c-1.575 0-2.55 1.125-2.55 2.475s.975 2.55 2.55 2.55c1.575 0 2.55-1.2 2.55-2.55s-.975-2.475-2.55-2.475zm-.075 8.925c1.65 0 3.15-.375 4.35-1.05l2.1 2.4c.225.225.225.6-.075.825l-1.5 1.2c-.225.15-.6.15-.825-.075l-1.95-2.25c-.675.15-1.35.225-2.1.225-3.6 0-5.925-2.55-5.925-5.55 0-.225 0-.45.075-.675.075-.225.3-.375.525-.375h2.175c.225 0 .45.15.525.375.075.225.075.45.075.675 0 1.35.975 2.475 2.55 2.475z" />
-              </svg>
-              Apple Podcasts
+              Listen on Spotify
             </a>
           </div>
         </div>
