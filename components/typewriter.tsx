@@ -7,25 +7,22 @@ interface TypewriterProps {
   style?: React.CSSProperties
 }
 
-// The rejected words/phrases the writer cycles through before landing on "ink blot"
-// Each includes the article (a/an) so grammar works with "Choosing a suburb is"
-const REJECTED_ATTEMPTS = [
-  "a nightmare",
-  "a mess",
-  "total shi",
-  "ajhdfkjhasdasf",
-  "an ink blot", // Final answer
+const LINES = [
+  "Zillow shows listings.",
+  "Redfin shows prices.",
+  "GreatSchools shows schools.",
+  "Sofee shows where you should live.",
 ]
 
-// Helper for more natural random timing - clusters around the middle
+// Helper for more natural random timing
 function naturalRandom(min: number, max: number): number {
-  // Use average of two randoms for more bell-curve distribution
   const r = (Math.random() + Math.random()) / 2
   return min + r * (max - min)
 }
 
 export function Typewriter({ className, style }: TypewriterProps) {
-  const [displayedText, setDisplayedText] = useState("")
+  const [lines, setLines] = useState<string[]>([])
+  const [currentLineText, setCurrentLineText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
   const [cursorVisible, setCursorVisible] = useState(true)
 
@@ -38,108 +35,41 @@ export function Typewriter({ className, style }: TypewriterProps) {
   }, [])
 
   const typeText = useCallback(async () => {
-    const baseText = "Choosing a suburb is "
-    const endingText = " — just like the one next to my name."
+    // Initial pause
+    await new Promise((r) => setTimeout(r, naturalRandom(800, 1200)))
 
-    // Initial pause - just cursor blinking, drawing user in
-    await new Promise((r) => setTimeout(r, naturalRandom(1200, 1800)))
+    for (let lineIndex = 0; lineIndex < LINES.length; lineIndex++) {
+      const line = LINES[lineIndex]
+      const isLastLine = lineIndex === LINES.length - 1
 
-    // Type the base text first
-    let currentText = ""
-    for (let i = 0; i < baseText.length; i++) {
-      const char = baseText[i]
-      currentText += char
-      setDisplayedText(currentText)
+      // Type each character of the line
+      let currentText = ""
+      for (let i = 0; i < line.length; i++) {
+        currentText += line[i]
+        setCurrentLineText(currentText)
 
-      // Vary typing speed - occasionally pause slightly longer (thinking)
-      let delay = naturalRandom(35, 65)
-      if (Math.random() < 0.08) {
-        delay += naturalRandom(80, 180) // occasional micro-hesitation
-      }
-      await new Promise((r) => setTimeout(r, delay))
-    }
-
-    // Now cycle through rejected attempts
-    for (let i = 0; i < REJECTED_ATTEMPTS.length; i++) {
-      const attempt = REJECTED_ATTEMPTS[i]
-      const isLast = i === REJECTED_ATTEMPTS.length - 1
-
-      // Small thinking pause before each attempt (varies by attempt)
-      if (i > 0) {
-        await new Promise((r) => setTimeout(r, naturalRandom(150, 350)))
-      }
-
-      // Type this attempt - speed varies per attempt
-      const isKeyboardSmash = attempt === "ajhdfkjhasdasf"
-
-      for (const char of attempt) {
-        currentText += char
-        setDisplayedText(currentText)
-
-        let charDelay: number
-        if (isKeyboardSmash) {
-          // Keyboard smash is FAST and frantic
-          charDelay = naturalRandom(15, 35)
-        } else {
-          // Normal typing with variation
-          charDelay = naturalRandom(40, 70)
-          if (Math.random() < 0.1) {
-            charDelay += naturalRandom(50, 120)
-          }
+        let delay = naturalRandom(35, 65)
+        if (Math.random() < 0.08) {
+          delay += naturalRandom(80, 150)
         }
-        await new Promise((r) => setTimeout(r, charDelay))
+        await new Promise((r) => setTimeout(r, delay))
       }
 
-      if (!isLast) {
-        // Pause - writer realizes this isn't right
-        // Vary dramatically based on the attempt
-        let pauseDuration: number
-        if (isKeyboardSmash) {
-          pauseDuration = naturalRandom(300, 500) // quick realization
-        } else if (attempt === "total shi") {
-          pauseDuration = naturalRandom(400, 700) // catches self quick
-        } else {
-          pauseDuration = naturalRandom(500, 900)
-        }
-        await new Promise((r) => setTimeout(r, pauseDuration))
+      if (!isLastLine) {
+        // Pause at end of line
+        await new Promise((r) => setTimeout(r, naturalRandom(400, 600)))
 
-        // Delete the attempt - speed varies
-        const deleteSpeed = isKeyboardSmash
-          ? naturalRandom(20, 35) // rage delete
-          : naturalRandom(30, 50)
+        // Move completed line to lines array and reset current
+        setLines((prev) => [...prev, currentText])
+        setCurrentLineText("")
 
-        for (let j = 0; j < attempt.length; j++) {
-          currentText = currentText.slice(0, -1)
-          setDisplayedText(currentText)
-
-          // Occasional speed variation in delete
-          let delDelay = deleteSpeed
-          if (Math.random() < 0.15) {
-            delDelay *= naturalRandom(0.5, 1.5)
-          }
-          await new Promise((r) => setTimeout(r, delDelay))
-        }
-
-        // Brief pause before next attempt - varies
-        await new Promise((r) => setTimeout(r, naturalRandom(200, 450)))
+        // Small pause before next line
+        await new Promise((r) => setTimeout(r, naturalRandom(200, 400)))
+      } else {
+        // Final line - add to completed lines
+        setLines((prev) => [...prev, currentText])
+        setCurrentLineText("")
       }
-    }
-
-    // Pause after landing on "ink blot" - a satisfied moment
-    await new Promise((r) => setTimeout(r, naturalRandom(250, 400)))
-
-    // Type the ending - slightly faster, more confident now
-    for (let i = 0; i < endingText.length; i++) {
-      const char = endingText[i]
-      currentText += char
-      setDisplayedText(currentText)
-
-      let delay = naturalRandom(30, 55)
-      // Pause slightly after em dash
-      if (endingText[i - 1] === "—") {
-        delay += naturalRandom(100, 200)
-      }
-      await new Promise((r) => setTimeout(r, delay))
     }
 
     setIsTyping(false)
@@ -151,7 +81,18 @@ export function Typewriter({ className, style }: TypewriterProps) {
 
   return (
     <span className={className} style={style}>
-      {displayedText}
+      {lines.map((line, i) => (
+        <span key={i}>
+          {line}
+          {i < lines.length - 1 && <br />}
+        </span>
+      ))}
+      {currentLineText && (
+        <>
+          {lines.length > 0 && <br />}
+          {currentLineText}
+        </>
+      )}
       <span
         className="inline-block w-[3px] ml-[2px] align-middle"
         style={{
