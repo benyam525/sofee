@@ -21,8 +21,7 @@ function naturalRandom(min: number, max: number): number {
 }
 
 export function Typewriter({ className, style }: TypewriterProps) {
-  const [lines, setLines] = useState<string[]>([])
-  const [currentLineText, setCurrentLineText] = useState("")
+  const [displayedText, setDisplayedText] = useState("")
   const [isTyping, setIsTyping] = useState(true)
   const [cursorVisible, setCursorVisible] = useState(true)
 
@@ -46,7 +45,7 @@ export function Typewriter({ className, style }: TypewriterProps) {
       let currentText = ""
       for (let i = 0; i < line.length; i++) {
         currentText += line[i]
-        setCurrentLineText(currentText)
+        setDisplayedText(currentText)
 
         let delay = naturalRandom(35, 65)
         if (Math.random() < 0.08) {
@@ -56,19 +55,18 @@ export function Typewriter({ className, style }: TypewriterProps) {
       }
 
       if (!isLastLine) {
-        // Pause at end of line
-        await new Promise((r) => setTimeout(r, naturalRandom(400, 600)))
+        // Pause at end of line before deleting
+        await new Promise((r) => setTimeout(r, naturalRandom(600, 900)))
 
-        // Move completed line to lines array and reset current
-        setLines((prev) => [...prev, currentText])
-        setCurrentLineText("")
+        // Delete the line character by character
+        for (let i = currentText.length; i > 0; i--) {
+          currentText = currentText.slice(0, -1)
+          setDisplayedText(currentText)
+          await new Promise((r) => setTimeout(r, naturalRandom(25, 45)))
+        }
 
         // Small pause before next line
-        await new Promise((r) => setTimeout(r, naturalRandom(200, 400)))
-      } else {
-        // Final line - add to completed lines
-        setLines((prev) => [...prev, currentText])
-        setCurrentLineText("")
+        await new Promise((r) => setTimeout(r, naturalRandom(300, 500)))
       }
     }
 
@@ -81,18 +79,7 @@ export function Typewriter({ className, style }: TypewriterProps) {
 
   return (
     <span className={className} style={style}>
-      {lines.map((line, i) => (
-        <span key={i}>
-          {line}
-          {i < lines.length - 1 && <br />}
-        </span>
-      ))}
-      {currentLineText && (
-        <>
-          {lines.length > 0 && <br />}
-          {currentLineText}
-        </>
-      )}
+      {displayedText}
       <span
         className="inline-block w-[3px] ml-[2px] align-middle"
         style={{
