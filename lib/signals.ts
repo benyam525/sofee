@@ -306,11 +306,53 @@ They're not perfect. They're just aligned.
   },
   {
     slug: "most-overlooked-suburb",
-    title: "The Most Overlooked Suburb in North Dallas",
-    excerpt: "Everyone's fighting over the same hot zip codes. Here's the one they're missing — and why.",
+    title: "The Contrarian Case for Irving (Yes, Really)",
+    excerpt: "Irving is one of the most misunderstood cities in North Dallas. Mostly because people want it to be one thing — and it isn't.",
     publishDate: "2025-01-05",
-    readTime: "5 min read",
-    content: `[CONTENT GOES HERE]`,
+    readTime: "4 min read",
+    content: `Irving is a portfolio.
+
+---
+
+## What the planning docs actually show
+
+- ~$912M capital program
+- Heavy investment in flood mitigation
+- Transportation and streetscape upgrades
+- Active use of redevelopment tools and zoning changes
+
+This isn't cosmetic spending. It's corrective.
+
+The city is explicitly trying to unlock value in places that have been discounted for years — especially outside the already-priced Las Colinas core.
+
+---
+
+## Why the market hasn't caught up
+
+Buyers wait for certainty:
+- Flood risk fully addressed
+- Infrastructure visibly completed
+- Perception shifts
+
+Markets don't price that in early. They price it after the work is obvious.
+
+**That lag is where contrarian upside lives.**
+
+---
+
+## Who Irving is (and isn't) for
+
+**Not for:**
+- Buyers who want uniformity
+- People allergic to construction
+- Anyone expecting instant polish
+
+**Good for:**
+- Long-term holds
+- Buyers who understand transition zones
+- People comfortable trading messiness for upside
+
+Irving isn't underrated everywhere. But in specific pockets, it absolutely is.`,
     featured: false,
   },
   {
