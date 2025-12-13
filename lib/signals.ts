@@ -358,10 +358,94 @@ Irving isn't underrated everywhere. But in specific pockets, it absolutely is.`,
   {
     slug: "heb-effect",
     title: "Where H-E-B Goes, Home Values Follow",
-    excerpt: "The Texas grocery giant doesn't just sell groceries — it signals where growth is headed. Here's the pattern.",
+    excerpt: "H-E-B doesn't chase growth. It confirms it. Here's why their site selection tells you more about future home values than school ratings alone.",
     publishDate: "2024-12-28",
-    readTime: "4 min read",
-    content: `[CONTENT GOES HERE]`,
+    readTime: "6 min read",
+    content: `**Sofee Signal Type:** Retail Anchor → Demographic Confidence → Price Stability
+
+---
+
+## Core Thesis
+
+H-E-B doesn't chase growth. It confirms it.
+
+When H-E-B commits to a site, it's because household income, traffic patterns, zoning stability, and long-term population quality have already cleared a high internal bar. Home values tend to follow because the hard work was done before the store opened.
+
+---
+
+## Why H-E-B Is Not "Just a Grocery Store"
+
+H-E-B operates more like a private equity diligence team than a supermarket chain.
+
+Before committing capital, they evaluate:
+
+- Median and future household income (not just current)
+- Drive-time trade areas (not city boundaries)
+- School district trajectory
+- Zoning friction (can this area stay stable for 20+ years?)
+- Competing retail saturation (they avoid zero-sum markets)
+
+This is why H-E-B openings feel inevitable in hindsight — but obvious only after prices move.
+
+---
+
+## The Carrollton Case Study (Parker / Josey)
+
+Carrollton's H-E-B approval wasn't random. It aligned with:
+
+- Stable single-family neighborhoods
+- A mature but not declining tax base
+- Infrastructure that could absorb traffic without destabilizing residential streets
+- A buyer profile that prioritizes quality of life over flash
+
+The market reaction followed a familiar pattern:
+
+1. **Announcement** → skepticism ("traffic will be terrible")
+2. **Construction** → early buyer confidence
+3. **Opening** → normalization
+4. **12–36 months later** → price compression upward nearby
+
+This pattern is documented repeatedly in North Texas planning data.
+
+---
+
+## Why the "Traffic Argument" Always Loses
+
+Every H-E-B announcement triggers the same fear: traffic.
+
+But here's what actually happens:
+
+- Traffic concentrates on arterials, not neighborhood streets
+- Cities proactively invest in signal timing and turn lanes
+- Retail traffic becomes predictable, not chaotic
+
+Markets consistently price daily convenience higher than marginal congestion. Buyers with kids, routines, and long time horizons vote with their offers.
+
+---
+
+## Where This Signal Is Playing Out Right Now
+
+Across North Dallas, the same H-E-B logic is repeating:
+
+- **Prosper / Celina:** Grocery confidence arrives before full build-out
+- **Irving:** Retail maturity stabilizes north-of-635 neighborhoods
+- **Frisco adjacency zones:** H-E-B reinforces already-expensive areas, not speculative ones
+
+H-E-B rarely pioneers risk. It institutionalizes certainty.
+
+---
+
+## The Sofee Takeaway
+
+If you're deciding where to live, don't ask:
+
+*"Is there an H-E-B nearby?"*
+
+Ask:
+
+**"Why did H-E-B choose this location?"**
+
+The answer usually reveals more about future home values than school ratings alone.`,
     featured: false,
   },
 ]
